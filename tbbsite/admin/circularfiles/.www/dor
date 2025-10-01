@@ -1,0 +1,3 @@
+#!/bin/sh
+./xh -s "/usr/local/apache/sbin/httpd -DSSL" ./httpd -m $1
+

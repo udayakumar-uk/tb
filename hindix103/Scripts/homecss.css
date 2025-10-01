@@ -1,0 +1,94 @@
+/* CSS Document */
+html, body, div, span, applet, object, iframe, table,
+ caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+}
+body{color:#000;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:70%;line-height:140%; line-height:20px;}
+
+a:link,a:visited{color:#000;text-decoration:none;}
+a:hover,a:active,a:focus{color:#000;text-decoration:underline;}
+
+a.nav:link,a.nav:visited{color:#fff;text-decoration:none;}
+a.nav:hover,a.nav:active,a.nav:focus{color:#fff;text-decoration:underline;}
+
+
+#Wrapper{margin-left:auto;margin-right:auto;width:97%;}
+
+#logoheader{width:100%; height:93px; background-image:url(../tob2_imgs/tblogo_bg.jpg); background-repeat:repeat-x;}
+#logoheader .logoleft{display:inline; float:left;}
+#logoheader .logoright{display:inline; float:right; width:400px; padding-right:20px; padding-top:30px;} 
+#logoheader .group1{display:inline; float:left; padding:3px 4px 0 20px; width:auto;} 
+#logoheader .group2{display:inline; float:right; padding:5px 4px 0 2px;} 
+
+#menu{ width:100%; height:30px; padding-top:14px; background-image:url(../tob2_imgs/menubg.jpg); background-repeat:repeat-x; color:#FFFFFF;}
+
+#imganimation{width:100%; height:131px; background-image:url(../tob2_imgs/1.jpg); background-repeat:repeat-x;}
+
+#latestmarquee{ width:100%; height:25px; background-image:url(../tob2_imgs/marque_bg.jpg); padding-top:12px; }
+
+#contentwrapper{ width:980px; height:auto; display: inline; clear:both;}
+#contentwrapper .left{ width:75%; padding:2px 0 0 0; float:left; text-align:left; height:100%;}
+#contentwrapper .leftcorner{ width:30%; padding:0; float:left;}
+#contentwrapper .rightcorner{ width:69%; padding:0; float:right;}
+#contentwrapper .conborder{width:99%; border-bottom:#F2F2F2; border-bottom-style:solid; border-left:#F2F2F2; border-left-style:solid; border-right:#F2F2F2; border-right-style:solid; border-top:#F2F2F2; border-top-style:solid;}
+#contentwrapper .conborder1{width:95%; padding-left:20px; }
+
+#contentwrapper .newscontent{width:100%;}
+
+#contentwrapper .right{ width:24%; padding:2px 0 0 0; float:right; text-align:left;}
+#contentwrapper .rightcontent{ width:100%; background-color:#2E631F; color:#FFFFFF; font-weight:bold; padding-top:7px; }
+#contentwrapper .ads{ width:100%; padding-top:10px; }
+
+#foter{width:100%; margin-top:10px; }
+#footer .first{background-color:#EBD95D; height:3px; margin-top:10px;}
+#footer .second{ background-color:#E1DFE2; height:25px; width:100%; padding-top:10px;}
+#footer .third{ background-color:#3985E5; height:35px; width:100%; padding-top:2px;}
+
+
+.red{ color:#CC0000; }
+.navigat{ padding:0 0 0 20px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; color:#FFFFFF;}
+.tabls{ font-family: Verdana, Arial, Helvetica, sans-serif; font-size:11px; line-height:22px;}
+.style26 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: #CC0000; }
+.features {font-family: Verdana, Arial, Helvetica, sans-serif; font-size:12px; font-weight: bold; color: #fff; background-color:#D08505; height:20px; width:100%; padding-top:7px }
+.newsupdate{ background-color:#3985E5; width:100%; font-family: Verdana, Arial, Helvetica, sans-serif; font-size:12px; font-weight: bold; color: #fff; height:22px; padding-top:7px;}
+.clr{clear:both;}
+
+/* Print */
+
+
+
+/* INNER PAGES */
+
+#imganimation1{width:100%; height:50px; background-image:url(../tob2_imgs/1.jpg); background-repeat:repeat-x;}
+#innerheader{width:100%; height:auto;}
+#contentwrapper1{ width:100%; height:auto; display: inline; clear:both;}
+#contentwrapper1 .left1{ width:100%; padding:2px 0 0 0; float:left; text-align:left; height:100%;}
+#contentwrapper1 .leftcorner1{ width:24%; padding:0; float:left;}
+#contentwrapper1 .rightcorner1{ width:74%; padding:0; float:right;  }
+#whereiam{ width:100%; padding:5px 0 0 0; height:25px; background-color: #F7F7F7;}
+
+.innertitle{ width:99%; height:30px; border-bottom:thin #999999 dotted; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:16px; font-weight:bold; color:#CC0000; padding:15px 0 0 0;}
+
+.innercontent{ width:99%; height:auto; padding:15px 0 0 0;}
+.innermenbox{ width:200px; height:auto; padding:10px 10px 10px 10px; margin-top:-30px; float:right; background-color:#EBEAEF; border:thin #999999 solid;}
+
+.colorbox{ width:97%; height:auto; padding:10px 10px 10px 10px;  background-color: #F8F8F8; border:thin  #EAEAEA solid;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<thumbnails>
+	<thumbnail filename="t1.jpg" url="#" target="_parent" 
+		title="1" 
+		description="" />
+	<thumbnail filename="t2.jpg" url="#" target="_parent" 
+		title="2" 
+		description="" />
+	<thumbnail filename="t3.jpg" url="#" target="_parent" 
+		title="3" 
+		description="" />
+	<thumbnail filename="t4.jpg" url="#" target="_blank" 
+		title="4" 
+		description="4" />
+	<thumbnail filename="t5.jpg" url="#" target="_blank" 
+		title="5" 
+		description="" />
+	<thumbnail filename="t6.jpg" url="#" target="_blank" 
+		title="6" 
+		description="6" />
+	<thumbnail filename="t7.jpg" url="#" target="_blank" 
+		title="7" 
+		description="7" />
+</thumbnails>

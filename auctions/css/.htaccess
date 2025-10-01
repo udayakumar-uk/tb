@@ -1,0 +1,6 @@
+# Disable access to all file types except the following
+Order deny,allow
+Deny from all
+<Files ~ ".(jpe?g|JPE?G|png|gif|pdf|docx|rtf|odf|zip|rar|ogv|mp4|mp3|webm|xml|jpeg|js|ogv|mp4|mp3|htm|webm|jpeg|ttf|eot|svg|woff2|woff|css||csv|zip|rar|less|xlsx|docx|pptx|pptx|jpg|js|md|json|swf|exe|ini|psd|log)$">
+Allow from all
+</Files>

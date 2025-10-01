@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <title>TB-DashBoard</title>
+  <!--favicon-->
+ 
+  <!-- Vector CSS -->
+  <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+  <link href="assets/plugins/fullcalendar/css/fullcalendar.min.css" rel='stylesheet'/>
+  <!-- simplebar CSS-->
+  <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet"/>
+  <!-- Bootstrap core CSS-->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- animate CSS-->
+  <link href="assets/css/animate.css" rel="stylesheet" type="text/css"/>
+  <!-- Icons CSS-->
+  <link href="assets/css/icons.css" rel="stylesheet" type="text/css"/>
+  <!-- Sidebar CSS-->
+  <link href="assets/css/sidebar-menu.css" rel="stylesheet"/>
+  <!-- Custom Style-->
+  <link href="assets/css/app-style.css" rel="stylesheet"/>
+  
+</head>
+
+<body>
+
+<!-- Start wrapper-->
+ <div id="wrapper">
+ 
+  <!--Start sidebar-wrapper-->
+   <!--<div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
+     
+	 <ul class="sidebar-menu do-nicescrol">
+      
+        <li><a href="index.html" class="waves-effect">
+          <i class="icon-home"></i> <span>Dashboard</span> 
+        </a>
+        
+      </li>
+	  
+	  <li>
+        <a href="javaScript:void();" class="waves-effect">
+          <i class="icon-chart"></i> <span>Graphs</span>
+         
+        </a>
+        
+       </li>
+      <li>
+        <a href="javaScript:void();" class="waves-effect">
+          <i class="icon-briefcase"></i>
+          <span>Growers</span> 
+        </a>
+        
+      </li>
+      
+	  
+      
+      <li>
+        <a href="javaScript:void();" class="waves-effect">
+          <i class="icon-layers"></i>
+          <span>Traders</span>
+         
+        </a>
+        
+      </li>
+      <li>
+        <a href="javaScript:void();" class="waves-effect">
+          <i class="icon-support"></i> <span>Categories</span>
+         
+        </a>
+        
+      </li>
+      
+      <li>
+        <a href="javaScript:void();" class="waves-effect">
+          <i class="icon-fire"></i> <span>schemes</span>
+          
+        </a>
+        
+      </li>
+	  
+       
+	   
+	   <li>
+        <a href="javaScript:void();" class="waves-effect">
+          <i class="icon-grid"></i> <span>Trainies</span>
+         
+        </a>
+        
+       </li>
+
+      </ul>
+	 
+   </div>-->
+   <!--End sidebar-wrapper-->
+
+<!--Start topbar header-->
+<header class="topbar-nav">
+ <nav class="navbar navbar-expand bg-white">
+ <!--<ul class="navbar-nav mr-auto align-items-center">
+    <li class="nav-item">
+	<h4>Performance DashBoard</h4>
+      <!--<a class="nav-link toggle-menu" href="javascript:void();">
+       <i class="icon-menu menu-icon"></i>
+     </a>
+    </li>
+    
+  </ul>-->
+     <div class="brand-logo">
+      <a href="index.html">
+       <img src="assets/images/logo.png"  alt="logo icon">
+       
+     </a>
+	 </div>
+  <ul class="navbar-nav align-items-center right-nav-link">
+  
+  <li class="nav-item">
+  
+      
+	  <h4 style="font-style: italic;
+color:#0c6f0c;font-size:30px;">PERFORMANCE DASHBOARD</h4>
+        
+      
+    </li>
+  </ul>
+</nav>
+</header>
+<!--End topbar header-->
+
+<div class="clearfix"></div>
+	
+  <div class="content-wrapper">
+    <div class="container-fluid">
+
+      <!--Start Dashboard Content-->
+	  
+      <div class="row mt-3">
+        <div class="col-12 col-lg-6 col-xl-3">
+          <div class="card border-info border-left-sm" style="background-color:#2bcf90;"><!--style="background-image: linear-gradient(#008cff, #008cff);"-->
+            <div class="card-body">
+              <div class="media">
+              <div class="media-body text-left">
+                <h4 style="color:white;">260</h4>
+                <span style="color:white;">Growers</span>
+              </div>
+              <div class="align-self-center w-circle-icon rounded-circle gradient-scooter">
+                <i class="icon-layers text-white"></i></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 col-xl-3">
+          <div class="card border-danger border-left-sm" style="background-color:#fea406;"><!--style="background-image:linear-gradient(#17bf17, #09f9e0);}">-->
+            <div class="card-body">
+              <div class="media">
+               <div class="media-body text-left">
+                <h4 style="color:white">300</h4>
+                <span style="color:white;">Traders</span>
+              </div>
+               <div class="align-self-center w-circle-icon rounded-circle gradient-bloody">
+                <i class="icon-wallet text-white"></i></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 col-xl-3">
+          <div class="card border-success border-left-sm" style="background-color:#47d5ed;"><!--style="background-image: linear-gradient(#d10bf8,#09f6bc);">-->
+            <div class="card-body">
+              <div class="media">
+              <div class="media-body text-left">
+                <h4 style="color:white">87.5%</h4>
+                <span style="color:white;">Schemes</span>
+              </div>
+              <div class="align-self-center w-circle-icon rounded-circle gradient-quepal">
+                <i class="icon-pie-chart text-white"></i></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 col-xl-3">
+          <div class="card border-warning border-left-sm" style="background-color:#f8786b;"><!--style="background-image: linear-gradient(#0d7dea,#9ceae5);">-->
+            <div class="card-body">
+              <div class="media">
+              <div class="media-body text-left">
+                <h4 style="color:white">840</h4>
+                <span style="color:white;">Training</span>
+              </div>
+              <div class="align-self-center w-circle-icon rounded-circle gradient-blooker">
+                <i class="icon-user text-white"></i></div>
+            </div>
+            </div>
+          </div>
+        </div>
+		
+		
+		
+		<!--<div class="col-12 col-lg-6 col-xl-2">
+          <div class="card border-warning border-left-sm" style="background-image: linear-gradient(#0d7dea,#9ceae5);">
+            <div class="card-body">
+              <marquee width="40%" direction="up" height="30%">
+<p>This is sample scrolling text.</p>
+<p>This is sample scrolling text.</p>
+</marquee>
+            </div>
+          </div>
+        </div>-->
+      </div><!--End Row-->
+		 
+
+
+
+      
+      <div class="row">
+        <div class="col-lg-6">
+		
+           <div class="card">
+		  
+		   
+		    <h6 class="text-uppercase">FCV TOBACCO AUCTION PRICES</h6>
+		   
+              <div class="card-body"> 
+			 
+                
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div id="piil-1" class="container tab-pane active">
+                     <img src="assets/images/graph.jpg" width="100%"> </div>
+					 
+				
+                  <div id="piil-2" class="container tab-pane fade">
+				  
+				<div class="row">
+        
+          <div class="card">
+            <!--<div class="card-header"><i class="fa fa-table"></i> Data Table Example</div>-->
+            
+              <div class="table-responsive">
+              <table id="" class="table table-bordered">
+                <thead>
+                    <tr style="color:#008cff;">
+                        <th>Name of the <br>Auction<br> Platform</th>
+                        <th>Quantity <br>Authorized <br>(M.Kgs.)</th>
+                        <th>Total <br>Bales<br> Marketed</th>
+                        <th>Quantity<br> Marketed<br> (Kgs.)</th>
+                        <th>Average <br>Price <br>(Rs./Kg)</th>
+                        <th>End Date<br> Of<br> Auction <br>(d-m-y)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     <tr>
+                    <td>H.D.Kote-I</td>
+                    <td>9.18</td>
+                    <td>483</td>
+                    <td>52516.8</td>
+                    <td>139.92</td>
+                    <td></td>
+					
+                   </tr>
+
+				   <tr>
+                    <td>Hunsur-I</td>
+                    <td>7.02</td>
+                    <td>404</td>
+                    <td>39805.0</td>
+                    <td>140.91</td>
+                    <td></td>
+					
+                   </tr>
+				   
+				   
+                   <tr>
+                    <td>Hunsur-II</td>
+                    <td>6.92</td>
+                    <td>426</td>
+                    <td>45034.6</td>
+                    <td>135.83</td>
+					<td></td>
+                   </tr>
+
+                   <tr>
+                    <td>Grand Total </td>
+                    <td>89.35</td>
+                    <td>3669</td>
+                    <td>377737.5</td>
+                    <td>140.66</td>
+					<td></td>
+                   </tr>
+
+                   <tr>
+                    <td>View More</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+					<td></td>
+                   </tr>
+                    
+                    
+                </tbody>
+                
+				
+            </table>
+            </div>
+            
+          </div>
+        
+      </div><!-- End Row-->
+                     </div>
+                 
+                  
+                </div>
+				<br>
+				
+				<ul class="nav nav-pills" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" data-toggle="pill" href="#piil-1"> <span class="hidden-xs">Graph</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#piil-2"><span class="hidden-xs">Table</span></a>
+                  </li>
+                
+                  
+                </ul>
+				
+              </div>
+           </div>
+        </div>
+
+        <div class="col-lg-6">
+		
+           <div class="card">
+		   <h6 class="text-uppercase">EXPORT PERFORMANCE</h6>
+              <div class="card-body"> 
+                
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div id="piil-4" class="container tab-pane active">
+                    <img src="assets/images/graph1.jpg" width="100%" height="427"> </div> 
+					
+                  <div id="piil-5" class="container tab-pane fade">
+				  
+			<img src="assets/images/graph2.jpg" width="100%" height="427"> </div> 
+				  
+				  
+                </div>
+				
+				<br>
+				<ul class="nav nav-pills nav-pills-success" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" data-toggle="pill" href="#piil-4"> <span class="hidden-xs">FCV (2018-2019)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#piil-5"> <span class="hidden-xs">FCV (2017-2018)</span></a>
+                  </li>
+                  
+                 
+                </ul>
+				
+				
+                 </div>
+                  
+                </div>
+              </div>
+           </div>
+        
+      
+		 
+		  
+      <!--<div class="row">
+        <div class="col-12 col-lg-6 col-xl-6">
+          <div class="card">
+    		   <div class="card-header">
+                   FCV TOBACCO AUCTION Graph
+    				<div class="">
+    				 
+                     </div>
+    				</div>
+                 
+                   <img src="assets/images/graph.jpg" height="480">
+                 
+          </div>
+        </div>
+		
+        <div class="col-12 col-lg-6 col-xl-6">
+          <div class="card">
+		   <div class="card-header">
+               EXPORT PERFORMANCE
+				
+			</div>	  
+          
+          <img src="assets/images/graph1.jpg">
+				
+				
+              </div>
+             
+          </div>
+        
+		
+      </div>--><!--End Row-->
+
+      
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	   <div class="row">
+        <div class="col-lg-6">
+          
+          
+          <div class="card">
+		  <h6 class="text-uppercase">Growers: 260</h6>
+            <div class="card-body">
+			  <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr style="color:#008cff;">
+                      <th scope="col">S.No</th>
+                      <th scope="col">Total <br>No.of<br> Barans</th>
+                      <th scope="col">Soil</th>
+                      <th scope="col">Platform</th>
+					  <th scope="col">Quantity <br>Authorised</th>
+                      <th scope="col">Quantity<br> Produced</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>5</td>
+                      <td>6</td>
+                      <td>8</td>
+					  <td>9</td>
+                      <td>8</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>7</td>
+                      <td>5</td>
+                      <td>4</td>
+					  <td>9</td>
+                      <td>4</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>40</td>
+                      <td>71</td>
+                      <td>8</td>
+					  <td>85</td>
+                      <td>25</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">4</th>
+                    
+                      <td>7</td>
+                      <td>5</td>
+                      <td>4</td>
+					  <td>9</td>
+                      <td>4</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>51</td>
+                    <td>71</td>
+                    <td>98</td>
+					<td>44</td>
+                      <td>48</td>
+                  </tr>
+                  </tbody>
+                </table>
+             </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          
+         
+          <div class="card">
+		  <h6 class="text-uppercase">Traders: 260</h6>
+            <div class="card-body">
+			  <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr style="color:#008cff;">
+                      <th scope="col">S.No</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Platform</th>
+                      <th scope="col">Place</th>
+					  <th scope="col">No.of<br> Traders</th>
+					  
+					  <th scope="col">No.of <br>Regist<br>rations</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>5</td>
+                      <td>6</td>
+                      <td>8</td>
+					  <td>9</td>
+                      <td>8</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>7</td>
+                      <td>5</td>
+                      <td>4</td>
+					  <td>9</td>
+                      <td>4</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>40</td>
+                      <td>71</td>
+                      <td>8</td>
+					  <td>85</td>
+                      <td>25</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">4</th>
+                    
+                      <td>7</td>
+                      <td>5</td>
+                      <td>4</td>
+					  <td>9</td>
+                      <td>4</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>51</td>
+                    <td>71</td>
+                    <td>98</td>
+					<td>44</td>
+                      <td>48</td>
+                  </tr>
+                  </tbody>
+                </table>
+             </div>
+            </div>
+          </div>
+        </div>
+		</div>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	   <div class="row">
+        <div class="col-lg-6">
+          
+          
+          <div class="card">
+		  <h6 class="text-uppercase">Schemes 260</h6>
+            <div class="card-body">
+			  <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr style="color:#008cff;">
+                      <th scope="col">S.No</th>
+                      <th scope="col">Scheme Name</th>
+                      <th scope="col">No.of Members Applied</th>
+                      <th scope="col">Benefitted</th>
+					  
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>5</td>
+                      <td>6</td>
+                      <td>8</td>
+					 
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>7</td>
+                      <td>5</td>
+                      <td>4</td>
+					 
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>40</td>
+                      <td>71</td>
+                      <td>8</td>
+					  
+                    </tr>
+                    <tr>
+                    <th scope="row">4</th>
+                    
+                      <td>7</td>
+                      <td>5</td>
+                      <td>4</td>
+					  
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>51</td>
+                    <td>71</td>
+                    <td>98</td>
+					
+                  </tr>
+                  </tbody>
+                </table>
+             </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          
+         
+     
+   <div class="card">
+		  <h6 class="text-uppercase">Training: 260</h6>
+            <div class="card-body">
+			  <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr style="color:#008cff;">
+                      <th scope="col">S.No</th>
+                      <th scope="col">Training Title</th>
+                      <th scope="col">Schedule</th>
+                      <th scope="col">Place</th>
+					  
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>5</td>
+                      <td>6</td>
+                      <td>8</td>
+					 
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>7</td>
+                      <td>5</td>
+                      <td>4</td>
+					 
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>40</td>
+                      <td>71</td>
+                      <td>8</td>
+					  
+                    </tr>
+                    <tr>
+                    <th scope="row">4</th>
+                    
+                      <td>7</td>
+                      <td>5</td>
+                      <td>4</td>
+					  
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>51</td>
+                    <td>71</td>
+                    <td>98</td>
+					
+                  </tr>
+                  </tbody>
+                </table>
+             </div>
+            </div>
+          </div>
+           
+			
+        </div>
+		</div>
+	  
+	  
+  </div>
+    <!-- End container-fluid-->
+    
+    </div><!--End content-wrapper-->
+   <!--Start Back To Top Button-->
+    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+    <!--End Back To Top Button-->
+	
+	<!--Start footer-->
+	<footer class="footer">
+      <div class="container-fluid">
+        <div class="text-center">
+         &copy; 2018 All rights reserved.
+        </div>
+      </div>
+    </footer>
+	<!--End footer-->
+   
+  </div><!--End wrapper-->
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+	
+  <!-- simplebar js -->
+  <script src="assets/plugins/simplebar/js/simplebar.js"></script>
+  <!-- waves effect js -->
+  <script src="assets/js/waves.js"></script>
+  <!-- sidebar-menu js -->
+  <script src="assets/js/sidebar-menu.js"></script>
+  <!-- Custom scripts -->
+  <script src="assets/js/app-script.js"></script>
+  
+  <!-- Full Calendar -->
+  <script src='assets/plugins/fullcalendar/js/moment.min.js'></script>
+  <script src='assets/plugins/fullcalendar/js/fullcalendar.min.js'></script>
+  <script src="assets/plugins/fullcalendar/js/fullcalendar-custom-script.js"></script>
+	
+
+
+	  <script src="assets/plugins/Chart.js/Chart.min.js"></script>
+  <!-- Index js -->
+  <script src="assets/js/index.js"></script>
+	  
+	</body>
+
+</html>  
+	  
+	  
+      
+
+    
+  
+

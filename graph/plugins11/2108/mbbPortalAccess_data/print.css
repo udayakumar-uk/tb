@@ -1,0 +1,4 @@
+/* print stylesheet */
+body {font-family:Verdana, Arial, Helvetica, sans-serif;font-size:70%;}
+hr, #date, #logout, #navigation, ul.sectionLink, p.submit, #sideContent, #footer {display:none;}
+table.tabularData, table.tabularData td {border:1px solid #ccc;}

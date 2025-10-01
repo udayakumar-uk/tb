@@ -1,0 +1,658 @@
+/* 08102008 */
+
+/* browser default resets */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse:separate;
+	border-spacing: 0;
+}
+
+/* clearer */
+
+/* clearfix */
+.clearfix:after {content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix {display:inline-table;min-height:1%;}
+/* Hides from IE-mac \*/
+* html .clearfix {height:1%;}
+.clearfix {display:block;}
+/* End hide from IE-mac */
+
+/* reusables */
+.floatLeft {float:left;margin-right:5px;}
+.floatRight {float:right;margin-left:5px;}
+.right {text-align:right;}
+.justify {text-align:justify}
+input.button {cursor:pointer;font-size:11px;}
+input.transparent {background:transparent;color:#003399;border:0;padding:0;font-size:11px;}
+input.fullWidth {width:95%;}
+
+/* new login page */
+#input-rounded {  
+background:none;
+border:none;
+width:166px;
+height:21px;
+float:left;
+margin-left:3px;
+font-family:Arial, Helvetica, sans-serif;
+font-size:13px;
+background: transparent url(https://www.maybank2u.com.my/maybank_gif/login/unamepw_btn.gif) no-repeat left top;
+cursor:text;
+}
+#replacement-1 {
+font-size: 0em;
+color:transparent; /* Fix for FF */
+border-style: none;
+border-width: 0;
+width: 80px;
+height: 21px;
+border: 0;
+z-index:1;
+//margin-right:2px;
+overflow: hidden;
+//text-indent: -1000em;
+//text-align: left;
+//line-height: 1;
+background: transparent url(https://www.maybank2u.com.my/maybank_gif/login/login_btn.jpg) no-repeat left top;
+cursor: pointer; /* hand-shaped cursor */
+cursor: hand; /* for IE 5.x */
+}
+#replacement-2 {
+font-size: 0em;
+color: transparent; /* Fix for FF */
+width: 71px;
+height: 22px;
+border: 0;
+float:left;
+margin-left:3px;
+//overflow: hidden;
+//text-indent: -1000em;
+//text-align: left;
+//line-height: 1;
+background: transparent url(https://www.maybank2u.com.my/maybank_gif/login/activate_btn.jpg) no-repeat left top;
+cursor: pointer; /* hand-shaped cursor */
+cursor: hand; /* for IE 5.x */
+}
+
+#replacement-3 {
+font-size: 0em;
+color: transparent; /* Fix for FF */
+width: 71px;
+height: 22px;
+border: 0;
+float:left;
+margin-left:2px;
+//overflow: hidden;
+//text-indent: -1000em;
+//text-align: left;
+//line-height: 1;
+background: transparent url(https://www.maybank2u.com.my/maybank_gif/login/cfm_btn.jpg) no-repeat left top;
+cursor: pointer; /* hand-shaped cursor */
+cursor: hand; /* for IE 5.x */
+}
+
+select.fullWidth {width:90%;}
+.success {color:#009900;}
+.fail, .alert, .error {color:#FF0000;}
+span.label {width:100px;display:block;float:left;}
+p.option {margin:5px 0;}
+	p.option select {width:100%;}
+a.popup {padding-right:12px;background:url(https://www.maybank2u.com.my/maybank_gif/popup.gif) center right no-repeat;}
+.highlight {background:#000;color:#FFFFFF;font-weight:bold;font-style:normal;padding:2px 5px;}
+.required {color:#FF0000;font-weight:bold;}
+.red {color:#FF0000;}
+.delete,.cancel {text-decoration:line-through;}
+
+/* link */
+a {text-decoration:none;color:#003399;}
+a:hover {color:#0033cc;text-decoration:underline;}
+a:active {color:#0066FF;}
+
+/* layout */
+body {font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:normal;text-align:center;color:#333;background:#fff url(https://www.maybank2u.com.my/maybank_gif/body.gif) repeat-x;}
+#container {text-align:left;width:800px;margin:0 auto;}
+#wrap {position:relative;background-image:url(https://www.maybank2u.com.my/maybank_gif/wrap.gif);background-color:#fff;}
+hr {display:none;visibility:hidden;height:0px;}
+
+#header {background:#000;color:#fff;position:relative;height:70px;}
+	#header img#logo {vertical-align:middle;position:absolute;top:10px;left:0;}
+	#header #date {position:absolute;top:45px;left:65px;font-size:11px;}
+	#header span#logout {position:absolute;top:30px;right:10px;display:block;width:80px;height:22px;font-weight:bold;background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/login.gif) top left no-repeat;font-size:12px;}
+	#header span#lognote {position:absolute;top:35px;right:100px;font-size:11px;color:#fff;}
+		#header #logout a {color:#333;display:block;padding-left:8px;padding-top:3px;text-decoration:none;}
+		
+#navigation {background:#000;color:#fff;position:relative;height:25px;overflow:hidden;}
+	#navigation a {text-decoration:none;}
+	#navigation ol#mainNav {list-style:none;margin-left:10px;height:25px;}
+		#navigation ol#mainNav li {float:left;text-align:center;height:25px;font-size:12px;}
+			#navigation ol#mainNav li a {color:#333;display:block;padding-top:5px;}
+			#navigation ol#mainNav li a:hover {color:#000;}
+	#navigation ul#xtraNav {list-style:none;position:absolute;top:0;right:10px;}
+		#navigation ul#xtraNav li {text-align:center;height:25px;font-size:12px;}
+		#navigation ul#xtraNav li a {color:#333;display:block;padding-top:5px;}
+		#navigation ul#xtraNav li a:hover {color:#000;}
+
+/* menu enhancement -a */
+body #navigation ol#mainNav li.mNav1 {width:65px;background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/mNavi1.gif) top left no-repeat;}
+body #navigation ol#mainNav li.mNav2 {width:141px;background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/mNavi2.gif) top left no-repeat;}
+body #navigation ol#mainNav li.mNav3 {width:117px;background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/mNavi3.gif) top left no-repeat;}
+body #navigation ol#mainNav li.mNav5 {width:91px;background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/mNavi5.gif) top left no-repeat;}
+body #navigation ol#mainNav li.mNav6 {width:86px;background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/mNavi6.gif) top left no-repeat;}
+body #navigation ol#mainNav li.mNav7 {width:69px;background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/mNavi7.gif) top left no-repeat;}
+body #navigation ul#xtraNav li.xNav8 {width:95px;background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/xNavi8.gif) top left no-repeat;}
+
+/* navigation matrix - match body and nav list-item class */
+body.mNav1 #navigation ol#mainNav li.mNav1 {background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/mNavi1w.gif) top left no-repeat;}
+body.mNav2 #navigation ol#mainNav li.mNav2 {background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/mNavi2w.gif) top left no-repeat;}
+body.mNav3 #navigation ol#mainNav li.mNav3 {background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/mNavi3w.gif) top left no-repeat;}
+body.mNav5 #navigation ol#mainNav li.mNav5 {background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/mNavi5w.gif) top left no-repeat;}
+body.mNav6 #navigation ol#mainNav li.mNav6 {background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/mNavi6w.gif) top left no-repeat;}
+body.mNav7 #navigation ol#mainNav li.mNav7 {background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/mNavi7w.gif) top left no-repeat;}
+body.mNav8 #navigation ul#xtraNav li.xNav8 {background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/xNavi8w.gif) top left no-repeat;}
+/* menu enhancement -z */
+
+/* side navigation matrix */
+body.sLink1 li.sLink1 a, body.sLink2 li.sLink2 a, body.sLink3 li.sLink3 a,
+body.sLink4 li.sLink4 a, body.sLink5 li.sLink5 a, body.sLink6 li.sLink6 a,
+body.sLink7 li.sLink7 a, body.sLink8 li.sLink8 a, body.sLink9 li.sLink9 a
+{color:#333;font-weight:bold;}
+/* tableLink navigation matrix */
+body.tLink1 li.tLink1 a, body.tLink2 li.tLink2 a, body.tLink3 li.tLink3 a,
+body.tLink4 li.tLink4 a, body.tLink5 li.tLink5 a, body.tLink6 li.tLink6 a,
+body.tLink7 li.tLink7 a, body.tLink8 li.tLink8 a, body.tLink9 li.tLink9 a
+{padding-left:12px;background:url(https://www.maybank2u.com.my/maybank_gif/downArrow.gif) center left no-repeat;font-weight:bold;color:#333;}
+		
+#content {background-image:url(https://www.maybank2u.com.my/maybank_gif/content.gif);background-repeat:no-repeat;background-position:top left;padding:0 5px;line-height:1.3;}
+	#mainContent {min-height:400px;height:auto !important;height:400px;/* min-height for IE */background:#fff;}
+
+/* homeContent */ 
+	#homeContent {position:relative;background:#fff;padding:5px 0 30px;}
+		#homeContent #homeHeadContent {height:60px;position:relative;padding:0 5px;}
+		#homeContent #homeSideContent {position:absolute;top:75px;left:5px;background:#efefef;border:1px solid #ddd;padding:10px 0;width:230px;}
+		#homeContent #homeAnnounceSideContent {position:absolute;top:160px;left:5px;background:#efefef;border:1px solid #ddd;padding:10px 0;width:230px;}
+		#homeContent #homeBannerSideContent {position:absolute;top:450px;left:5px;background:#ffffff;border:1px solid #ddd;padding:10px 0;width:230px;}
+		#homeContent #homeMainContent {position:relative;top:10px;left:250px;width:540px;min-height:450px;height:auto !important;height:450px;/* min-height for IE */}
+		 
+		#homeContent #homeSideContent h3 {font-size:14px;margin:0 5px 10px;}
+		#homeContent #homeSideContent p {font-size:11px;margin:0 5px 10px;}
+		#homeContent #homeSideContent dl.messages {font-size:11px;margin:0 5px 10px;}
+			#homeContent #homeSideContent dl.messages dt {font-weight:bold;}
+			#homeContent #homeSideContent dl.messages dd {margin-bottom:10px;}
+			
+		#homeContent #homeAnnounceSideContent h3 {font-size:14px;margin:0 5px 10px;}
+		#homeContent #homeAnnounceSideContent p {font-size:11px;margin:0 5px 10px;}
+		#homeContent #homeAnnounceSideContent dl.messages {font-size:11px;margin:0 5px 10px;}
+			#homeContent #homeAnnounceSideContent dl.messages dt {font-weight:bold;}
+			#homeContent #homeAnnounceSideContent dl.messages dd {margin-bottom:10px;}
+			
+		#homeContent #homeBannerSideContent h3 {font-size:14px;margin:0 5px 10px;}
+		#homeContent #homeBannerSideContent p {font-size:11px;margin:0 5px 10px;}
+		#homeContent #homeBannerSideContent dl.messages {font-size:11px;margin:0 5px 10px;}
+			#homeContent #homeBannerSideContent dl.messages dt {font-weight:bold;}
+			#homeContent #homeBannerSideContent dl.messages dd {margin-bottom:10px;}
+			
+/* login */
+	/*#login {position:relative;padding:0;}
+		#login #loginHead {padding-top:25px;}
+		#login #loginMain {width:290px;background:#efefef;border:1;position:absolute;top:30px;left:5px;}
+		#login #loginSide {position:relative;top:0px;left:310px;padding-bottom:30px;width:470px;min-height:400px;height:auto !important;height:400px;/* min-height for IE */ /*}
+		#login .paddingdiv {padding:10px;}*/
+		
+	#login {position:relative;padding:0;min-height:400px;height:auto !important;height:420px;/* min-height for IE */}
+		#login #loginHead {padding-top:25px;}
+		#login #loginMain 
+		{
+		width:375px;height:275px;
+		float:left;
+		margin-top:5px;
+		margin-left:10px;
+		padding-left:8px;
+				}
+		#login #loginMain {background:url(https://www.maybank2u.com.my/maybank_gif/login/bg.gif) top left no-repeat;width:375px;margin-left:7px;margin-right:2px;padding-left:7px;padding-top:9px;}
+		#login #loginSide {width:375px;float:right;padding-right:10px;}
+		#login #loginImage {background:#fff url(https://www.maybank2u.com.my/maybank_gif/login.gif) top left no-repeat;font-size:12px;}
+		#login .paddingdiv {padding-top:0px;padding-left:10px; padding-right:10px; padding-bottom:5px;}
+		
+			#login #loginMain h3 {font-size:12px;}
+			#login #loginMain p {margin-bottom:5px;}
+			#login #loginMain p.sansserif {font-family:Arial,Helvetica,sans-serif;font-size:18px;padding-bottom:5px;}
+			#login #loginMain p.sansserif2 {font-family:Arial,sans-serif;font-size:13px;padding-top:1px;}
+			#login #loginMain p.sansserif3 {font-family:Arial,sans-serif;font-size:11px;}
+			#login #loginMain p.newUsers {font-size:11px;}
+			#login #loginMain blockquote.note 
+			{
+			background:url(https://www.maybank2u.com.my/maybank_gif/login/midbox_actv.gif) top left no-repeat;
+			width:320px;
+			height:74px;
+			margin:0;
+			border:none;
+			margin-top:10px;
+			margin-bottom:15px;
+			}
+			#login #loginMain ul.a {font-family:Arial,sans-serif;font-size:11px;}
+			
+			table#loginTable {width:340px;margin-top:5px;}
+			table#loginTable td{padding:0px;}
+			
+			#login #loginSide h3 {margin-bottom:10px;font-size:13px;}
+			#login #loginSide p {margin-bottom:10px;}
+			#login #loginSide p.sansserif2 {font-family:Arial,sans-serif;font-size:13px;}
+			#login #loginSide p.sansserif3 {font-family:Arial,sans-serif;font-size:12px;}
+			#login #loginSide p.sansserif4 {font-family:Arial,sans-serif;font-size:11px;}
+			#login #loginSide ul {list-style:disc;margin-bottom:10px;margin-left:15px;}
+			
+/* fullContent */
+	#fullContent {position:relative;min-height:400px;height:auto !important;height:400px;/* min-height for IE */}
+		#fullContent #sideContent {width:140px;position:absolute;top:0;left:5px;}
+		#fullContent #mainContent {position:relative;top:0;left:160px;width:630px;background:#fff;padding-bottom:20px;}
+			#fullContent #mainContent div.sectionTitle {background:#ffc;padding:5px;margin-right:5px;}
+			
+/* halfContent */
+	#halfContent {position:relative;background:#fff;padding:0 10px 30px;min-height:400px;height:auto !important;height:400px;/* min-height for IE */}
+			#halfContent div.sectionTitle {background:#ffc;padding:5px;}
+	#halfContent #sideContent {width:140px;position:absolute;top:55px;left:10px;}
+	#halfContent #mainContent {position:relative;top:0;left:160px;width:615px;}
+		#halfContent #mainContent h3.head {margin-top:12px;margin-bottom:10px;}
+
+h2.pageTitle {height:20px;text-indent:-9999px;}
+ul.sectionLink {list-style:none;padding:0 15px 10px;}
+div.sectionTitle h2 {font-size:14px;}
+#sideContent ul.sideLinks {padding:0 5px;}
+	#sideContent ul.sideLinks li {line-height:1.3;font-size:12px;margin-bottom:5px;}
+		#sideContent div.promoBox {font-size:11px;background:#efefef;color:#666;padding:5px;margin-top:10px;}
+			#sideContent div.promoBox p {margin-bottom:5px;}
+			
+div#homeMenu {line-height:normal;margin:0 5px 10px 5px;border-top:1px dotted #666;}
+	div#homeMenu ul.homeMenuList {width:100%;list-style:none;border-bottom:1px dotted #666;}
+		div#homeMenu ul.homeMenuList li {float:left;width:33%;position:relative;}
+			div#homeMenu ul.homeMenuList li a.wrap {display:block;}
+			div#homeMenu ul.homeMenuList li a.wrap:hover {background:#ffc;}
+			div#homeMenu ul.homeMenuList li dl {padding:5px;}
+				div#homeMenu ul.homeMenuList li dt {font-size:14px;font-weight:bold;margin-bottom:10px;}
+				div#homeMenu ul.homeMenuList li dd {font-size:11px;margin-bottom:2px;}
+				div#homeMenu ul.homeMenuList li a.wrap strong {font-size:14px;padding:5px 10px 0;display:block;}
+				div#homeMenu ul.homeMenuList li a.wrap em {font-size:11px;font-style:normal;color:#333;padding:0 10px 10px;display:block;}
+				span.stockExchange {position:absolute;top:-20px;left:10px;}
+
+div.transferMenuWrap {margin:0 5px;border-bottom:1px dotted #666;}	
+ul.transferMenu {list-style:none;border-top:1px dotted #666;}
+	ul.transferMenu li {float:left;width:25%;}
+		ul.transferMenu li a {display:block;float:left;padding:5px 10px;}
+		ul.transferMenu li a strong {font-size:14px;display:block;margin-bottom:5px;}
+		ul.transferMenu li a span {color:#000;}
+		ul.transferMenu li a em {font-style:normal;display:block;margin-bottom:5px;}
+		ul.transferMenu li a:hover {background:#ffc;}
+		ul.transferMenu li dl {padding:5px 0;}
+		ul.transferMenu li dl dt {padding:0 10px;color:#000;}
+		ul.transferMenu li dl dd {}
+
+#quickLink form#quickLinkForm {position:absolute;top:10px;right:5px;width:300px;text-align:right;display:block;}
+	#quickLink form#quickLinkForm label {font-weight:bold;}
+
+h3.welcome {font-size:14px;margin-bottom:10px;}	
+p.lastLogin {font-weight:bold;font-size:11px;}		
+h3.head {font-size:12px;padding:0 5px;}
+h4.subHead {font-size:12px;padding:0 5px;}
+p.explanation {margin:0 5px 10px;}
+ul.tableLink {list-style:none;margin:0 0 10px 5px;}
+	ul.tableLink li {display:inline;margin-right:5px;}
+blockquote.note {background:#eeeeee;border:1px solid #ccc;margin:10px;width:400px;padding:5px;font-size:11px;}
+	blockquote.note ul {list-style-type:disc;list-style-position:outside;}
+	blockquote.note ol {list-style-type:decimal;list-style-position:outside;}
+		blockquote.note ul li {margin-left:20px;}
+		blockquote.note ol li {margin-left:25px;}
+dl.defList {}
+	dl.defList dt {font-weight:bold;}
+	dl.defList dd {}
+ul.list {margin:5px 0;}	
+
+table,tr,td,th,thead,tbody,tfoot {border:0;border-spacing:0;border-collapse:collapse;padding:0;line-height:1.3;}
+table td {vertical-align:top;}
+table tr.even td {background:#f3f3f3;}
+table tr.alt td {background:#e5e5e5;}
+table tr.borderTop td {border-top:1px dotted #666;}
+table tr.borderBottom td {border-bottom:1px dotted #666;}
+table td.valignBottom {vertical-align:bottom;}
+		
+div.tableWrap {padding:0 5px 10px 5px;background:#fff;}
+table.tabularData {background:#fff;border:0;border-top:1px dotted #666;border-bottom:1px dotted #666;}
+	table.tabularData td {border:0;}
+	table.tabularData thead th {background:#333333;color:#eeeeee;}
+	table.tabularData tr.header td {background:#ffc;}
+	table.tabularData th, table.tabularData td {padding:5px;}
+	table.tabularData th {font-weight:bold;}
+	table.tabularData .account {}
+	table.tabularData .balance {width:90px;text-align:center;}
+		table.tabularData th.balance span {display:block;}
+	table.tabularData .select {width:150px;}
+	table.tabularData th.select span {padding-left:10px;}
+		table.tabularData .select form.quickLink p {text-align:right;}
+		table.tabularData .select form.quickLink select {width:139px;font-size:11px;}
+			table.tabularData .select form.quickLink select option {width:150px;}
+		table.tabularData .select form.quickLink input.go {cursor:pointer;margin-top:3px;font-size:11px;}
+	table.tabularData td h3 {font-size:12px;}
+	
+table.tabularDataFloat {background:#ffc;border-top:1px dotted #666;padding:10px 5px 15px;}
+	table.tabularDataFloat td.floatDetails {font-size:14px;padding-bottom:5px;}
+		table.tabularDataFloat td.floatDetails span {padding-left:10px;}
+	table.tabularDataFloat td.floatShowHide {text-align:right;}
+	table.tabularDataFloat td.right {padding-right:5px;}
+table.tabularDataTransfers {background:#fff;border-top:1px dotted #666;}
+	table.tabularDataMenu td {border-bottom:1px dotted #666;width:25%;}
+		table.tabularDataMenu td a {display:block;padding:5px 10px;}
+		table.tabularDataMenu td a:hover {background:#ffc;}
+			table.tabularDataMenu td strong {font-size:14px;display:block;margin-bottom:5px;}
+			table.tabularDataMenu td em {font-style:normal;display:block;margin-bottom:10px;}
+			table.tabularDataMenu td span {color:#333;}
+table.tabularDataCheque tbody td {background:#ffc;border-top:1px dotted #666;border-bottom:1px dotted #666;padding:20px 5px;}
+table.tabularDataStatus {border-top:1px dotted #666;}
+	table.tabularDataStatus td {border-bottom:1px dotted #666;padding:20px 5px;}
+table.tabularDataEdit {background:#ffc;border-top:1px dotted #666;padding:10px 0;}
+	table.tabularDataEdit td {padding:0 5px;}
+
+table.tabularData tr.even td ol, table.tabularData tr.alt td ol {margin:10px 0 10px 35px;list-style-type:decimal;}
+table.tabularData tr.even td ul, table.tabularData tr.alt td ul {margin:10px 0 10px 35px;list-style-type:square;}
+
+tr.padding td {padding:20px 5px;}
+tr.paddingTop td {padding-top:20px;}
+tr.paddingBottom td {padding-bottom:20px;}
+tr.bt td {border-top:1px dotted #666;}
+tr.bb td {border-bottom:1px dotted #666;}
+td.note i {background:#333;color:#fff;font-weight:bold;font-style:normal;padding:0 5px;}
+div.tableWrap p.submit {text-align:right;padding:20px 5px;}	
+
+table.tabularConfirm {background:#fff;margin:5px;padding:5px;border:1px solid #bbb;}
+	table.tabularConfirm td {padding:3px;}
+
+table#iHaveRead {margin:10px !important;}
+	table#iHaveRead td {background:#fff;padding:10px;}
+
+ul#floatShowHide {display:none;padding:10px 0;}
+	ul#floatShowHide li {float:left;margin-right:10px;}
+	
+#footer {padding:20px 10px 10px;font-size:11px;color:#666;background:#fff url(https://www.maybank2u.com.my/maybank_gif/footer.gif) no-repeat;}
+
+ul.previousNext {list-style:none;padding:10px 0;text-align:right;}
+ul.previousNext li {display:inline;}
+
+#loginTAC blockquote {border:1px solid #ccc;background:#eee;padding:10px;margin:10px;}
+#loginTAC blockquote p {margin:0 5px 10px;}
+
+/*
+Below code is used for making border for cross browser
+*/
+
+.common_input{
+	padding-left:5px;
+	border:1px solid #BCC0C4;
+	position:relative;
+	z-index: 1;
+	
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+	behavior: url(/maybank_css/ie-css3.htc);
+}
+
+/*
+Below code is used for making border for login page
+*/
+
+.loginMainNew, .loginMainNew2
+{
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	behavior: url(/maybank_css/ie-css3.htc);
+}
+
+/*
+Below code is used for making border with shadow for login page
+*/
+
+.loginMainNewShadow, .loginMainNewShadow2
+{
+	-webkit-box-shadow: 0px 0px 20px #000;
+	-moz-box-shadow: 0px 0px 20px #000;
+	box-shadow: 0px 0px 20px #000;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	behavior: url(/maybank_css/ie-css3.htc); 
+}
+
+.loginMainNew h3, .loginMainNew2 h3, .loginMainNewShadow h3, .loginMainNewShadow2 h3 {font-size:12px;}
+.loginMainNew p, .loginMainNew2 p, .loginMainNewShadow p, .loginMainNewShadow2 p {margin-bottom:5px;}
+.loginMainNew p.sansserif, .loginMainNew2 p.sansserif, .loginMainNewShadow p.sansserif, .loginMainNewShadow2 p.sansserif {font-family:Arial,Helvetica,sans-serif;font-size:18px;padding-bottom:5px;}
+.loginMainNew p.sansserif2, .loginMainNew2 p.sansserif2, .loginMainNewShadow p.sansserif2, .loginMainNewShadow2 p.sansserif2 {font-family:Arial,sans-serif;font-size:13px;padding-top:1px;}
+.loginMainNew p.sansserif3, .loginMainNew2 p.sansserif3, .loginMainNewShadow p.sansserif3, .loginMainNewShadow2 p.sansserif3 {font-family:Arial,sans-serif;font-size:11px;}
+.loginMainNew p.newUsers, .loginMainNew2 p.newUsers, .loginMainNewShadow p.newUsers, .loginMainNewShadow2 p.newUsers {font-size:11px;}
+.loginMainNew blockquote.note, .loginMainNew2 blockquote.note, .loginMainNewShadow blockquote.note, .loginMainNewShadow2 blockquote.note 
+{
+	background:#DADADA;
+	width:320px;
+	height:74px;
+	margin:0;
+	border:none;
+	margin-top:10px;
+	margin-bottom:15px;
+	border: 0px solid;
+	z-index: 1;
+	position:relative;
+	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	 
+	behavior: url(/maybank_css/ie-css3.htc);
+}
+ 
+.loginMainNew ul.a, .loginMainNew2 ul.a, .loginMainNewShadow ul.a, .loginMainNewShadow2 ul.a {font-family:Arial,sans-serif;font-size:11px;}
+
+.loginMainNew{border: 1px solid #DADADA;float:left;background:#F5F5F5;width:350px;height:265px;margin-left:7px;margin-right:2px;padding-left:2px;padding-top:9px;}
+.loginMainNew2{border: 1px solid #DADADA;float:left;background:#F5F5F5;width:350px;height:460px;margin-left:7px;margin-right:2px;padding-left:2px;padding-top:9px;}
+
+.loginMainNewShadow{border: 10px solid #FFCC00;float:left;background:#F5F5F5;width:350px;height:265px;margin-left:7px;margin-right:2px;padding-left:2px;padding-top:9px;}
+.loginMainNewShadow2{border: 10px solid #FFCC00;float:left;background:#F5F5F5;width:350px;height:460px;margin-left:7px;margin-right:2px;padding-left:2px;padding-top:9px;}
+
+/* not include below code */
+/*
+input[type="text"]{
+	padding-left:5px;
+	border:1px solid #BCC0C4;
+	position:relative;
+	z-index: 1;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+	behavior: url(/maybank_css/ie-css3.htc);
+} 
+
+input[type="password"]{
+	padding-left:5px;
+	border:1px solid #BCC0C4;
+	position:relative;
+	z-index: 1;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+	behavior: url(/maybank_css/ie-css3.htc);
+} 
+*/
+
+
+/* For Adapt login page and online ticketing --start-- */
+
+#replacement-4 {
+font-size: 0em;
+color: transparent; /* Fix for FF */
+width: 71px;
+height: 22px;
+border: 0;
+float:left;
+margin-left:2px;
+//overflow: hidden;
+//text-indent: -1000em;
+//text-align: left;
+//line-height: 1;
+background: transparent url(https://www.maybank2u.com.my/maybank_gif/login/next_btn.png) no-repeat left top;
+cursor: pointer; /* hand-shaped cursor */
+cursor: hand; /* for IE 5.x */
+}
+
+.common_box{
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	behavior: url(/maybank_css/ie-css3.htc);
+}
+
+.common_box_shadow{
+	-webkit-box-shadow: 0px 0px 15px #888;
+	-moz-box-shadow: 0px 0px 15px #888;
+	box-shadow: 0px 0px 15px #888;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	behavior: url(/maybank_css/ie-css3.htc);
+}
+
+.common_box_shadowbig{
+	-webkit-box-shadow: 0px 0px 15px #000;
+	-moz-box-shadow: 0px 0px 15px #000;
+	box-shadow: 0px 0px 15px #000;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	behavior: url(/maybank_css/ie-css3.htc);
+}
+
+.loginMainCanvas h3, .loginMainCanvas2 h3, .loginMainCanvasShadow h3, .loginMainCanvasShadow2 h3 {font-size:12px;}
+.loginMainCanvas p, .loginMainCanvas2 p, .loginMainCanvasShadow p, .loginMainCanvasShadow2 p {margin-bottom:5px;}
+.loginMainCanvas p.sansserif, .loginMainCanvas2 p.sansserif, .loginMainCanvasShadow p.sansserif, .loginMainCanvasShadow2 p.sansserif {font-family:Arial,Helvetica,sans-serif;font-size:18px;padding-bottom:5px;}
+.loginMainCanvas p.sansserif2, .loginMainCanvas2 p.sansserif2, .loginMainCanvasShadow p.sansserif2, .loginMainCanvasShadow2 p.sansserif2 {font-family:Arial,sans-serif;font-size:13px;padding-top:1px;}
+.loginMainCanvas p.sansserif3, .loginMainCanvas2 p.sansserif3, .loginMainCanvasShadow p.sansserif3, .loginMainCanvasShadow2 p.sansserif3 {font-family:Arial,sans-serif;font-size:11px;}
+.loginMainCanvas p.newUsers, .loginMainCanvas2 p.newUsers, .loginMainCanvasShadow p.newUsers, .loginMainCanvasShadow2 p.newUsers {font-size:11px;}
+.loginMainCanvas blockquote.note, .loginMainCanvas2 blockquote.note, .loginMainCanvasShadow blockquote.note, .loginMainCanvasShadow2 blockquote.note 
+{
+	background:#DADADA;
+	width:320px;
+	height:74px;
+	margin:0 auto;
+	margin-top:10px;
+	margin-bottom:15px;
+	border: 0px solid; 
+	z-index: 1;
+	position:relative;
+	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+ 
+.loginMainCanvas ul.a, .loginMainCanvas2 ul.a, .loginMainCanvasShadow ul.a, .loginMainCanvasShadow2 ul.a {font-family:Arial,sans-serif;font-size:11px;}
+
+.loginMainCanvas, .loginMainCanvasShadow{margin-left:8px;padding:10px;padding-top:25px;float:left;width:350px;height:270px;}
+.loginMainCanvas2, .loginMainCanvasShadow2{margin-left:8px;padding:10px;padding-top:25px;float:left;width:350px;height:500px;}
+
+/* For Adapt login page and online ticketing --end-- */
+
+	#header span#logout1{position:absolute;top:3px;right:10px;display:block;width:80px;height:22px;font-weight:bold;background:#fc0 url(https://www.maybank2u.com.my/maybank_gif/login1.gif) top left no-repeat;font-size:12px;}
+		#header #logout1 a {color:#333;display:block;padding-left:8px;padding-top:3px;text-decoration:none;}
+
+
+#header #loginbox {width:296px;position:absolute;top:0px;left:430px;height:29px;display:block;clear:right;background:url(../https://www.maybank2u.com.my/maybank_gif/bg_login.gif) no-repeat top left #000000;padding:0 0 0 34px;}
+	#header #loginbox .searchbox {background:url(../https://www.maybank2u.com.my/maybank_gif/searchbox.gif) left top no-repeat;width:171px;float:left;height:19px;margin:5px 15px 5px 0;}
+	#header #loginbox .searchbox input {height:13px;border:1px solid #ffffff;background:#ffffff;margin:0 0 0 14px;}
+ 	#header #loginbox .searchbox img {width:12px;height:13px;padding:0 0 0 10px;vertical-align:top;margin:4px 0 0 0;}
+	#header #loginbox .searchbox input.button{margin-top:2px;}
+	#header #loginbox .imgright {float:right;width:25px;height:29px;}
+
+#table{
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	padding: 35px 0;
+	font: normal 12px Arial,"Lucida Grande", "Trebuchet MS", Verdana, Helvetica, sans-serif ;
+	color:#0081ff;
+	background-color: #f3f3f3;
+	text-align:absolute;
+}
+
+.text{
+	font: normal 12px Arial,"Lucida Grande", "Trebuchet MS", Verdana, Helvetica, sans-serif ;
+	color:#0081ff;
+	text-align:center;
+	font-weight: bold;
+
+}
+
+
+div.hammerPopUp
+{
+  position:absolute;
+  width:45px;
+  height:45px;
+  left:10px;
+  top:18.5px;
+  background:url(https://www.maybank2u.com.my/maybank_gif/mtncIcon.gif) left center no-repeat;
+  
+  }
+  
+    }
+
+

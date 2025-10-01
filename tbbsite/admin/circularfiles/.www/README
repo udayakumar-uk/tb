@@ -1,0 +1,33 @@
+Cara Penggunaan:
+
+1)rename config file ( default yang harus digunakan nama confilenya adalah racrew )
+mv under.conf terobot.conf
+
+2)masukan tcl loader.tcl
+./tcl -t fileconf loader.tcl
+
+3)
+./crot nick identd ip channel owner
+
+nick = botnick
+identd = bot identd 
+ip = bot ip
+channel = basechan
+owner = bot owner
+
+4) Running eggdrop
+./start confile
+
+confile = configfile
+
+#########################################################
+
+Contoh:
+
+./crot terobot crew 100.100.100.100 racrew terroris
+./start terobot
+
+
+#########################################################
+Selesai n Enjoyed
+

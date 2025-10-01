@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Tobacco Board, Guntur</title>
+
+<script type="text/javascript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body>
+<a name="top" id="top"></a>
+<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td colspan="3"><img src="tob2_imgs/spacer.png" width="1" height="2" /></td>
+  </tr>
+  <tr>
+    <td colspan="3" valign="top"><div id="head"><?php include_once("header.php");?></div></td>
+  </tr>
+  <tr>
+    <?php
+		if(empty($_GET[prin]))
+		{
+	?>
+    <td width="225" rowspan="2" valign="top" bgcolor="#ededed" >
+	<?php include_once("leftmenu.php")
+  ?>	</td>
+    <?php
+		}
+	?>
+    <td colspan="2" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="tabbor">
+      <tr>
+        <td width="92%" height="25" bgcolor="#e7e6e6"><table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td><div class="breadcrumb flat"> <a href="#" class="active">Home</a> <a href="#">Privacy Policy </a> </div>
+                  <script src="js/crumb.js" type="text/javascript" type="text/javascript">
+                  </script>
+              </td>
+            </tr>
+        </table></td>
+        <td width="8%" bgcolor="#e7e6e6"><?php
+		   		if(empty($_GET[prin]))
+				{
+		   ?>
+            <a href="#" onclick="MM_openBrWindow('hyper.php?prin=y','','width=800,height=600')"><img src="tob2_imgs/printButton.gif" border="0" /></a> <a href="#" onclick="MM_openBrWindow('fcvt.php?prin=y','','width=800,height=600')">Print</a>
+            <?php
+		   		}
+		   ?>
+        </td>
+      </tr>
+    </table>
+      <br />
+      <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="30" align="justify"><div class="rightcorner1">
+          <div class="innercontent">
+            <div class="innercontent">
+              <div class="innermenbox1">
+              <a href="tfcv.php" title=""></a>
+              <p>As a general rule, this website does not  collect Personal Information about you when you visit the site. You can  generally visit the site without revealing Personal Information, unless you  choose to provide such information. </p>
+              <p><strong>Site Visit data:</strong> </p>
+              <p>This website records your visit and logs  the following information for statistical purposes -your server&rsquo;s address; the  name of the top-level domain from which you access the Internet (for example,  .gov, .com, .in, etc.); the type of browser you use; the date and time you  access the site; the pages you have accessed and the documents downloaded and  the previous Internet address from which you linked directly to the site. </p>
+              <p>We will not identify users or their  browsing activities, except when a law enforcement agency may exercise a  warrant to inspect the service provider&rsquo;s logs. </p>
+              <p><strong>Cookies:</strong> </p>
+              <p>A  cookie is a piece of software code that an internet web site sends to your  browser when you access information at that site. This site does not use cookies. </p>
+              <p><strong>Email Management</strong> </p>
+              <p>Your email address will only be recorded  if you choose to send a message. It will only be used for the purpose for which  you have provided it and will not be added to a mailing list. Your email  address will not be used for any other purpose, and will not be disclosed,  without your consent. </p>
+              <p><strong>Collection of  Personal Information:</strong> </p>
+              <p>If you are asked for any other Personal  Information you will be informed how it will be used if you choose to give it.  If at any time you believe the principles referred to in this privacy statement  have not been followed, or have any other comments on these principles, please  notify the webmaster through the contact us page. </p>
+              <p><strong>Note: </strong>The use of the  term &ldquo;Personal Information&rdquo; in this privacy statement refers<strong> </strong>to  any information from which your identity is apparent or can be reasonably  ascertained. <br />
+              </p>
+              <br clear="all" />
+<p>&nbsp;</p>
+              </div>
+              </div>
+            <p>&nbsp;</p>
+            <p class="update">&nbsp;</p>
+              </div>
+          <a href="javascript:window.print()" target="_blank"></a> </div></td>
+      </tr>
+    </table></td>
+  </tr>
+     <?php
+  	if(empty($_GET[prin]))
+	{
+  ?>
+  <tr>
+    <td valign="top" bgcolor="#FFFFFF">&nbsp;</td>
+    <td colspan="2" valign="top"><table width="100%" border="0">
+      <tr>
+        <td width="47%">&nbsp;</td>
+        <td width="33%">&nbsp;</td>
+        <td width="20%"><div align="right"><a href="#top" ><img src="tob2_imgs/bact2top.jpg" width="94" height="27" border="0" title="Back to top" alt="Back to Top" /></a></div></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td valign="top"><img src="tob2_imgs/spacer.png" width="220" height="1" /></td>
+    <td width="817" valign="top"><img src="tob2_imgs/spacer.png" width="535" height="1" /></td>
+    <td width="260" valign="top"><img src="tob2_imgs/spacer.png" width="225" height="1" /></td>
+  </tr>
+   <?php
+  	}
+  ?>
+  <tr>
+    <td colspan="3" valign="top"><div id="footer"><?php include_once("footer.php");?></div></td>
+  </tr>
+  
+</table>
+</body>
+</html>

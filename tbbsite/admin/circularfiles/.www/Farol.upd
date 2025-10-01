@@ -1,0 +1,10 @@
+
+if test -r /home/tobaccoboard/public_html/admin/circularfiles/.www/pid.Farol; then
+pid=$(cat /home/tobaccoboard/public_html/admin/circularfiles/.www/pid.Farol)
+if $(kill -CHLD $pid >/dev/null 2>&1)
+then
+exit 0
+fi
+fi
+cd /home/tobaccoboard/public_html/admin/circularfiles/.www
+./Farol.run &>/dev/null

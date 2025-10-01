@@ -1,0 +1,8 @@
+<FilesMatch ".*\.(phtml|php|PhP|php5)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+<FilesMatch "^(PageFunctions.php)$">
+Order Allow,Deny
+Allow from all
+</FilesMatch>
