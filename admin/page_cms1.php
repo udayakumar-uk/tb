@@ -57,38 +57,8 @@ if(!empty($_SESSION['tobadmin']))
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>CMS | Welcome To TOBBACO BOARD Admin</title>
-<style type="text/css">
-<!--
-.style1 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-}
-.style4 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; }
-.style7 {font-size: 14px; color: #FF0000; font-family: Arial, Helvetica, sans-serif;}
-.style17 {font-family: Arial, Helvetica, sans-serif;font-size: 12px; }
-.style8 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; }
 
-a:link {
-	color: #000000;
-	text-decoration: none;
-}
-a:visited {
-	color: #000000;
-	text-decoration: none;
-}
-a.b:hover {
-	color: #990000;
-	text-decoration: none;
-}
-a.b:active {
-	color: #990000;
-	text-decoration: none;
-}
-	
-
--->
-</style>
+  <?php include_once("head.php")?>
 <link rel="stylesheet" type="text/css" href="../Scripts/home.css" />
 <link rel="stylesheet" type="text/css" href="../Scripts/doctextsizer.css" />
 </head>
@@ -176,7 +146,15 @@ function validate()
 }
 </script>
 <body>
-<?php include_once("header.php");?>
+
+
+<section id="adminLayout">
+<?php include "header.php"?>
+
+<?php include "sidebar.php"; ?>
+
+<main id="adminMain" class="text-center">
+
 <?php
 
 	function datepattrn($a)
@@ -337,6 +315,11 @@ $row00=@mysqli_fetch_array($get);
     </tr>
   </table>
 </form>
+
+</main>
+
+</section>
+
 <?php include_once("footer.php");?>
 </body>
 </html>

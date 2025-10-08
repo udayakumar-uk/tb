@@ -1,9 +1,5 @@
-&nbsp;</td>
-  </tr>
-  <tr>
-    <td colspan="2" bgcolor="#333399">&nbsp;</td>
-  </tr>
-</table>
 
-</body>
-</html>
+
+<script src="../js/jquery-2.2.0.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/custom.js"></script>

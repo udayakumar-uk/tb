@@ -128,7 +128,9 @@ ul{
 	background-color: var(--lightBeige);
 }
 
-
+.no-carat::after{
+	display: none;
+}
 /*  */
 p{
 	line-height: 1.6;
