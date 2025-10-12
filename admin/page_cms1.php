@@ -153,7 +153,7 @@ function validate()
 
 <?php include "sidebar.php"; ?>
 
-<main id="adminMain" class="text-center">
+<main id="adminMain" >
 
 <?php
 

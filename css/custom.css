@@ -4,20 +4,21 @@
 	--charcoalGreen: #384632;
 	--goldenBrown: #CC8A2B;
 	--amberYellow: #F4B600;
-	--lightBeige: #FBEABF;
+	--lightBeige: #fcefd0;
 	--title: #2B2B2B;
 	--text: #424242;
 	--transition: all ease-in-out 0.3s;
 	--rounded: 10px;
 }
 
-.interblack { font-weight: 900; }
-.interextrabold { font-weight: 800; }
-.interbold { font-weight: 700; }
-.intersemibold { font-weight: 600; }
-.interregular { font-weight: 400; }
-.interlight { font-weight: 300; }
-.interthin { font-weight: 200; }
+.fw-900, .interblack { font-weight: 900; }
+.fw-800, .interextrabold { font-weight: 800; }
+.fw-700, .interbold { font-weight: 700; }
+.fw-600, .intersemibold { font-weight: 600; }
+.fw-500{ font-weight: 500; }
+.fw-400, .interregular { font-weight: 400; }
+.fw-300, .interlight { font-weight: 300; }
+.fw-200, .interthin { font-weight: 200; }
 
 
 html, body {
@@ -50,6 +51,10 @@ a:hover{
 	/* text-decoration: none; */
 }
 
+ul li a:hover{
+    color: var(--goldenBrown);
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Inter', sans-serif;
   /* margin: 0; */
@@ -68,13 +73,34 @@ img{
 	max-width: 100%; 
 	vertical-align: middle;
 }
-ul{ 
-	list-style-type: none; 
+/* Reset lists everywhere (except we restore defaults inside #main-content below) */
+ul {
+	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
+
+table{
+	border-color: var(--bs-gray-400);
+}
+
+/* Ensure lists inside the main content keep their default/browser styles */
+#main-content ul:not(.pagination) {
+	list-style-type: revert;
+	margin: revert;
+	padding-left: 2rem;
+}
+
+#main-content ul li{
+	padding-bottom: 5px;
+}
+
 .text-coalgreen{
 	color: var(--darkOliveGreen);
+}
+
+.text-goldenbrown{
+	color: var(--goldenBrown);
 }
 
 .bg-goldenbrown{
@@ -83,6 +109,7 @@ ul{
 .dropdown-item{
 	--bs-dropdown-item-padding-x: .75rem;
     --bs-dropdown-item-padding-y: .4rem;
+	--bs-dropdown-link-active-bg: var(--goldenBrown);
 	display: flex;
     justify-content: space-between;
     gap: .5rem;
@@ -104,19 +131,19 @@ ul{
 }
 
 .dropdown-toggle::after{
-	border: 0;
-	content: '\e313';
+	border: 0 !important;
+	content: '\e313' !important;
 	font-family: 'Material Symbols Rounded';
 	font-size: 1.5rem;
     line-height: 10px;
 	font-weight: 500;
     margin: 0;
-    vertical-align: middle;
+    vertical-align: middle !important;
 	color: inherit;
 }
 
 .dropdown-submenu .dropdown-toggle::after{
-	content: '\e315';
+	content: '\e315' !important;
 }
 
 .navbar{
@@ -135,6 +162,20 @@ ul{
 p{
 	line-height: 1.6;
 }
+
+
+input.form-control{
+    height: 45px;
+}
+input.form-control:focus{
+	border-color: var(--charcoalGreen);
+    box-shadow: 0 0 0 .25rem rgb(56 70 50 / 14%);
+}
+
+.form-label{
+    margin-bottom: .3rem;
+}
+
 
 .box-shadow{
 	--size: 3px;
@@ -158,6 +199,7 @@ p{
 	--bs-btn-hover-color: #fff; */
 	--size: 0;
 	--radius: 8px;
+	font-weight: 500;
 }
 .btn:hover{
 	--size: 4px;
@@ -185,6 +227,18 @@ p{
     --bs-btn-disabled-border-color: var(--goldenBrown);
 }
 
+.pagination{
+	box-shadow: none !important;
+    --bs-pagination-color: var(--darkOliveGreen);
+    --bs-pagination-hover-color: var(--darkOliveGreen);
+    --bs-pagination-focus-color: var(--darkOliveGreen);
+    --bs-pagination-active-bg: var(--darkOliveGreen);;
+    --bs-pagination-active-border-color: var(--darkOliveGreen);
+}
+
+.page-link:focus{
+	box-shadow: none;
+}
 
 .btn .material-symbols-rounded{
 	font-size: 20px;
@@ -332,20 +386,25 @@ p{
 
 .profile-card{
     display: flex;
-    align-items: center;
-    width: 300px;
-    gap: 1rem;
+    flex-direction: column;
+	align-items: center;
+	justify-content: center;
+    gap: 0.8rem;
     padding: 10px;
+	text-align: center;
 }
-.profile-section .card-img-top{
+
+.profile-card:hover{
+	background-color: var(--lightBeige);
+}
+
+.profile-card .card-img-top{
 	height: 70px;
 	width: 70px;
 	object-fit: cover;
-    object-position: top;
-	border-radius: 10px;
+    object-position: center;
+	border-radius: 50%;
 }
-
-
 
 /* priceTable-section */
 
@@ -530,7 +589,11 @@ p{
 
 
 
+/* #main-content */
 
+#main-content{
+	margin-block: 2.5rem;
+}
 
 
 
@@ -593,13 +656,17 @@ footer{
 /* responsive */
 
 
-@media (min-width: 1199px) {
+@media (min-width: 1200px) {
 	.dropdown-submenu > .dropdown-menu {
 		display: none;
 	}
 
 	.dropdown-submenu:hover > .dropdown-menu {
 		display: block;
+	}
+
+	header .navbar-nav .nav-link{
+		--bs-navbar-nav-link-padding-x: .8rem;
 	}
 
 }
@@ -638,7 +705,7 @@ footer{
 	}
 	header .dropdown-item{
 		--bs-dropdown-item-padding-y: .5rem;
-		--bs-dropdown-link-color: var(--text)
+		--bs-dropdown-link-color: var(--text);
 	}
 
 }

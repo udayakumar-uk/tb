@@ -3,9 +3,7 @@ ob_start();
 session_start();
 header("Cache-control: private"); 
 include_once("include/includei.php");
-if(!empty($_SESSION['tobadmin']))
-{
-?>
+if(!empty($_SESSION['tobadmin'])) { ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +20,7 @@ if(!empty($_SESSION['tobadmin']))
 <?php include "sidebar.php"; ?>
 
 <main id="adminMain" class="text-center">
-  <h1>WELCOME TO TOBACCO BOARD ADMINISTRATION </h1>
+    <h1 class="title my-5 no-dash text-secondary">WELCOME TO TOBACCO BOARD ADMINISTRATION </h1>
 </main>
 
 
@@ -30,11 +28,9 @@ if(!empty($_SESSION['tobadmin']))
 
 <?php include_once("footer.php");?>
 
+<?php } else { ?>
+  <script>parent.location.href="index.php";</script>
+<?php }	?>
+
 </body>
 </html>
-<?php }
-  else { ?>
-  
-  <script>parent.location.href="index.php";</script>
-
-  <?php }	?>

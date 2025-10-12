@@ -113,21 +113,25 @@
 					<h1 class="title no-dash">WELCOME TO TOBACCO BOARD</h1>
 					<p>Tobacco is one of the important commercial crops grown in India. It provides employment directly and indirectly to<strong class="text-coalgreen"> 45.7</strong> million people and <strong class="text-coalgreen">Rs.12,005.89 crore </strong>in terms of foreign exchange to the National exchequer during 2023-24. India has a prominent place in the production of tobacco in the world. During <strong class="text-coalgreen">2022</strong>, India stands as<strong class="text-coalgreen"> 2nd largest country </strong>in Production <strong class="text-coalgreen">(FAO Stat data, 2022)</strong>, <strong class="text-coalgreen">2nd Largest Exporter</strong> (in quantity terms) and <strong class="text-coalgreen">5th Largest Exporter </strong>of unmanufactured tobacco (in value terms) in the world <strong class="text-coalgreen">(ITC Trademap data 2022)</strong>. India produces different styles of Flue Cured Virginia tobacco, which vary in their physical and chemical characteristics.</p>
 				</div>
-				<div class="profile-wrapper d-flex flex-wrap text-start gap-3 justify-content-center py-3">
-					<a href="javascript:;" class="profile-card box-shadow h-100">
-						<img src="./img/profile/Shri_Yashwanth_Kumar_Chidipothu.jpeg" class="card-img-top border flex-shrink-0" alt="Shri Yashwanth Kumar Chidipothu">
-						<div class="card-body">
-							<h4 class="card-title fs-6 mb-1 text-dark">Shri Yashwanth Kumar Chidipothu</h4>
-							<small class="card-text text-secondary">CHAIRMAN</small>
-						</div>
-					</a>
-					<a href="javascript:;" class="profile-card box-shadow h-100">
-						<img src="./img/profile/Ms_Vishwasree_B_IAS.jpeg" class="card-img-top border flex-shrink-0" alt="Ms. Vishwasree B, IAS">
-						<div class="card-body">
-							<h4 class="card-title fs-6 text-dark">Ms.Vishwasree B, IAS</h4>
-							<small class="card-text text-secondary">EXECUTIVE DIRECTOR</small>
-						</div>
-					</a>
+				<div class="profile-wrapper row justify-content-center py-3">
+					<div class="col-md-3">
+						<a href="javascript:;" class="profile-card box-shadow h-100">
+							<img src="./img/profile/Shri_Yashwanth_Kumar_Chidipothu.jpeg" class="card-img-top border flex-shrink-0" alt="Shri Yashwanth Kumar Chidipothu">
+							<div class="card-body">
+								<h4 class="card-title fs-6 text-dark">Shri Yashwanth Kumar Chidipothu</h4>
+								<small class="card-text text-goldenbrown lh-sm fw-600">CHAIRMAN</small>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="javascript:;" class="profile-card box-shadow h-100">
+							<img src="./img/profile/Ms_Vishwasree_B_IAS.jpeg" class="card-img-top border flex-shrink-0" alt="Ms. Vishwasree B, IAS">
+							<div class="card-body">
+								<h4 class="card-title fs-6 text-dark">Ms.Vishwasree B, IAS</h4>
+								<small class="card-text text-goldenbrown lh-sm fw-600">EXECUTIVE DIRECTOR</small>
+							</div>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>

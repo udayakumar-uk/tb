@@ -20,7 +20,7 @@ function remove_firstp($string)
 	
 <?php include 'tb_header_topbar.php' ?>
 
-	<nav class="navbar navbar-expand-xl shadow-sm sticky-top flex-wrap py-0">
+	<nav class="navbar navbar-expand-xl sticky-top flex-wrap py-0">
 		<div class="logo-section flex-wrap w-100">
 			<div class="container-fluid">
 				<div class="d-flex align-items-center justify-content-between">
@@ -43,7 +43,7 @@ function remove_firstp($string)
 						<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 					</div>
 					<div class="offcanvas-body">
-						<ul class="navbar-nav align-items-center gap-3 justify-content-between justify-content-xl-center flex-grow-1">
+						<ul class="navbar-nav align-items-center gap-2 justify-content-between justify-content-xl-center flex-grow-1">
 							<li class="nav-item">
 								<a class="nav-link active" aria-current="page" href="indexeng.php">Home</a>
 							</li>
@@ -75,7 +75,7 @@ function remove_firstp($string)
 										<a class="dropdown-item dropdown-toggle" href="javascript:;">Others</a>
 										<ul class="dropdown-menu">
 											<li><a class="dropdown-item" href="news.php">News & Events</a></li>
-											<li><a class="dropdown-item" href="photogallery.php">Photogallery</a></li>
+											<li><a class="dropdown-item text-danger	" href="photogallery.php">Photogallery</a></li>
 											<li><a class="dropdown-item" href="publications.php">Publications</a></li>
 											<li><a class="dropdown-item" href="rta.php">RTI Act</a></li>
 											<li><a class="dropdown-item" href="tenders.php">Tenders</a></li>

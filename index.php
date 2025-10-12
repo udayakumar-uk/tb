@@ -1,975 +1,638 @@
 <?php 
-ob_start();
-@session_start();
-include "include/include.php";
-$selectp=executework("select * from tob_album_title,tob_images where tob_album_title.id=tob_images.titleid and tob_images.cover=1 order by tob_album_title.position desc,tob_images.cover,tob_images.position desc");
-$countp=@mysqli_num_rows($selectp);
-$base_url="http://".$_SERVER['SERVER_NAME'];
-$base_path=$_SERVER['DOCUMENT_ROOT'];
+	ob_start();
+	@session_start();
+	include "include/include.php";
+	$selectp=executework("select * from tob_album_title,tob_images where tob_album_title.id=tob_images.titleid and tob_images.cover=1 order by tob_album_title.position desc,tob_images.cover,tob_images.position desc");
+	$countp=@mysqli_num_rows($selectp);
+	$base_url="http://".$_SERVER['SERVER_NAME'];
+	$base_path=$_SERVER['DOCUMENT_ROOT'];
 ?>
-<!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
-<head>
 
-    <!-- Basic Page Needs
-  ================================================== -->
-	<meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
 	<title>Tobacco Board</title>
 	
-    <!-- Mobile Specific Metas
-  ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <!-- CSS
-  ================================================== -->
-	<link rel="stylesheet" href="css/zerogrid.css">
-	<link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-	<link rel="stylesheet" href="css/responsiveslides.css" />
-	
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
-	<!--[if lt IE 8]>
-       <div style=' clear: both; text-align:center; position: relative;'>
-         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
-        </a>
-      </div>
-    <![endif]-->
-    <!--[if lt IE 9]>
-		<script src="js/html5.js"></script>
-		<script src="js/css3-mediaqueries.js"></script>
-	<![endif]-->
-	
-	<!--<link href='./images/favicon.ico' rel='icon' type='image/x-icon'/>-->
-	
-	<script src="js/jquery.min.js"></script>
-	<script src="js/responsiveslides.js"></script>
-	<script>
-    $(function () {
-      $("#slider").responsiveSlides({
-        auto: true,
-        pager: true,
-        nav: true,
-        speed: 500,
-        //maxwidth: 800,
-        namespace: "centered-btns"
-      });
-    });
-function show_pop(dname,id)
-{
-	if(dname!="" && dname!='#')
-	{
-		window.open(dname,"DisplayWindow","resizable=no,titlebar=no,toolbar=no,scrollbars=yes,directories=no,menubar=no,width=600,height=900,left=300,top=25");
-	}
-}		
-  </script>
+	<!-- slider -->
+	<link rel="stylesheet" type="text/css" href="./slick/slick.css">
+	<link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
 
-<style>
-.dropbtn {
-   /* background-color: #4CAF50;*/
-    color: white;
-  /*  padding: 16px;*/
-    font-size: 13px;
-    border: none;
-    cursor: pointer;
-}
+	<?php include "head.php"; ?>
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color:transparent;
-    min-width: 190px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color:#fff;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {background-color: transparent}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-  /*  background-color: #3e8e41;*/
-}
-.bottom a{
-padding:5px;
-color:#950C16;
-font-size:12px;
-}
-.bottom{
-border-bottom:2px solid #bd6424;
-}
-.bottom1 a{
-padding:5px;
-color:#0f5f17;
-font-size:12px;
-}
-.bottom2{
-    background-color: #0f5f17;
-    border-radius: 7px;
-    width: 100%;
-    padding: 8px;
-	margin-bottom:5px;
-}
-.bottom2 a{
-padding:0 5px;
-color:#fff;
-font-size:12px;
-}
-.bottom3 {
-padding:5px;
-color:#666;
-font-size:12px;
-}
-
-.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
-    color: #fff;
-    background-color: transparent;
-}
-.navbar-nav > li > a {
-    padding-top: 1px;
-    padding-bottom: 1px;
-}
-.navbar-collapse {
-    padding-right: 0;
-    padding-left: 0px;
-	}
-	.container-fluid {
-    padding-right: 0;
-    padding-left: 0;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.navbar {
-    position: relative;
-    min-height: 40px;
-    margin-bottom: 2px;
-    border: 1px solid transparent;
-       
-}
-.navbar-inverse .navbar-nav > li > a{
-color:#fff;
-}
-
-.nav > li > a {
-    position: relative;
-    display: block;
-    padding: 2px 6px;
-	}
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    display: none;
-    float: left;
-    min-width: 160px;
-    padding: 5px 0;
-    margin: 2px 0 0;
-    font-size: 14px;
-    text-align: left;
-    list-style: none;
-    background-color: rgba(0,71,0,1);
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border: 1px solid #ccc;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: 4px;
-     -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
-    box-shadow: 0 6px 12px rgba(0,0,0,.175);
-}	
-.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
-    color: #669900;
-    text-decoration: none;
-    background-color: transparent;
-	
-}
-.dropdown-menu > li > a{
-color:#fff;
-}
-.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover {
-    color: #fff;
-    background-color: transparent;
-}
-.h2, h2 {
-    font-size: 15px;
-	font-weight:bold;
-	padding:5px;
-}
-
-.navbar-inverse {
-    background-color: transparent;
-    border-color: #fff;
-}
-.navbar-toggle {
-background:#333;
-}
-
-/*.topnav {
-  overflow: hidden;
-  background-color: #333;
-  width:100%;
-}
-
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav .icon {
-  display: none;
-}
-
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-
-}*/
-
-table, table td{
-	padding:5px;
-}
-marquee h2{
-margin: 0px;
-}
-.style1 {
-	color: #1B4B29;
-	font-weight: bold;
-}
-.style2 {color: #292860}
-</style>    
 </head>
 <body>
+
 <?php include "tb_header.php"; ?>
-	<span class="style3">
+
 <?php 
-  	$selatest=executework("select * from tob_latest where archive=0 order by id desc limit 8");
+	$selatest=executework("select * from tob_latest where archive=0 order by id desc limit 8");
 	$lnews='';
-	while($rowlt=@mysqli_fetch_array($selatest))
-	{
-		if($rowlt['tfile']!="")
-		{
-			$tf="<a href='tbdata/latest/".$rowlt['tfile']."' target=_blank >";
+	$divider=' <span class="text-light px-3"> | </span> ';
+	$lnews_arr = array();
+	while($rowlt=@mysqli_fetch_array($selatest)){
+		if($rowlt['tfile']!="") {
+			$tf="<a class='d-inline-block' href='tbdata/latest/".$rowlt['tfile']."' target=_blank >";
 			$tf1="</a>";
-		}
-		else
-		{
+		} else {
 			$tf="";
 			$tf1="";
 		}
-		if($lnews=="")
-		$lnews=$tf.$rowlt['description'].$tf1;
-		else
-		$lnews=$lnews."  ".$tf.$rowlt['description'].$tf1;
+		$lnews_arr[] = $tf.$rowlt['description'].$tf1;
 	}
-  ?>
-<!--</span>
-	<div class="col-md-12 column" style="margin-top: 30px;">
-    <div class="newsscroll">
-      <div>
-        <p>
-          <marquee scrollamount="3" direction="left" onMouseOver="this.stop();" onMouseOut="this.start();">
-          <?php //echo $lnews ?>
-          </marquee>
-        </p>
-		 
-        
-      </div>
-    </div>
-  </div>-->
-<section id="content">
-	<div class="zerogrid">
-		<div class="row block">
-          <marquee scrollamount="10" direction="left" onMouseOver="this.stop();" onMouseOut="this.start();">
-          <?php echo $lnews ?>
-          </marquee>
-        </div>
-    </div>
-	<div class="zerogrid">
-		<div class="row block">
-			<div class="main-content col11">
-			
-				<div class="rslides_container">
-					<ul class="rslides" id="slider" style="padding-left:0px; max-width:100%">
-						<li  style="padding-left:0px"><img src="images/b1.jpg"/></li>
-						<li  style="padding-left:0px"><img src="images/69.jpg"/></li>
-						<!-- <li  style="padding-left:0px"><img src="images/b33.jpg"/></li>  -->
-						<li  style="padding-left:0px"><img src="images/162board.jpg"/></li>
-						<li  style="padding-left:0px"><img src="images/b4.jpg"/></li>
-						<li  style="padding-left:0px"><img src="images/auction.jpg"/></li>
-					</ul>
+	$lnews = implode($divider, $lnews_arr);
+?>
+
+
+
+
+<main>
+	<section class="slider-section">
+
+	
+		<marquee class="d-block py-2 bg-goldenbrown text-white" scrollamount="5" direction="left" onMouseOver="this.stop();" onMouseOut="this.start();">
+			<?php echo $lnews ?>
+		</marquee>
+
+		<div id="homeBanner" class="carousel slide" data-bs-ride="false">
+			<div class="carousel-indicators">
+				<button type="button" data-bs-target="#homeBanner" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+				<button type="button" data-bs-target="#homeBanner" data-bs-slide-to="1" aria-label="Slide 2"></button>
+				<button type="button" data-bs-target="#homeBanner" data-bs-slide-to="2" aria-label="Slide 3"></button>
+				<button type="button" data-bs-target="#homeBanner" data-bs-slide-to="3" aria-label="Slide 4"></button>
+			</div>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="./img/slider/slider-1.jpg" class="d-block w-100" alt="Tobacco Board Image">
 				</div>
-				<!--<article>
-				<h2 style="border-bottom:2px solid #c66f2f">WELCOME TO TOBACCO BOARD MINISTRY OF COMMERCE & INDUSTRY, GOVT. OF INDIA</h2>
-					<div class="heading">
+				<div class="carousel-item">
+					<img src="./img/slider/slider-4.jpg" class="d-block w-100" alt="Tobacco Board Image">
+				</div>
+				<div class="carousel-item">
+					<img src="./img/slider/slider-2.jpg" class="d-block w-100" alt="Tobacco Board Image">
+				</div>
+				<div class="carousel-item">
+					<img src="./img/slider/slider-3.jpg" class="d-block w-100" alt="Tobacco Board Image">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#homeBanner" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></strong>
+				<span class="visually-hidden">Previous</strong>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#homeBanner" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></strong>
+				<span class="visually-hidden">Next</strong>
+			</button>
+		</div>
+	</section>
+
+	
+	<section class="vismis-section pb-5 mb-4">
+		<div class="container">
+			<div class="row m-0">
+				<div class="col-md-6 p-0">
+					<div class="vis-wrapper vismis-wrapper box-shadow box-shadow-lg">
+						<h3 class="sub-title text-white">Mission</h3>
+						<p>To strive for the overall development of tobacco growers and the Indian Tobacco Industry.</p>
+					</div>
+				</div>
+				<div class="col-md-6 p-0">
+					<div class="mis-wrapper vismis-wrapper box-shadow box-shadow-lg">
+						<h3 class="sub-title text-white">Vision</h3>
+						<p>Tobacco Board is committed to accomplishing its role - the expressed will of Parliament - for the smooth functioning of a vibrant farming system, fair and remunerative prices to tobacco growers and export promotion.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="profile-section pb-4 mb-4 mb-md-5" id="main-content">
+		<div class="container">
+			<div class="profile-content text-center">
+				<div class="col">
+					<h1 class="title no-dash">WELCOME TO TOBACCO BOARD</h1>
+					<p>Tobacco is one of the important commercial crops grown in India. It provides employment directly and indirectly to<strong class="text-coalgreen"> 45.7</strong> million people and <strong class="text-coalgreen">Rs.12,005.89 crore </strong>in terms of foreign exchange to the National exchequer during 2023-24. India has a prominent place in the production of tobacco in the world. During <strong class="text-coalgreen">2022</strong>, India stands as<strong class="text-coalgreen"> 2nd largest country </strong>in Production <strong class="text-coalgreen">(FAO Stat data, 2022)</strong>, <strong class="text-coalgreen">2nd Largest Exporter</strong> (in quantity terms) and <strong class="text-coalgreen">5th Largest Exporter </strong>of unmanufactured tobacco (in value terms) in the world <strong class="text-coalgreen">(ITC Trademap data 2022)</strong>. India produces different styles of Flue Cured Virginia tobacco, which vary in their physical and chemical characteristics.</p>
+				</div>
+				<div class="profile-wrapper row justify-content-center py-3">
+					<div class="col-md-3">
+						<a href="javascript:;" class="profile-card box-shadow h-100">
+							<img src="./img/profile/Shri_Yashwanth_Kumar_Chidipothu.jpeg" class="card-img-top border flex-shrink-0" alt="Shri Yashwanth Kumar Chidipothu">
+							<div class="card-body">
+								<h4 class="card-title fs-6 text-dark">Shri Yashwanth Kumar Chidipothu</h4>
+								<small class="card-text text-goldenbrown lh-sm fw-600">CHAIRMAN</small>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3">
+						<a href="javascript:;" class="profile-card box-shadow h-100">
+							<img src="./img/profile/Ms_Vishwasree_B_IAS.jpeg" class="card-img-top border flex-shrink-0" alt="Ms. Vishwasree B, IAS">
+							<div class="card-body">
+								<h4 class="card-title fs-6 text-dark">Ms.Vishwasree B, IAS</h4>
+								<small class="card-text text-goldenbrown lh-sm fw-600">EXECUTIVE DIRECTOR</small>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="priceTable-section py-5 mb-4 mb-md-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+
+					<div class="title-height">
+						<h3 class="sub-title text-white">FCV TOBACCO AUCTION PRICES</h3>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-bordered bg-white overflow-hidden rounded-4">
+							<thead>
+								<tr>
+									<th scope="col">State</th>
+									<th scope="col">Year</th>
+									<th scope="col" style="min-width: 100px;">Date</th>
+									<th scope="col">Days</th>
+									<th scope="col">Qty(M.Kgs)</th>
+									<th scope="col">Avg.Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								
+								<?php
+									$statess=array('Andhra Pradesh','Karnataka');
+									$states1=array('AP','KARNATAKA');
+									$catgs[0]=array('NBS','NLS','SBS','SLS');
+									$catgs[1]=array('Mysore','Periyapatna');
+									$catgs1[0]=array('NBS','NLS','SBS','SLS');
+									$catgs1[1]=array('Mysore','P.patna');
+								?>
+
+								<?php 
+									for($i=0;$i<2;$i++){
+									$selauct=executework("select * from tob_auctsetting where state='".$statess[$i]."' and status='1'");
+									$rowc=@mysqli_fetch_array($selauct);
+								?>
+				
+								<tr>
+									<th scope="row" rowspan="2"><?php echo strtoupper($statess[$i]); ?></th>
+									<td><?php echo $rowc['year']."(Final)"; ?></td>
+									<td><?php echo date('d-m-Y',strtotime($rowc['sdate'])); ?></td>
+									<td><?php echo $rowc['days']; ?></td>
+									<td><?php echo $rowc['qty']; ?></td>
+									<td><?php echo $rowc['avg']; ?></td>
+								</tr>
+
+								<?php
+									$sel3=executework("select * from tob_auction,tob_platform where tob_auction.platf=tob_platform.id and tob_platform.state='".$statess[$i]."' and date(tdate)<='".date('Y-m-d')."' and tob_platform.isactive=1 order by tob_auction.tdate desc limit 1");
+									$row=@mysqli_fetch_array($sel3);
+									$adate=$row['tdate'];
+									$yr=$row['year'];
+									$selycnt=executework("select distinct count(distinct tdate) as cnt from tob_platform,tob_auction where tob_platform.id=tob_auction.platf and tob_platform.state='".$statess[$i]."' and date(tdate)<='".date('Y-m-d')."' and tob_auction.year=".$yr." order by cnt desc limit 1");
+									$rowycnt=@mysqli_fetch_array($selycnt);
+									if(!empty($rowycnt['cnt']))
+									$days=$rowycnt['cnt'];
+								
+									$qrv=" and year ='".$yr."'";
+									$selsm=executework("select sum(bsold) as bsold,sum(qsold) as qsold,sum(tvalue) as tval,sum(aprice) as apric from tob_auction where platf in(select id from tob_platform where state='".$statess[$i]."')".$qrv);
+									$rows=@mysqli_fetch_array($selsm);
+									$avg=$rows['tval']/$rows['qsold'];
+									if($rows['qsold']>0)
+									{
+										$yrr=$yr;
+								?>
+								<tr>
+									<td><a href="auctions.php?state=<?php echo $statess[$i]; ?>" class="text-primary"><?php echo $yrr; ?></a></td>
+									<td><a href="auctions.php?state=<?php echo $statess[$i]; ?>" class="text-primary"><?php echo date('d-m-Y',strtotime($adate)); ?></a></td>
+									<td><a href="auctions.php?state=<?php echo $statess[$i]; ?>" class="text-primary"><?php echo $days; ?></a></td>
+									<td><a href="auctions.php?state=<?php echo $statess[$i]; ?>" class="text-primary"><?php echo round($rows['qsold']/1000000,2); ?></a></td>
+									<td><a href="auctions.php?state=<?php echo $statess[$i]; ?>" class="text-primary"><?php echo round($avg,2); ?></a></td>
+								</tr> 
+
+								<?php } ?>
+							<?php } ?>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<div class="col-lg-6">
+					<?php
+						$variety=array('FCV','Non FCV', 'Refuse Tobacco', 'Tobacco Products', 'Un Manufactured Tobacco');
+						$sel=executework("select * from tob_homexport");
+						$data=array();
+						while($row=@mysqli_fetch_array($sel))
+						{
+							$vart=$row['variety'];
+							$data[$vart]=$row;
+						}
 						
-					</div>
-					<div class="content" style="padding-top:15px; text-align:justify">
-						<img src="images/v1.jpg"/>
-						<p style="font-size:13px;">Tobacco is an important commercial crop grown in India. It occupies the third position in the world with an annual production of about 800 Million Kgs. Of the different types grown, flue-cured tobacco, country tobacco, burley, bidi, rustica and chewing tobacco are considered important. India stands 3rd in production of tobacco and in exports, Brazil and USA are ahead of India.<br>
-						Tobacco and tobacco products earn approx Rs.20,000 Cr. to the national exchequer by way of excise duty, and approx.Rs.5000 Cr. by way of foreign exchange every year. </p>
-					</div>
-                   </article>-->
-			</div>
-			
-			
-			
-		
-		<div class="sidebar col05">
-        	<div style="font-size:14px !important; font-weight:600; background-color:#F5E7D8; padding:52px 7px 52px 7px; text-align:justify; border-radius:5px;"><strong style="font-size:14px !important; font-weight:600; color:#a94442">Mission:</strong> "To strive for the overall development of tobacco growers and the Indian Tobacco Industry."</div>
-        
-        	<div style="font-size:14px !important; font-weight:600; background-color: #E3FFDF;  padding:20px 7px 20px 7px; text-align:justify; border-radius:5px; margin-top:15px;"> <strong style="font-size:14px !important; font-weight:600; color:#a94442">Vision:</strong> "Tobacco Board is committed to accomplishing its role - the expressed will of Parliament - for the smooth functioning of a vibrant farming system, fair and remunerative prices to tobacco growers and export promotion." </div>
-       
-				<!--<section style="background:#dbead1; border:1px solid #ededed; border-radius:5px; text-align:center; padding:10px;">             
-                
-                <img src="images/chairman.png" style="width:40%;" align="middle"><br>
+						$selid=executework("select * from tob_gsettings where graph='Action Graph'");
+						$cnt=@mysqli_num_rows($selid);
+						$row=@mysqli_fetch_array($selid);
+						
+						$fmn=$row['export_fmonth'];
+						$fyr=$row['export_fyear'];
+						$tmn=$row['export_tmonth'];
+						$tyr=$row['export_tyear'];
 
-             <strong>  D.V.Swamy, IAS,<br>
-                 Chairman</strong><br>                
-				</section>
-                
-         <section style="background:#f4dec8; border:1px solid #ededed; border-radius:5px; text-align:center; padding:10px;">  
-                
-                              
-                 <img src="images/ed.jpg" style="width:40%;" align="middle"><br>
-
-               <strong> Dr. A SRIDHAR BABU, IAS,<br>
-                 Executive Director</strong><br>  
-					
-				</section>-->
-				
-			</div>
-		</div>
-		</div>
-			
-			
-			
-			<div class="zerogrid">
-		<div class="row">
-		<section class="col-1-3" style="width:50%">
-				<h2 style="border-bottom:2px solid #c66f2f; margin-top:0px; font-size:20px; color:#246537; text-align:center">WELCOME TO TOBACCO BOARD, MINISTRY OF COMMERCE & INDUSTRY, DEPT. OF COMMERCE, GOVT. OF INDIA</h2>
-				<div class="content">
-              <p align="justify" style="font-size:14px;">  
-				Tobacco is one of the important commercial crops grown in India. It provides employment directly and indirectly to<span class="style1"> 45.7</span> million people and <span class="style1">Rs.12,005.89 crore </span>in terms of foreign exchange to the National exchequer during 2023-24. India has a prominent place in the production of tobacco in the world. During <span class="style1">2022</span>, India stands as<span class="style1"> 2nd largest country </span>in Production <span class="style1">(FAO Stat data, 2022)</span>, <span class="style1">2nd Largest Exporter</span> (in quantity terms) and <span class="style1">5th Largest Exporter </span>of unmanufactured tobacco (in value terms) in the world <span class="style1">(ITC Trademap data 2022)</span>. India produces different styles of Flue Cured Virginia tobacco, which vary in their physical and chemical characteristics.	</p>
-<!--<img src="images/v1.jpg"/>-->	
+						$fcv=array('FCV','Non FCV','Refuse Tobacco','Tobacco Products','Unmanufactured Tobacco');
+						$fcv1=array('FCV','Non FCV','Refuse Tobacco','Tobacco Products','Un manufactured Tobacco');
+						$seldl=executework("select * from tob_dollar where id=1");
+						$rowdl=@mysqli_fetch_array($seldl);
+						$usd=$rowdl['dollar'];
+						$selcm=executework("select month,year from tob_export order by year desc,month desc limit 1");
+						$rowcm=@mysqli_fetch_array($selcm);
+					?>
+					<div class="d-flex justify-content-between">
+						<div class="title-height">
+							<h3 class="sub-title text-white">EXPORT PERFORMANCE</h3>
+						</div>
+						<div class="text-white text-end" style="font-size: 14px; line-height: 1.4;">
+							<strong class="fs-5">Current Month - <?php echo strtoupper(date('M y',strtotime($tyr."-".$tmn."-01"))); ?></strong>
+							<br>
+							<small>Cumulative - <?php echo date('M y',strtotime($fyr."-".$fmn."-01"))." - ".date('M y',strtotime($tyr."-".$tmn."-01")); ?></small>
+						</div>
 					</div>
-			</section>
-			<!--<section class="col-1-3" style="width:24%">
-				<h2 style="border-bottom:2px solid #c66f2f; margin-top:0px;">TWITTER</h2>
-				
-			</section>-->
-		
-		
-		<section class="col-1-3" style="width:22%">
-				<h2 style="border-bottom:2px solid #c66f2f; margin-top:0px; text-align:center">CHAIRMAN</h2>
-				<div class="content" style="padding-top:1px; text-align:justify">
-					
-				<div style="background:#dbead1; border:1px solid #ededed; border-radius:5px; text-align:center; padding:10px;">             
-                
-                <img src="<?php echo $base_url; ?>/tbdata/members/newChairman.jpg" style="width:auto; height:150px; margin:5px;" align="middle"><br>
+					<div class="table-responsive">
+						
+						<table class="table table-bordered bg-white overflow-hidden rounded-4 no-cellspace">
+							<thead>
+								<tr>
+									<th>Variety</th>
+									<th class="text-end">Qty(M.Tons)</th>
+									<th class="text-end">Value(Rs Cr.)</th>
+									<th class="text-end">Value(M.USD)</th>
+								</tr>
+								<?php 
+								for($i=0;$i<5;$i++) {
+									$vart=$variety[$i];
+								?>
+								<tr>
+									<th><?php echo $vart; ?></th>
+									<td class="text-end">
+										<p class="text-primary lh-1 fw-600 m-0 intersemibold"><?php echo round($data[$vart]['cqty']); ?></p>
+										<small class="text-secondary d-inline-block"><?php echo round($data[$vart]['mqty']); ?></small>
+									</td>
+									<td class="text-end">
+										<p class="text-primary lh-1 fw-600 m-0 intersemibold"><?php echo round($data[$vart]['cvalr']); ?></p>
+										<small class="text-secondary d-inline-block"><?php echo round($data[$vart]['mvalr']); ?></small>
+									</td>
+									<td class="text-end">
+										<p class="text-primary lh-1 fw-600 m-0 intersemibold"><?php echo round($data[$vart]['cvald']); ?></p>
+										<small class="text-secondary d-inline-block"><?php echo round($data[$vart]['mvald']); ?></small>
+									</td>
+								</tr>
+								<?php } ?>
+							</thead>
+							<tbody>
+								
+							</tbody>
+						</table>
+					</div>
 
-             		<strong>  Shri Yashwanth Kumar Chidipothu</strong><br> 
-					<strong><a href="Chairman-_Profile.pdf" target="_blank">Profile</a></strong>      
 				</div>
-					</div>
-			</section>
-            <section class="col-1-3" style="width:22%">
-				<h2 style="border-bottom:2px solid #c66f2f; margin-top:0px; text-align:center">EXECUTIVE DIRECTOR</h2>
-				<div class="content" style="padding-top:1px; text-align:justify">
-					
-				<div style="background:#dbead1; border:1px solid #ededed; border-radius:5px; text-align:center; padding:10px;">             
-                
-                <img src="<?php echo $base_url; ?>/tbdata/members/Babu.jpg" style="width:auto; height:150px; margin:5px;" align="middle"><br>
+			</div>
+		</div>
+	</section>
 
-             		<strong>  Dr. A SRIDHAR BABU, IAS</strong><br>                
+	<section class="statics-section pb-4 mb-4 mb-md-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 my-3">
+					<div class="card box-shadow">
+						<div class="card-body">
+							<span class="card-icon material-symbols-rounded d-block">bar_chart</span>
+							<h5 class="card-title no-dash interbold mt-2 mb-3">STATISTICS</h5>
+
+							<ul class="card-list">
+								<?php 
+								$arr=array('Production Data','Auction Data','Exports Data','Extension Data');
+								for($i=0;$i<count($arr);$i++) {
+									$archive="where archive='0' and stype='".$arr[$i]."'";
+									$select=executework("select * from tob_statistics ".$archive." order by id desc limit 2");
+									$count=@mysqli_num_rows($select);
+									$rowc=@mysqli_fetch_array($select);
+									if($count>0 && $rowc['tdate']>=date('Y-m-d', strtotime(date('Y-m-d'). ' - 5 days')))
+										$new=1;
+									else
+										$new=0;
+									?>
+								<li><a href="statistics.php?stype=<?php echo $arr[$i]; ?>" class="d-flex justify-content-between align-items-center"><span><?php echo $arr[$i]; ?></span><?php if($new==1){ ?></span> <img src="new.png" width="25" height="auto" /><?php } ?> <span class="material-symbols-rounded">arrow_forward</span></a></li>
+
+								<?php } ?>
+							</ul>
+						</div>
+					</div>
 				</div>
+				<div class="col-md-4 my-3">
+					<div class="card box-shadow">
+						<div class="card-body">
+							<span class="card-icon material-symbols-rounded d-block">pie_chart</span>
+							<h5 class="card-title no-dash interbold mt-2 mb-3">CIRCULARS</h5>
+
+
+							<ul class="card-list">
+								<?php 
+								$arr=array('Grower Community','Trader Community','Official');
+								for($i=0;$i<count($arr);$i++) {
+									$archive="where archive='0' and stype='".$arr[$i]."'";
+									$select=executework("select * from tob_circulars ".$archive." order by id desc limit 1");
+									$count=@mysqli_num_rows($select);
+									$rowc=@mysqli_fetch_array($select);
+									if($count>0 && $rowc['ndate']>=date('Y-m-d', strtotime(date('Y-m-d'). ' - 5 days')))
+									$new=1;
+									else
+									$new=0;
+								?>
+								
+									<li><a href="circulars.php?stype=<?php echo $arr[$i]; ?>" class="d-flex justify-content-between align-items-center"><span><?php echo $arr[$i]; ?></span><?php if($new==1){ ?></span> <img src="new.png" width="25" height="auto" /><?php } ?> <span class="material-symbols-rounded">arrow_forward</span></a></li>
+								
+								<?php } ?>
+							</ul>
+						</div>
 					</div>
+				</div>
+				<div class="col-md-4 my-3">
+					<div class="card box-shadow">
+						<div class="card-body">
+							<span class="card-icon material-symbols-rounded d-block">monitoring</span>
+							<h5 class="card-title no-dash interbold mt-2 mb-3">PUBLICATIONS</h5>
+							<ul class="card-list">
+								<?php 
+									$archive="where home=1 and archive='0'";
+									$select=executework("select * from tob_publications ".$archive." order by id desc limit 2");
+									$count=@mysqli_num_rows($select);
+									while($rown=@mysqli_fetch_array($select))
+									{
+										if($rown['tfile']="" && $rown['tfile']='#')
+										$link="tbdata/publicationsfiles/".$rown['tfile'];
+										else
+										$link=$rown['tfile'];
+										$fcheck=explode(".",$rown['tfile']);
+									?>
+										<li>
+											<a href="./tbdata/pdf/<?php echo $rown['hdescription']; ?>" target="<?php  if($link!="#"){?>_blank<?php  }?>" class="d-flex justify-content-between align-items-center">
+												<span><?php echo $rown['description']; ?></span>
+												<span class="material-symbols-rounded">arrow_forward</span>
+											</a>
+										</li>
+									<?php } ?>
+								<li><a href="publications.php" class="btn btn-primary box-shadow box-shadow-lg mt-3 d-block">View More <span class="material-symbols-rounded align-middle">arrow_forward</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	
+	<section class="tender-section pb-4 mb-4 mb-md-5 py-4 py-md-5">
+
+		<div class="title-height text-center">
+			<h3 class="title text-white">Active Tenders</h3>
+		</div>
+
+
+
+		<div class="container">
+			<div class="row py-4">
+				<?php 
+					$archive1="where home=1 and archive='0'";
+					$select=executework("select * from tob_tender ".$archive1." order by id desc limit 4");
+					$count=@mysqli_num_rows($select);
+					if($count>0) {
+						while($rown=@mysqli_fetch_array($select)) {
+							if($rown['mfile']!="") {
+								$link1="tbdata/tenderfiles/$rown[mfile]";
+								$link="reg.php?pg=".$rown['mfile']."&id=".$rown['id'];
+							} else {
+								$link="#";
+							}
+							if($rown['subtitle1']!='' && $rown['tfile']!="") {
+								$links1="reg.php?pg=".$rown['tfile']."&id=".$rown['id'];
+							} else {
+								$links1="#";
+							}
+							if($rown['subtitle2']!='' && $rown['sfile']!="") {
+								$links2="reg.php?pg=".$rown['sfile']."&id=".$rown['id'];
+							} else {
+								$links2="#";
+							}
+							$fcheck=explode(".",$rown['tfile']);
+							// Card design
+							?>
+							<div class="col-md-6 col-lg-3">
+								<div class="card h-100 box-shadow shadow-none">
+									<div class="card-body d-flex flex-column justify-content-between">
+										<div class="card-title mb-2">
+											<?php if($rown['isactive']=='0') { ?>
+												<a href="javascript:;" class="line-clamp line-clamp-3" onClick="show_pop('<?php echo $link ?>')">
+													<?php echo $rown['description']; ?>
+												</a>
+											<?php } else { ?>
+												<a href="javascript:;" class="line-clamp line-clamp-3" class="text-dark">
+													<?php echo $rown['description']; ?>
+												</a>
+											<?php } ?>
+										</div>
+
+										<?php if($rown['subtitle1']!='') { ?>
+											<a href="javascript:;" <?php if($links1!='#' && $links1!='') { ?>onClick="show_pop('<?php echo $links1; ?>');" <?php } ?> class="mt-2 lh-sm badge bg-goldenbrown text-white px-2 py-1 text-uppercase line-clamp line-clamp-2">
+												<?php echo $rown['subtitle1']; ?>
+											</a>
+										<?php } ?>
+										<?php if($rown['subtitle2']!='') { ?>
+											<a href="javascript:;" <?php if($links2!='#' && $links2!='') { ?>onClick="show_pop('<?php echo $links2 ?>')" <?php } ?> class="mt-2 lh-sm badge bg-goldenbrown text-white px-2 py-1 text-uppercase line-clamp line-clamp-2">
+												<?php echo $rown['subtitle2']; ?>
+											</a>
+										<?php } ?>
+
+										<?php if(!empty($rown['closing_date'])) { ?>
+											<div class="mt-3">
+												<span class="d-block text-secondary small">Closing Date:</span>
+												<span class="fw-bold text-danger">
+													<?php echo date('d M Y', strtotime($rown['closing_date'])); ?>
+												</span>
+											</div>
+										<?php } ?>
+									</div>
+								</div>
+							</div>
+						<?php 
+						}
+					}
+				?>
+			</div>
+			<div class="container text-center">
+				<a href="tenders.php" class="btn btn-secondary box-shadow box-shadow-lg mt-4">See All Tenders <span class="material-symbols-rounded align-middle">arrow_forward</span></a>
+			</div>
+
+		</div>
+	</section>
+
+	
+	<section class="gallery-section py-4 mb-4 mb-md-5">
+		<div class="container text-center">
+			<h2 class="title">Gallery</h2>
+			
+			<section class="gallery-wrapper slider my-4">
+				<div class="slider-wrapper">
+					<img src="./tbdata/photogallery/oimages/20.jpg" alt="Gallery Image" class="rounded-3">
+				</div>
+				<div class="slider-wrapper">
+					<img src="./tbdata/photogallery/oimages/21.jpg" alt="Gallery Image" class="rounded-3">
+				</div>
+				<div class="slider-wrapper">
+					<img src="./tbdata/photogallery/oimages/23.jpg" alt="Gallery Image" class="rounded-3">
+				</div>
+				<div class="slider-wrapper">
+					<img src="./tbdata/photogallery/oimages/24.jpg" alt="Gallery Image" class="rounded-3">
+				</div>
+				<div class="slider-wrapper">
+					<img src="./tbdata/photogallery/oimages/25.jpg" alt="Gallery Image" class="rounded-3">
+				</div>
+				<div class="slider-wrapper">
+					<img src="./tbdata/photogallery/oimages/26.jpg" alt="Gallery Image" class="rounded-3">
+				</div>
+				<div class="slider-wrapper">
+					<img src="./tbdata/photogallery/oimages/27.jpg" alt="Gallery Image" class="rounded-3">
+				</div>
+				<div class="slider-wrapper">
+					<img src="./tbdata/photogallery/oimages/29.jpg" alt="Gallery Image" class="rounded-3">
+				</div>
+				<div class="slider-wrapper">
+					<img src="./tbdata/photogallery/oimages/30.jpg" alt="Gallery Image" class="rounded-3">
+				</div>
+				<div class="slider-wrapper">
+					<img src="./tbdata/photogallery/oimages/32.jpeg" alt="Gallery Image" class="rounded-3">
+				</div>
 			</section>
 			
+			<a href="javascript:;" class="btn btn-primary box-shadow box-shadow-lg mt-4">See More <span class="material-symbols-rounded align-middle">arrow_forward</span></a>
 		</div>
+	</section>
+
+	
+	<section class="register-section pb-4 mb-4 mb-md-5">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-4 col-lg-3 pb-3">
+					<a href="http://tobaccoboard.in" target="_blank" class="reg-card reg-card-1 d-flex align-items-center gap-3 p-3 box-shadow">
+						<span class="reg-icon material-symbols-rounded">captive_portal</span>
+						<div class="reg-text lh-sm">
+							<strong class="d-block text-dark">Online Traders</strong>
+							<small class="text-secondary">Registration & Return</small>
+						</div>
+					</a>
+				</div>
+				<div class="col-md-4 col-lg-3 pb-3">
+					<a href="https://www.tobaccoboard-eoffice.com/tb-grower/" target="_blank" class="reg-card reg-card-2 d-flex align-items-center gap-3 p-3 box-shadow">
+						<span class="reg-icon material-symbols-rounded">eco</span>
+						<div class="reg-text lh-sm">
+							<strong class="d-block text-dark">FCV Tobacco</strong>
+							<small class="text-secondary">Grown online Registration & Return</small>
+						</div>
+					</a>
+				</div>
+				<div class="col-md-4 col-lg-3 pb-3">
+					<div class="reg-card reg-card-3 no-link d-flex align-items-center gap-3 p-3 box-shadow">
+						<span class="reg-icon material-symbols-rounded">warning</span>
+						<div class="reg-text lh-sm">
+							<strong class="d-block text-dark">Emergency Security Alert</strong>
+							<a href="./tbdata/pdf/Critical_Advisory_in_view_of_G20_Summit.pdf" target="_blank">&#8226;<small class="lh-1 mt-0">Attachment 1</small></a>
+							<a href="./tbdata/pdf/Advisory_CIAD_2023_S3.pdf" target="_blank">&#8226;<small class="lh-1 mt-0">Attachment 2</small></a>
+							<a href="./tbdata/pdf/NR_239_GR_500.jpg" target="_blank">&#8226;<small class="lh-1 mt-0">Attachment 3</small></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-lg-3 pb-3">
+					<div class="reg-card reg-card-4 d-flex align-items-center gap-3 p-3 box-shadow">
+						<span class="reg-icon material-symbols-rounded">beenhere</span>
+						<div class="reg-text lh-sm">
+							<strong class="d-block text-dark">Stay Safe Online</strong>
+							<a href="https://www.mygov.in/staysafeonline" target="_blank">&#8226;<small class="lh-1 mt-0">Awareness topics</small></a>
+							<a href="https://staysafeonline.in/awareness-material" target="_blank">&#8226;<small class="lh-1 mt-0">Awareness material</small></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-lg-3 pb-3">
+					<a href="https://www.cvc.gov.in/?q=guidelines/tender-guidelines" target="_blank" class="reg-card reg-card-5 d-flex align-items-center gap-3 p-3 box-shadow">
+						<span class="reg-icon material-symbols-rounded">book</span>
+						<div class="reg-text lh-sm">
+							<strong class="d-block text-dark">CVC guidelines for Tender process</strong>
+						</div>
+					</a>
+				</div>
+				<div class="col-md-4 col-lg-3 pb-3">
+					<a href="javascript:;" data-bs-toggle="modal" data-bs-target="#videoPopup" class="reg-card reg-card-6 d-flex align-items-center gap-3 p-3 box-shadow">
+						<span class="reg-icon material-symbols-rounded">video_library</span>
+						<div class="reg-text lh-sm">
+							<strong class="d-block text-dark">Tobacco Board PIDPI</strong>
+						</div>
+					</a>
+				</div>
+				<div class="modal fade" id="videoPopup" tabindex="-1" aria-labelledby="videoPopupLabel" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header pb-0 border-0">
+								<h1 class="modal-title fs-5" id="videoPopupLabel">Tobacco Board PIDPI</h1>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<video class="img-fluid" controls id="CVC-PIDPI-VAW-2023-comp">
+									<source src="./video/CVC-PIDPI-VAW-2023-comp.mp4" type="video/mp4">	
+									Your browser does not support the video tag.
+								</video> 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-			<div class="zerogrid">
-		<div class="row">
-        	<section class="col-lg-4" style="height:350px;">
-	  <div class="content" style="height:310px">
-				<h2 style="border-bottom:2px solid #c66f2f;margin-top:0px;">FCV TOBACCO AUCTION PRICES</h2>
-						<div class="holder" style="overflow-y:auto; height:100%">
-<?php
-	$statess=array('Andhra Pradesh','Karnataka');
-	$states1=array('AP','KARNATAKA');
-	$catgs[0]=array('NBS','NLS','SBS','SLS');
-	$catgs[1]=array('Mysore','Periyapatna');
-	$catgs1[0]=array('NBS','NLS','SBS','SLS');
-	$catgs1[1]=array('Mysore','P.patna');
-?>
-  <?php 
-  for($i=0;$i<2;$i++)
-  {
-  	$selauct=executework("select * from tob_auctsetting where state='".$statess[$i]."' and status='1'");
-	$rowc=@mysqli_fetch_array($selauct);
-  ?>
-          
-				<h5 style="border-bottom:1px solid #c66f2f;margin-top:10px; padding-bottom:0px; font-weight:bold; text-align:center"><?php echo strtoupper($statess[$i]); ?></h5>
-          <table width="100%" border="0">
-  <tr style="background-color: #292860; color: white; text-align: center;">
-    <td style="border:solid 1px"><strong>Year</strong></td>
-    <td style="border:solid 1px"><strong>Date</strong></td>
-    <td style="border:solid 1px"><strong>Days</strong></td>
-    <td style="border:solid 1px"><strong>Qty<br>
-      (M.Kgs)</strong></td>
-    <td style="border:solid 1px"><strong>Avg.<br>
-      Price</strong></td>
-  </tr>
-  <tr>
-    <td style="border:solid 1px"><?php echo $rowc['year']."(Final)"; ?></td>
-    <td style="border:solid 1px"><?php echo date('d-m-Y',strtotime($rowc['sdate'])); ?></td>
-    <td style="border:solid 1px"><?php echo $rowc['days']; ?></td>
-    <td style="border:solid 1px"><?php echo $rowc['qty']; ?></td>
-    <td style="border:solid 1px"><?php echo $rowc['avg']; ?></td>
-  </tr>
-  <?php
-		$sel3=executework("select * from tob_auction,tob_platform where tob_auction.platf=tob_platform.id and tob_platform.state='".$statess[$i]."' and date(tdate)<='".date('Y-m-d')."' and tob_platform.isactive=1 order by tob_auction.tdate desc limit 1");
-		$row=@mysqli_fetch_array($sel3);
-		$adate=$row['tdate'];
-		$yr=$row['year'];
-		$selycnt=executework("select distinct count(distinct tdate) as cnt from tob_platform,tob_auction where tob_platform.id=tob_auction.platf and tob_platform.state='".$statess[$i]."' and date(tdate)<='".date('Y-m-d')."' and tob_auction.year=".$yr." order by cnt desc limit 1");
-		$rowycnt=@mysqli_fetch_array($selycnt);
-		if(!empty($rowycnt['cnt']))
-		$days=$rowycnt['cnt'];
-	
-		$qrv=" and year ='".$yr."'";
-		$selsm=executework("select sum(bsold) as bsold,sum(qsold) as qsold,sum(tvalue) as tval,sum(aprice) as apric from tob_auction where platf in(select id from tob_platform where state='".$statess[$i]."')".$qrv);
-		$rows=@mysqli_fetch_array($selsm);
-		$avg=$rows['tval']/$rows['qsold'];
-		if($rows['qsold']>0)
-		{
-//			if($statess[$i]=='Karnataka')
-//			$yrr=($yr-1)."-".$yr;
-//			else
-			$yrr=$yr
-  ?>
-			  
-  <tr style="font-weight: bold;">
-	  
-    <td style="border:solid 1px"><a href="auctions.php?state=<?php echo $statess[$i]; ?>" style="text-decoration: none; color: #331c78;"><?php echo $yrr; ?></a></td>
-    <td style="border:solid 1px"><a href="auctions.php?state=<?php echo $statess[$i]; ?>" style="text-decoration: none; color: #331c78;"><?php echo date('d-m-Y',strtotime($adate)); ?></a></td>
-    <td style="border:solid 1px"><a href="auctions.php?state=<?php echo $statess[$i]; ?>" style="text-decoration: none; color: #331c78;"><?php echo $days; ?></a></td>
-    <td style="border:solid 1px"><a href="auctions.php?state=<?php echo $statess[$i]; ?>" style="text-decoration: none; color: #331c78;"><?php echo round($rows['qsold']/1000000,2); ?></a></td>
-    <td style="border:solid 1px"><a href="auctions.php?state=<?php echo $statess[$i]; ?>" style="text-decoration: none; color: #331c78;"><?php echo round($avg,2); ?></a></td>
-	  
-  </tr> 
-  <?php
-		}
-	?>
-</table>
-         
-    <?php
-  }
-  ?>
+	</section>
 
-         
-					</div>
-               </div>
-			</section>
-            <section class="col-lg-8" style="height:350px;">
-				<h2 style="border-bottom:2px solid #c66f2f;margin-top:0px;">EXPORT PERFORMANCE</h2>
-				<div class="content" style="height:310px;">
-						<div class="holder" style=" height:100%;  overflow-y:auto;">
-				<a href="export_per.php" style="text-decoration: none; color: #331c78;">
-<?php
-	$variety=array('FCV','Non FCV', 'Refuse Tobacco', 'Tobacco Products', 'Un Manufactured Tobacco');
-	$sel=executework("select * from tob_homexport");
-	$data=array();
-	while($row=@mysqli_fetch_array($sel))
-	{
-		$vart=$row['variety'];
-		$data[$vart]=$row;
-	}
-	
-	$selid=executework("select * from tob_gsettings where graph='Action Graph'");
-	$cnt=@mysqli_num_rows($selid);
-	$row=@mysqli_fetch_array($selid);
-	
-	$fmn=$row['export_fmonth'];
-	$fyr=$row['export_fyear'];
-	$tmn=$row['export_tmonth'];
-	$tyr=$row['export_tyear'];
+</main>
 
-	$fcv=array('FCV','Non FCV','Refuse Tobacco','Tobacco Products','Unmanufactured Tobacco');
-	$fcv1=array('FCV','Non FCV','Refuse Tobacco','Tobacco Products','Un manufactured Tobacco');
-	$seldl=executework("select * from tob_dollar where id=1");
-	$rowdl=@mysqli_fetch_array($seldl);
-	$usd=$rowdl['dollar'];
-	$selcm=executework("select month,year from tob_export order by year desc,month desc limit 1");
-	$rowcm=@mysqli_fetch_array($selcm);
-	/*$tyr=$rowcm['year'];
-	$tmn=$rowcm['month'];
-	
-	if($tmn<=3)
-	$eyr=$tyr-1;
-	else
-	$eyr=$tyr;
-	$emn=4;*/
-?>
-			<div style="width: 48%; float: left; text-align: center; font-weight: 700; margin-right: 2%; margin-bottom:20px;"><span class="style2">CURRENT MONTH - <?php echo strtoupper(date('M y',strtotime($tyr."-".$tmn."-01"))); ?></span></div>
-			<div style="width: 48%; float: left; text-align: center; font-weight: 700; margin-bottom:20px;"><span class="style2">CUMULATIVE - <?php echo date('M y',strtotime($fyr."-".$fmn."-01"))." - ".date('M y',strtotime($tyr."-".$tmn."-01")); ?></span></div>
-          <table width="48%" border="0" style="margin-right:2%; float:left">
-  
-  <tr style="background-color: #292860; color: white; text-align: center; font-weight:bold">
-    <td style="border:solid 1px">Variety</td>
-    <td style="border:solid 1px">Qty<br>(M.Tons)</td>
-    <td style="border:solid 1px">Value<br>(Rs Cr.)</td>
-    <td style="border:solid 1px">Value<br>(M.USD)</td>
-    </tr>
-  <?php 
-  for($i=0;$i<5;$i++)
-  {
-  	$vart=$variety[$i];
-  ?>
-  <tr>
-    <td style="border:solid 1px"><?php echo $vart; ?></td>
-    <td style="border:solid 1px"><div align="right"><?php echo round($data[$vart]['cqty']); //echo date('M-Y',strtotime('01-'.$rowy['mn']."-".$rowy['yr'])); ?></div></td>
-    <td style="border:solid 1px"><div align="right"><?php echo round($data[$vart]['cvalr']); ?></div></td>
-    <td style="border:solid 1px"><div align="right"><?php echo round($data[$vart]['cvald']); ?></div></td>
-    </tr>
-  <?php
-  }
-  ?>
-</table>
-			<table width="48%" border="0" style="float:left">
-  
-  <tr style="background-color: #292860; color: white; text-align: center; font-weight:bold">
-    <td style="border:solid 1px">Variety</td>
-    <td style="border:solid 1px">Qty<br>(M.Tons)</td>
-    <td style="border:solid 1px">Value<br>(Rs Cr.)</td>
-    <td style="border:solid 1px">Value<br>(M.USD)</td>
-  </tr>
-  <?php 
-  for($i=0;$i<5;$i++)
-  {
-  	$vart=$variety[$i];
-  ?>
-  <tr>
-    <td style="border:solid 1px"><?php echo $vart; ?></td>
-    <td style="border:solid 1px"><div align="right"><?php echo round($data[$vart]['mqty']); //echo date('M-Y',strtotime('01-'.$rowy['mn']."-".$rowy['yr'])); ?></div></td>
-    <td style="border:solid 1px"><div align="right"><?php echo round($data[$vart]['mvalr']); ?></div></td>
-    <td style="border:solid 1px"><div align="right"><?php echo round($data[$vart]['mvald']); ?></div></td>
-  </tr>
-  <?php
-  }
-  ?>
-</table>
-
-          </a>
-          		</div>
-          			</div>
-			</section>
-	  
-	  
-           </div> 
-		
-	</div>
-    
-<!--   2nd-->
-			<div class="zerogrid">
-		<div class="row">
-			<section class="col-lg-4" style="height:350px;">
-				<h2 style="border-bottom:2px solid #c66f2f; margin-top:0px;">WHATS NEW</h2>
-				<div class="content" style="height:310px">
-						<div class="holder" style="overflow-y:hide; height:100%">
-                        <marquee direction="up" onMouseOver="this.stop();" onMouseOut="this.start();" scrollamount="5" style="height:100%;">
-                          <ul id="ticker01">
-                          <?php 
-		$archive="where home=1 and archive='0'";
-		$select=executework("select * from tob_news ".$archive." order by id desc limit 3");
-		$count=@mysqli_num_rows($select);
-		while($rown=@mysqli_fetch_array($select))
-		{
-				if($rown['tfile']!="" && $rown['tfile']!='#')
-				$link="tbdata/newsfiles/".$rown['tfile'];
-				else
-				$link="#";
-				$fcheck=explode(".",$rown['tfile']);
-		   ?>
-      			  <li><a href="<?php echo $link?>" target="<?php  if($link!="#"){?>_blank<?php  }?>"><?php echo $rown['description']; ?></a></li>
-     <?php }?>
-<li style="text-align:right"><a href="news.php">More..</a></li>        
-
-				           </ul>
-                        </marquee>
-                         </div>
-					</div>
-			</section>
-	  <section class="col-lg-4">
-				<h2 style="border-bottom:2px solid #c66f2f;margin-top:0px;">STATISTICS</h2>
-		  <div class="content" style="height:105px;">
-				<div class="holder" style="overflow-y:hide; height:100%">
-                        
-                          <ul id="ticker03">
-                          <?php 
-						  $arr=array('Production Data','Auction Data','Exports Data','Extension Data');
-						  for($i=0;$i<count($arr);$i++)
-						  {
-		$archive="where archive='0' and stype='".$arr[$i]."'";
-		$select=executework("select * from tob_statistics ".$archive." order by id desc limit 2");
-		$count=@mysqli_num_rows($select);
-		$rowc=@mysqli_fetch_array($select);
-		if($count>0 && $rowc['tdate']>=date('Y-m-d', strtotime(date('Y-m-d'). ' - 5 days')))
-		$new=1;
-		else
-		$new=0
-//								if($count>0)
-//								{
-						  ?>
-                          	<li style="color: #964a13; font-size: 12px !important; font-weight: 700; text-transform: uppercase; border-bottom: 0px;
- text-decoration: none; text-align:left; margin:0px 0px;"><a style="font-size:12px; color:#964a13" href="statistics.php?stype=<?php echo $arr[$i]; ?>"><?php echo $arr[$i]; ?></a><?php if($new==1){ ?><img src="new.png" width="25" height="auto" /><?php } ?></li>
-                         <?php 
-						  		}
-/*?> <?php		while($rown=@mysqli_fetch_array($select))
-		{
-				if($rown['tfile']!="" && $rown['tfile']!='#')
-				$link="tbdata/statisticsfiles/".$rown['tfile'];
-				else
-				$link="#";
-				$fcheck=explode(".",$rown['tfile']);
-		   ?>
-      			  <li><a href="<?php echo $link?>" target="<?php  if($link!="#"){?>_blank<?php  }?>"><?php echo $rown['description']; ?></a></li>
-     <?php }
-	 	if($count>0)
-		{
-	 ?>
-							  <li style="text-align:right"><a href="statistics.php?stype=<?php echo $arr[$i]; ?>">More..</a></li>
-					<?php   
-		}  
-//	 						}
-	 ?>
-        <?php */?>
-
-	              </ul>
-                         
-                         </div>
-					</div>
-                    <h2 style="border-bottom:2px solid #c66f2f;margin-top:10px;">TENDERS</h2>
-		  <div class="content" style="height:158px;">
-				<div class="holder" style="height:100%">
-                        <marquee direction="up" onMouseOver="this.stop();" onMouseOut="this.start();" scrollamount="5" style="height:100%;">
-                          <ul id="ticker02">
-                          <?php 
-	$archive1="where home=1 and archive='0'";
-	$select=executework("select * from tob_tender ".$archive1." order by id desc limit 3");
-	$count=@mysqli_num_rows($select);
-	if($count>0)
-	{
-		while($rown=@mysqli_fetch_array($select))
-		{
-				if($rown['mfile']!="")
-				{
-					$link1="tbdata/tenderfiles/$rown[mfile]";
-					$link="reg.php?pg=".$rown['mfile']."&id=".$rown['id'];
-				}
-				else
-				$link="#";
-
-				if($rown['subtitle1']!='' && $rown['tfile']!="")
-				{
-					$links1="reg.php?pg=".$rown['tfile']."&id=".$rown['id'];
-				}
-				else
-				$links1="#";
-
-				if($rown['subtitle2']!='' && $rown['sfile']!="")
-				{
-					$links2="reg.php?pg=".$rown['sfile']."&id=".$rown['id'];
-				}
-				else
-				$links2="#";
-				
-				$fcheck=explode(".",$rown['tfile']);
-		   ?>
-      			  <li>
-            <?php  if($rown['isactive']=='0') { ?>
-            <a href="#" onClick="show_pop('<?php  echo $link ?>')">
-            <?php  echo $rown['description']; ?>
-            </a>
-            <?php if($rown['subtitle1']!='') { ?>
-            &nbsp;&nbsp;&nbsp;<a href="#" <?php if($links1!='#' && $links1!='') { ?>onClick="show_pop('<?php  echo $links1; ?>');" <?php } ?>>
-            <?php  echo $rown['subtitle1']; ?>
-            </a>
-            <?php } if($rown['subtitle2']!='') { ?>
-            &nbsp;&nbsp;&nbsp; <a href="#" <?php if($links2!='#' && $links2!='') { ?>onClick="show_pop('<?php  echo $links2 ?>')" <?php } ?>>
-            <?php  echo $rown['subtitle2']; ?>
-            </a>
-            <?php } ?>
-            &nbsp;&nbsp;&nbsp;
-            <?php  } else { ?>
-            <a href="#"><?php echo $rown['description']; ?></a>
-            <?php  }?>
-          </li>
-          <?php 
-		}
-	?>
-							  <li style="text-align:right"><a href="tenders.php">More..</a></li>
-        
-        <?php 
-	}
-?>			</ul>
-</marquee>
-                         </div>
-					</div>
-				
-			</section>		
-	  <section class="col-lg-4" style="height:350px;">
-				<h2 style="border-bottom:2px solid #c66f2f;margin-top:0px;">CIRCULARS</h2>
-	  <div class="content" style="height:85px">
-						<div class="holder" style="overflow-y:hide; height:100%">
-                        
-                          <ul id="ticker05">
-                          <?php 
-						  $arr=array('Grower Community','Trader Community','Official');
-						  for($i=0;$i<count($arr);$i++)
-						  {
-		$archive="where archive='0' and stype='".$arr[$i]."'";
-		$select=executework("select * from tob_circulars ".$archive." order by id desc limit 1");
-		$count=@mysqli_num_rows($select);
-		$rowc=@mysqli_fetch_array($select);
-		if($count>0 && $rowc['ndate']>=date('Y-m-d', strtotime(date('Y-m-d'). ' - 5 days')))
-		$new=1;
-		else
-		$new=0
-//								if($count>0)
-//								{
-						  ?>
-                          	<li style="color: #964a13; font-size: 12px !important; font-weight: 700; text-transform: uppercase; border-bottom: 0px;
- text-decoration: none; text-align:left; margin:0px 0px;"><a style="font-size:12px; color:#964a13" href="circulars.php?stype=<?php echo $arr[$i]; ?>"><?php echo $arr[$i]; ?></a><?php if($new==1){ ?><img src="new.png" width="25" height="auto" /><?php } ?></li>
-                          <?php
-						  		}
- /*?>		while($rown=@mysqli_fetch_array($select))
-		{
-				if($rown['tfile']!="" && $rown['tfile']!='#')
-				$link="tbdata/circularfiles/".$rown['tfile'];
-				else
-				$link="#";
-				$fcheck=explode(".",$rown['tfile']);
-		   ?>
-      			  <li><a href="<?php echo $link?>" target="<?php  if($link!="#"){?>_blank<?php  }?>"><?php echo $rown['description']; ?></a></li>
-     <?php }
-	 	if($count>0)
-		{
-	 ?>
-							  <li style="text-align:right"><a href="circulars.php?stype=<?php echo $arr[$i]; ?>">More..</a></li>
-					<?php   
-		}  
-	 					}<?php */?>
-	 
-        
-
-				           </ul>
-                         </marquee>
-                         </div>
-               </div>
-               <h2 style="border-bottom:2px solid #c66f2f; margin-top:10px;">PUBLICATIONS</h2>
-				<div class="content" style="height:178px">
-						<div class="holder" style="overflow-y:hide; height:100%">
-                        <!--<marquee direction="up" onMouseOver="this.stop();" onMouseOut="this.start();" scrollamount="5" style="height:100%;">-->
-                          <ul id="ticker04">
-                          <?php 
-		$archive="where home=1 and archive='0'";
-		$select=executework("select * from tob_publications ".$archive." order by id desc limit 2");
-		$count=@mysqli_num_rows($select);
-		while($rown=@mysqli_fetch_array($select))
-		{
-				if($rown['tfile']!="" && $rown['tfile']!='#')
-				$link="tbdata/publicationsfiles/".$rown['tfile'];
-				else
-				$link="#";
-				$fcheck=explode(".",$rown['tfile']);
-		   ?>
-      			  <li><a href="<?php echo $link?>" target="<?php  if($link!="#"){?>_blank<?php  }?>"><?php echo $rown['description']; ?></a></li>
-     <?php }
-	 	if($count>0)
-		{
-	 ?>
-							  <li style="text-align:right"><a href="publications.php">More..</a></li>
-					<?php   
-		}  
-	 ?>
-        
-
-				           </ul>
-                        <!--</marquee>-->
-                         </div>
-					</div>
-			</section>
-	  
-           </div> 
-		
-	</div>
-  
-	<div class="zerogrid">
-		<div class="row">
-		
-            
-	  
-			
-	  <section class="col-lg-12">
-				<h2 style="border-bottom:2px solid #c66f2f;margin-top:0px;">PHOTO GALLERY</h2>
-		  <div class="content" style="height:230px;">
-				<div class="holder" style="height:100%">
-				<marquee direction="left" onMouseOver="this.stop();" onMouseOut="this.start();" loop>
-                        <?php 
-				  while($rowp=@mysqli_fetch_array($selectp))
-				  {
-				  	if(!empty($rowp['image']) && file_exists($base_path."/tbdata/photogallery/oimages/".$rowp['image']))
-					{
-				  ?>
-				<a href="viewphotos.php?tit=<?php echo urlencode($rowp['titleid']); ?>"><img src="http://tobaccoboard.com/tbdata/photogallery/oimages/<?php  echo $rowp['image'] ?>?v=<?php echo time(); ?>" style="height:230px; width:auto" height="180" width="auto"></a>
-                   <?php 
-				   	}
-				  }
-				  ?>    
-                        </marquee>
-                      </div>
-                  </div>
-				
-			</section>
-            <section class="col-lg-12">
-            	<div class="content" style="text-align:center; margin-top: 20px; width:190px; float:left">
-						<a href="http://tobaccoboard.in" target="_blank">
-      <img src="<?php echo $base_url; ?>/img/ad1.jpg" style="width:180px; height:85px" />
-      </a> 
-					</div>
-				
-		  
-				<div class="content" style="text-align:center; margin-top: 20px; width:190px; float:left">
-						<a href="https://www.tobaccoboard-eoffice.com/tb-grower/" target="_blank">
-      <img src="<?php echo $base_url; ?>/img/ad4new.jpg" style="width:180px; height:85px" />
-      </a> 
-					</div>
-                    <div class="content" style="text-align:center; margin-top: 20px; padding:0px; width:200px; float:left;border: solid 2px #505050; height: 85px;">
-						 <strong style="color: #c17b3e; font-family: arial; font-size: 15px;">Emergency Security Alert</strong> <br><a style="font-size: 14px; font-weight: bold; color: #264185;" href="tbdata/pdf/Critical_Advisory_in_view_of_G20_Summit.pdf" target="_blank">Attachment 1</a> <br>  <a style="font-size: 14px; font-weight: bold; color: #264185;" href="tbdata/pdf/Advisory_CIAD_2023_S3.pdf" target="_blank">Attachment 2</a> <br>  <a style="font-size: 14px; font-weight: bold; color: #264185;" href="tbdata/pdf/NR_239_GR_500.jpg" target="_blank">Attachment 3</a>	
-					</div>
-                    
-                    <div class="content" style="text-align:center; margin-top: 20px; padding:0px; width:160px; float:left;border: solid 2px #505050; height: 85px; margin-left:5px;">
-						 <strong style="color: #c17b3e; font-family: arial; font-size: 15px;">Stay Safe Online</strong> <br><a style="font-size: 14px; font-weight: bold; color: #264185;" href="https://www.mygov.in/staysafeonline" target="_blank">Awareness topics 
-</a> <br>  <a style="font-size: 14px; font-weight: bold; color: #264185;" href="https://staysafeonline.in/awareness-material" target="_blank">Awareness material</a>	
-					</div>
-				
-				   <div class="content" style="text-align:center; margin-top: 20px; padding:10px; padding-top:20px; width:160px; float:left;border: solid 2px #505050; height: 85px; margin-left:5px;">
-						 <a style="font-size: 14px; font-weight: bold; color: #264185;" href="https://www.cvc.gov.in/?q=guidelines/tender-guidelines" target="_blank">CVC guidelines for Tender process
-</a> <br>  
-					</div>
-				
-				<div class="content" style="text-align:center; margin-top: 20px; padding:10px; padding-top:20px; width:160px; float:left;border: solid 2px #505050; height: 85px; margin-left:5px;">
-						 <a style="font-size: 14px; font-weight: bold; color: #264185;" href="video.php">Tobacco Board PIDPI
-</a> <br>  
-					</div>
-				
-			<!--	<div class="content" style="text-align:center; margin-top: 5px; padding:2px; width:190px; float:left;border: solid 2px #505050; height: 85px; margin-left:5px;">
-						 <strong style="color: #c17b3e; font-family: arial; font-size: 15px;"></strong> <br><a style="font-size: 14px; font-weight: bold; color: #264185;" href="webex.php">Webex Meeting Details on 12-12-23 from 11.30 A.M. to 2.00 P.M.
-</a> <br>  
-					</div>-->
-			</section>
-            
-		</div>
-	</div>
-		</div>
-		
-	</div>
-	
-	
-</section>
 
 <!--------------Footer--------------->
 <?php  include "tb_footer.php"; ?>
-<script>
-jQuery.fn.liScroll = function(settings) {
-	settings = jQuery.extend({
-		travelocity: 0.03
-		}, settings);		
-		return this.each(function(){
-				var $strip = jQuery(this);
-				$strip.addClass("newsticker")
-				var stripHeight = 1;
-				$strip.find("li").each(function(i){
-					stripHeight += jQuery(this, i).outerHeight(true); // thanks to Michael Haszprunar and Fabien Volpi
-				});
-				var $mask = $strip.wrap("<div class='mask'></div>");
-				var $tickercontainer = $strip.parent().wrap("<div class='tickercontainer'></div>");								
-				var containerHeight = $strip.parent().parent().height();	//a.k.a. 'mask' width 	
-				$strip.height(stripHeight);			
-				var totalTravel = stripHeight;
-				var defTiming = totalTravel/settings.travelocity;	// thanks to Scott Waye		
-				function scrollnews(spazio, tempo){
-				$strip.animate({top: '-='+ spazio}, tempo, "linear", function(){$strip.css("top", containerHeight); scrollnews(totalTravel, defTiming);});
-				}
-				scrollnews(totalTravel, defTiming);				
-				$strip.hover(function(){
-				jQuery(this).stop();
-				},
-				function(){
-				var offset = jQuery(this).offset();
-				var residualSpace = offset.top + stripHeight;
-				var residualTime = residualSpace/settings.travelocity;
-				scrollnews(residualSpace, residualTime);
-				});			
-		});	
-};
 
-$(function(){
- //   $("ul#ticker01").liScroll();
-    //$("ul#ticker02").liScroll();
-//    $("ul#ticker03").liScroll();
-//    $("ul#ticker04").liScroll();
-//    $("ul#ticker05").liScroll();
+<script src="./slick/slick.js"></script>
+
+<script>
+
+$(document).on('ready', function() {
+
+	$(".gallery-wrapper").slick({
+		arrows: false,
+		infinite: true,
+		// centerMode: true,
+		slidesToShow: 4,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 4000,
+		responsive: [
+			{
+				breakpoint: 992,
+				settings: {
+					slidesToShow: 3,
+				}
+			},
+			{
+				breakpoint: 576,
+				settings: {
+					slidesToShow: 2,
+				}
+			}
+		]
+	});
 });
+
 </script>
 
-
-</body></html>
+</body>
+</html>

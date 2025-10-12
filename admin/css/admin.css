@@ -1,0 +1,83 @@
+body{
+    background-color: #f9fafb;
+}
+
+
+.btn:not(.btn-sm, .btn-xs, .btn-link) {
+    --bs-btn-padding-x: 1.6rem;
+    --bs-btn-padding-y: 0.8rem;
+    --bs-btn-font-size: 1.1rem;
+    --bs-btn-border-radius: .5rem;
+    font-weight: 500;
+}
+
+#adminNav ul > li > a{
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: block;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#adminNav .btn-group{
+    display: flex;
+}
+
+#adminNav{
+    height: calc(100vh - 70px);
+}
+
+#adminNav ul li a:hover{
+    background-color: var(--lightBeige);
+    color: var(--goldenBrown);
+}
+
+.dropdown-toggle::after{
+    content: '\e315' !important;
+    /* position: absolute;
+    top: 16px;
+    right: 3px; */
+    width: 10px;
+    color: inherit;
+}
+
+#adminLayout{
+    --layout-size: 260px; 
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+
+
+/* Header */
+#adminHeader{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: var(--layout-size);
+    background: var(--bs-white);
+}
+
+#adminSidebar{
+    width: var(--layout-size);
+    flex-shrink: 0;
+}
+
+#adminMain{
+    flex-grow: 1;
+    margin-top: 65px;
+}
+
+
+
+#adminLogin .form-section{
+    max-width: 400px;
+    margin: auto;
+}
+
+
+/* Main */
+
+
+/* footer */
