@@ -8,7 +8,7 @@ $rowc=@mysqli_fetch_array($selcont);?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Registration Procedure | Tobacco Board</title>
+	<title>Online Registration | Tobacco Board</title>
   
 	<?php include "head.php"; ?>
 </head>

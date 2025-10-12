@@ -78,7 +78,7 @@ for($k=1;$k<=2;$k++) {
 	<?php include "head.php"; ?>
 
   <link class="include" rel="stylesheet" type="text/css" href="graph/jquery.jqplot.min.css" />
-  <link rel="stylesheet" type="text/css" href="graph/examples.min.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="graph/examples.min.css" /> -->
   <link type="text/css" rel="stylesheet" href="graph/syntaxhighlighter/styles/shCoreDefault.min.css" />
   <link type="text/css" rel="stylesheet" href="graph/syntaxhighlighter/styles/shThemejqPlot.min.css" />
 
@@ -223,7 +223,7 @@ for($k=1;$k<=2;$k++) {
   if(gcatn==3)
   var strq=sq31+","+sq32;
                   
-  var arrq=strq.split(',');
+  var arrq=strq?.split(',');
                   
   if(gcatn==1)
   var strv=sv11+","+sv12;
@@ -231,7 +231,7 @@ for($k=1;$k<=2;$k++) {
   var strv=sv21+","+sv22;
   if(gcatn==3)
   var strv=sv31+","+sv32;
-  var arrv=strv.split(',');
+  var arrv=strv?.split(',');
   var smaxx = Math.max.apply(Math, arrq);
   if(smaxx=="")
   smaxx=2000;
