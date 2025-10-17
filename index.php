@@ -320,7 +320,21 @@
 									else
 										$new=0;
 									?>
-								<li><a href="statistics.php?stype=<?php echo $arr[$i]; ?>" class="d-flex justify-content-between align-items-center"><span><?php echo $arr[$i]; ?></span><?php if($new==1){ ?></span> <img src="new.png" width="25" height="auto" /><?php } ?> <span class="material-symbols-rounded">arrow_forward</span></a></li>
+								<li>
+									<a href="statistics.php?stype=<?php echo $arr[$i]; ?>" class="d-flex justify-content-between align-items-center">
+										
+										<span class="position-relative">
+											<?php echo $arr[$i]; ?>
+											<?php if($new==1){ ?> 
+												<span class="position-absolute top-50 start-100 translate-middle p-1 ms-2 bg-danger rounded-circle">
+													<span class="visually-hidden">New alerts</span>
+												</span>
+											<?php } ?> 
+										</span>
+										<!-- <img src="new.png" width="25" height="auto" /> -->
+										<span class="material-symbols-rounded">arrow_forward</span>
+									</a>
+								</li>
 
 								<?php } ?>
 							</ul>
@@ -348,7 +362,19 @@
 									$new=0;
 								?>
 								
-									<li><a href="circulars.php?stype=<?php echo $arr[$i]; ?>" class="d-flex justify-content-between align-items-center"><span><?php echo $arr[$i]; ?></span><?php if($new==1){ ?></span> <img src="new.png" width="25" height="auto" /><?php } ?> <span class="material-symbols-rounded">arrow_forward</span></a></li>
+									<li>
+										<a href="circulars.php?stype=<?php echo $arr[$i]; ?>" class="d-flex justify-content-between align-items-center">
+											<span class="position-relative">
+											<?php echo $arr[$i]; ?>
+											<?php if($new==1){ ?> 
+												<span class="position-absolute top-50 start-100 translate-middle p-1 ms-2 bg-danger rounded-circle">
+													<span class="visually-hidden">New alerts</span>
+												</span>
+											<?php } ?> 
+											</span> 
+											<span class="material-symbols-rounded">arrow_forward</span>
+										</a>
+									</li>
 								
 								<?php } ?>
 							</ul>

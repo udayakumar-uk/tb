@@ -84,7 +84,8 @@ ul {
 	padding: 0;
 }
 
-table{
+table, .table{
+    --bs-table-bg: var(--bs-white);
 	border-color: var(--bs-gray-400);
 }
 
@@ -166,9 +167,20 @@ table{
 p{
 	line-height: 1.6;
 }
+.form-group{
+	margin-bottom: 1rem;
+}
 
+.form-check .form-check-input{
+	width: 1.2em;
+    height: 1.2em;
+}
 
-input.form-control{
+.form-check-label{
+	vertical-align: middle;
+}
+
+input.form-control:not([type=file]){
     height: 45px;
 }
 input.form-control:focus{

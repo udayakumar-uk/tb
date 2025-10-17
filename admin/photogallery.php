@@ -5,229 +5,12 @@ header("Cache-control: private");
 include_once("include/includei.php");
 error_reporting(E_ALL);
  ini_set("display_errors", 1);
-if(!empty($_SESSION['tobadmin']))
-{
-			$dat=date('Y-m-d');
-			$dat='2014-01-21';
+if(!empty($_SESSION['tobadmin'])) {
+	$dat=date('Y-m-d');
+	$dat='2014-01-21';
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Upload Photos |Welcome To TOBBACO BOARD Admin</title>
-<style type="text/css">
-<!--
-.style1 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	font-weight: bold;
-}
-.style4 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; }
-.style5 {color: #FF0000}
--->
-</style>
-<script src="../jquery.ui-1.5.2/jquery-1.2.6.js" type="text/javascript"></script>
-<script src="../jquery.ui-1.5.2/ui/ui.datepicker.js" type="text/javascript"></script>
-<link href="../jquery.ui-1.5.2/themes/ui.datepicker.css" rel="stylesheet" type="text/css" />
-</head>
-<script type="text/javascript" src="jscripts/tiny_mce/tiny_mce.js"></script>
-<script type="text/javascript">
-	tinyMCE.init({
-		// General options
-		mode : "textareas",
-		theme : "advanced",
-		plugins : "autolink,lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,wordcount,advlist,autosave,visualblocks",
 
-		// Theme options
-//		theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
-		theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
-		theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-		theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-		theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak,restoredraft,visualblocks",
-		theme_advanced_toolbar_location : "top",
-		theme_advanced_toolbar_align : "left",
-		theme_advanced_statusbar_location : "bottom",
-		theme_advanced_resizing : true,
 
-		// Example content CSS (should be your site CSS)
-		content_css : "css/content.css",
-		// Drop lists for link/image/media/template dialogs
-		template_external_list_url : "lists/template_list.js",
-		external_link_list_url : "lists/link_list.js",
-		external_image_list_url : "lists/image_list.js",
-		media_external_list_url : "lists/media_list.js",
-
-		// Style formats
-		style_formats : [
-			{title : 'Bold text', inline : 'b'},
-			{title : 'Red text', inline : 'span', styles : {color : '#ff0000'}},
-			{title : 'Red header', block : 'h1', styles : {color : '#ff0000'}},
-			{title : 'Example 1', inline : 'span', classes : 'example1'},
-			{title : 'Example 2', inline : 'span', classes : 'example2'},
-			{title : 'Table styles'},
-			{title : 'Table row 1', selector : 'tr', classes : 'tablerow1'},
-			{title : 'New Style', inline : 'span', classes : 'style4'}
-		],
-
-		// Replace values for the template plugin
-		template_replace_values : {
-			username : "Some User",
-			staffid : "991234"
-		}
-	});
-</script>
-
-<script type="text/javascript">
-var xmlhttp,usd,tmp,flav,qty,str
-
-function showHint(st)
-{
-	str=document.getElementById(st).value;
-if (str.length==0)
-  {
-  document.getElementById(usd).innerHTML="";
-  return;
-  }
-xmlhttp=GetXmlHttpObject();
-if (xmlhttp==null)
-  {
-  alert ("Your browser does not support XMLHTTP!");
-  return;
-  }
-var url="sub.php?tit="+str;
-xmlhttp.onreadystatechange=stateChanged;
-xmlhttp.open("GET",url,true);
-xmlhttp.send(null);
-}
-
-function stateChanged()
-{
-if (xmlhttp.readyState==4)
-  {
-	var value=xmlhttp.responseText;
-	if(value=='')
-	{
-	}
-	else
-	{
-		if(value>0)
-		{
-			alert(" Given Album Title Alredy Exist Select Title");	
-			document.getElementById("pncat").value=" ";
-			document.getElementById("pcat").focus();			
-		}
-		else 
-		{
-			document.getElementById("title").value=str;
-		}
-	}
-  }
-}
-
-function GetXmlHttpObject()
-{
-if (window.XMLHttpRequest)
-  {
-  // code for IE7+, Firefox, Chrome, Opera, Safari
-  return new XMLHttpRequest();
-  }
-if (window.ActiveXObject)
-  {
-  // code for IE6, IE5
-  return new ActiveXObject("Microsoft.XMLHTTP");
-  }
-return null;
-}
-
-function check(form1)
-{
-	if(document.form1.pcat.value=="" && document.form1.pncat.value=="")
-	{
-		alert("Please Enter New Album English Title");
-		document.form1.pncat.focus();
-		return false;
-	}
-	if(document.form1.pcat.value=="" && document.form1.hpncat.value=="")
-	{
-		alert("Please Enter New Album Hindi Title");
-		document.form1.pncat.focus();
-		return false;
-	}		
-/*	if(document.form1.pimage1.value=="")
-	{
-		alert("Browse Atleast One Image");
-		document.form1.pimage1.focus();
-		return false;		
-	}*/
-/*	if(document.form1.pcat.value=="" && document.form1.sta[0].checked==false)
-	{
-		alert("Please Select Cover Page");
-		document.form1.sta[0].focus();
-		return false;		
-	}
-*/	else
-	{
-		var chk=0;
-		var k=document.form1.k.value;
-		for(i=1;i<k;i++)
-		{
-			var pimage="pimage"+i;
-			var sta="sta"+i;
-			var pi=document.getElementById(pimage).value;
-			var plen=pi.length;
-			var ppos=pi.indexOf(".");
-			var ext=pi.substr(ppos+1,plen);
-			var ext1=ext.toLowerCase();
-				if(document.getElementById(pimage).value!="")
-				{
-					if(ext1!='jpg' && ext1!='jpeg' && ext1!='gif' && ext1!='png')
-					{
-						alert("Only file types of jpg,jpeg,gif,png are allowed for Image");
-						document.getElementById(pimage).value="";
-						document.getElementById(pimage).focus();
-						return false;
-					}
-					chk=1;
-				}
-			}
-			if(chk==0)
-			{
-				alert("Browse Atleast One Image");
-				document.form1.pimage1.focus();
-				return false;		
-			}
-		document.form1.pi_subm.value=1;
-		return true;	
-	}	
-}
-function chng()
-{
-	document.form1.submit();
-}
-
-function chkbox(st)
-{
-	var n=document.form1.k.value;
-	if(document.getElementById("sta"+st).checked==true && document.getElementById("pimage"+st).value!="")
-	{
-		for(i=1;i<n;i++)
-		{
-			if(st!=i)
-			{
-				document.getElementById("sta"+i).checked=false;
-			}
-		}
-	}
-	else if(document.getElementById("sta"+st).checked==true && document.getElementById("pimage"+st).value=="")
-	{
-		alert("Browse File");
-		document.getElementById("sta"+st).checked=false;
-		document.getElementById("pimage"+st).focus();
-		return false;
-	}
-}
-</script>
-<body>
-<?php include_once("header.php");?>
 <?php
 	function datepattrn($a)
 	{
@@ -431,173 +214,302 @@ if(!empty($_POST['pi_subm']))
 	redirect("photogallery.php?succ=1");
 }
 ?>
-<form action="photogallery.php" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="return check(this);">
-  <table width="90%" border="0" align="center">
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="3"><span class="style1">New Albums </span> </td>
-    </tr>
-	<?php
-		if(!empty($_GET['exist']) && $_GET['exist']!="")
-		{
-	?>
-    <tr>
-      <td height="40" colspan="3" style="padding-left:120px;">
-	  	<div align="left" class="style4 style5">Album Already Exists With Same Title</div>
-	  </td>
-    </tr>
-	<?php	
-		}
-		if(!empty($_GET['sizelimit']))
-		{
-	?>
-    <tr>
-      <td height="40" colspan="3" style="padding-left:120px;">
-	  	<div align="left" class="style4 style5">Uploaded Files Size Exceeded The Limit(3MB)</div>
-	  </td>
-    </tr>
-	<?php	
-		}
-		if(!empty($_GET['succ']) && $_GET['succ']==1)
-		{
-	?>
-    <tr>
-      <td height="40" colspan="3" style="padding-left:120px;">
-	  	<div align="left" class="style4 style5">New Album Created Successfully</div>
-	  </td>
-    </tr>
-	<?php	
-		}
-		if(!empty($_GET['succ']) && $_GET['succ']=='title')
-		{
-	?>
-    <tr>
-      <td colspan="3"><div align="center" class="style4 style5">Images Added  Successfully </div></td>
-    </tr>
-	<?php
-		}
-	?>
-    <tr>
-      <td colspan="3"><table width="90%" border="0" align="center">
-        <tr>
-          <td width="18%"><span class="style4">Albums</span></td>
-          <td width="7%"><div align="center"><strong>:</strong></div></td>
-          <td width="75%">
-		  <?php
-		  	$catselect=executework("select * from tob_album_title order by id");
-			$ccnt=@mysqli_num_rows($catselect);
-		  ?>
-		  <select name="pcat" id="pcat" onchange="return chng();" style="width:250px;">
-            <option value="">Select Album</option>
-            <?php
-					if($ccnt>0)
-					{
-						while($crow=@mysqli_fetch_array($catselect))
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<?php include_once("head.php")?>
+	<title>Photogallery | Tobacco Board</title>
+
+	<script src="../jquery.ui-1.5.2/jquery-1.2.6.js" type="text/javascript"></script>
+	<script src="../jquery.ui-1.5.2/ui/ui.datepicker.js" type="text/javascript"></script>
+	<link href="../jquery.ui-1.5.2/themes/ui.datepicker.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+
+<body>
+	
+<section id="adminLayout">
+
+	<?php include "header.php" ?>
+
+	<?php include "sidebar.php"; ?>
+	
+	<main id="adminMain" class="container-fluid">
+
+	<div class="row">
+		<h2 class="admin-title col">New Albums </h2>
+	
+		<div class="col">
+			<?php if(!empty($_GET['exist']) && $_GET['exist']==1){ ?>
+				<div class="alert alert-danger d-flex align-items-center py-1 px-2 m-0 ms-auto" role="alert">
+					<span class="flex-shrink-0 me-2 material-symbols-rounded">warning</span>
+					<span> Album Already Exists With Same Title </span>
+				</div>
+			<?php } else if(!empty($_GET['sizelimit'])){ ?>
+				<div class="alert alert-danger d-flex align-items-center py-1 px-2 m-0 ms-auto" role="alert">
+					<span class="flex-shrink-0 me-2 material-symbols-rounded">warning</span>
+					<span> Uploaded Files Size Exceeded The Limit(3MB) </span>
+				</div>
+					
+			<?php } else if((!empty($_GET['succ']) && $_GET['succ']==1) || (!empty($_GET['succ']) && $_GET['succ']==2) || (!empty($_GET['succ']) && $_GET['succ']==3) || (!empty($_GET['succ']) && $_GET['succ']==4)){ ?>
+				<div class="alert alert-success d-flex align-items-center py-1 px-2 m-0 ms-auto" role="alert">
+					<span class="flex-shrink-0 me-2 material-symbols-rounded">check_circle</span>
+					<?php if(!empty($_GET['succ']) && $_GET['succ']==1){ ?>
+						<span> New Album Created Successfully </span>
+					<?php } else if(!empty($_GET['succ']) && $_GET['succ']=='title'){ ?>
+						<span> Images Added  Successfully </span>
+					<?php } ?>
+				</div>
+			<?php } ?>
+		</div>
+	</div>
+
+
+	<form action="photogallery.php" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="return check(this);">
+ 
+			<div class="form-group">
+				<label for="pcat" class="form-label">Albums</label>
+				
+				<?php
+					$catselect=executework("select * from tob_album_title order by id");
+					$ccnt=@mysqli_num_rows($catselect);
+				?>
+				<select name="pcat" class="form-select w-100" id="pcat" onchange="return chng();" style="width:250px;">
+					<option value="">Select Album</option>
+					<?php if($ccnt>0) {
+						while($crow=@mysqli_fetch_array($catselect)) { ?>
+							<option value="<?php echo $crow['id']?>"><?php echo $crow['title']?></option>
+						<?php } } ?>
+				</select>
+				<?php
+					if(!empty($_POST['pcat'])) { ?>
+					<script type="text/javascript">
+						var pcats='<?php echo $_POST['pcat'] ?>';
+						var j;
+						for(j=0;j<document.form1.pcat.options.length;j++)
 						{
-				?>
-            <option value="<?php echo $crow['id']?>"><?php echo $crow['title']?></option>
-            <?php
+							if(document.form1.pcat.options[j].value==pcats)
+							{
+								document.form1.pcat.options[j].selected=true;
+							}
 						}
-					}
-				?>
-          </select>
-		  <?php
-			if(!empty($_POST['pcat']))
-			{
-			?>
-				  <script type="text/javascript">
-			 var pcats='<?php echo $_POST['pcat'] ?>';
-			 var j;
-			for(j=0;j<document.form1.pcat.options.length;j++)
-			{
-				if(document.form1.pcat.options[j].value==pcats)
-				{
-					document.form1.pcat.options[j].selected=true;
-				}
-			}
-			</script>
-		  <?php
-			}
-		  ?>          </td>
-        </tr>
-		<?php
-		if(empty($_POST['pcat']))
-		{
-		?>		
-        <tr>
-          <td><span class="style4">New Album Title </span></td>
-          <td><div align="center"><strong>:</strong></div></td>
-          <td><label>
-            <input name="pncat" type="text" id="pncat" size="40" onchange="showHint('pncat')" />
-          </label></td>
-        </tr>
-        <tr>
-          <td><span class="style4">New Album Title (Hindi) </span></td>
-          <td><div align="center"><strong>:</strong></div></td>
-          <td><label>
-          <textarea name="hpncat" id="hpncat" cols="40" rows="5" onchange="showHint('pncat')"></textarea>
-        <!--    <input name="hpncat" type="text" id="hpncat" size="40" onchange="showHint('pncat')" />-->
-          </label></td>
-        </tr>		
-		<?php	
-		}	
-			for($i=1;$i<=5;$i++)
-			{
-		?>
-        <tr>
-          <td><span class="style4">Image <?php echo $i;?></span></td>
-          <td><div align="center"><strong>:</strong></div></td>
-          <td>
-            <input name="pimage<?php echo $i;?>" type="file" id="pimage<?php echo $i;?>" />
+					</script>
+				<?php } ?>
+				
+			</div>
+	
 			
-        	   <input name="sta[]" type="checkbox" id="sta[]" value="<?php echo $i ?>"/>
-				<span class="style4">Home </span> 
-			       </td>
-        </tr>
-		<?php		
-			}
+		  
+		<?php if(empty($_POST['pcat'])) { ?>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="description" class="form-label">New Album Title</label>
+					<input class="form-control" name="pncat" type="text" id="pncat" size="40" onchange="showHint('pncat')" />
+				</div>
+				<div class="form-group col-md-6">
+					<label for="description" class="form-label">New Album Title (Hindi)</label>
+					<input class="form-control" name="hpncat" type="text" id="hpncat" size="40" onchange="showHint('pncat')" />
+				</div>
+			</div>
+						
+		<?php } for($i=1;$i<=5;$i++) { ?>
+
+			<div class="d-flex align-items-center mb-3 gap-4">
+				<label for="pimage<?php echo $i;?>" class="col-form-label">Image <?php echo $i;?></label>
+				<div class="input-group w-auto flex-grow-1">
+					<input name="pimage<?php echo $i;?>" class="form-control" type="file" id="pimage<?php echo $i;?>" />
+					<label class="input-group-text" for="pimage<?php echo $i;?>">Upload File</label>
+				</div>
+				<div class="form-check">
+					<input type="checkbox" class="form-check-input" value="<?php echo $i ?>" name="home" id="sta[<?php echo $i ?>]">
+					<label class="form-check-label" for="sta[<?php echo $i ?>]"> Home </label>
+				</div>
+			</div>
+			
+		<?php }
 			if(!empty($_POST['pcat']))
 			$value="";
 			else
-			$value="new";
-		?>
-        <tr>
-          <td>&nbsp;</td>
-          <td height="40"><label></label></td>
-          <td>
-            <input type="submit" name="Submit" value="Submit" />
+			$value="new"; ?>
+
+			
+		<div class="submit-button text-end">
+			<input type="submit" class="btn btn-primary" name="Submit" value="Submit" />
          
             <input name="k" type="hidden" id="k" value="<?php echo $i-1;?>" />
             <input name="pi_subm" type="hidden" id="pi_subm" />
             <input name="type" type="hidden" id="type" value="<?php echo $value;?>" /></td>
-        </tr>
-      </table></td>
-    </tr>
-    <tr>
-      <td colspan="3">&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="3">&nbsp;</td>
-    </tr>
-  </table>
-</form>
+		</div>
+		
+	</form>
+
+
 <script>
-jQuery('#adate').datepicker();
-jQuery('#adate').readOnly=true;
+	jQuery('#adate').datepicker();
+	jQuery('#adate').readOnly=true;
 </script>
+
 <?php include_once("footer.php");?>
+
+
+<script type="text/javascript">
+var xmlhttp,usd,tmp,flav,qty,str
+
+function showHint(st)
+{
+	str=document.getElementById(st).value;
+if (str.length==0)
+  {
+  document.getElementById(usd).innerHTML="";
+  return;
+  }
+xmlhttp=GetXmlHttpObject();
+if (xmlhttp==null)
+  {
+  alert ("Your browser does not support XMLHTTP!");
+  return;
+  }
+var url="sub.php?tit="+str;
+xmlhttp.onreadystatechange=stateChanged;
+xmlhttp.open("GET",url,true);
+xmlhttp.send(null);
+}
+
+function stateChanged()
+{
+if (xmlhttp.readyState==4)
+  {
+	var value=xmlhttp.responseText;
+	if(value=='')
+	{
+	}
+	else
+	{
+		if(value>0)
+		{
+			alert(" Given Album Title Alredy Exist Select Title");	
+			document.getElementById("pncat").value=" ";
+			document.getElementById("pcat").focus();			
+		}
+		else 
+		{
+			document.getElementById("title").value=str;
+		}
+	}
+  }
+}
+
+function GetXmlHttpObject()
+{
+if (window.XMLHttpRequest)
+  {
+  // code for IE7+, Firefox, Chrome, Opera, Safari
+  return new XMLHttpRequest();
+  }
+if (window.ActiveXObject)
+  {
+  // code for IE6, IE5
+  return new ActiveXObject("Microsoft.XMLHTTP");
+  }
+return null;
+}
+
+function check(form1)
+{
+	if(document.form1.pcat.value=="" && document.form1.pncat.value=="")
+	{
+		alert("Please Enter New Album English Title");
+		document.form1.pncat.focus();
+		return false;
+	}
+	if(document.form1.pcat.value=="" && document.form1.hpncat.value=="")
+	{
+		alert("Please Enter New Album Hindi Title");
+		document.form1.pncat.focus();
+		return false;
+	}		
+/*	if(document.form1.pimage1.value=="")
+	{
+		alert("Browse Atleast One Image");
+		document.form1.pimage1.focus();
+		return false;		
+	}*/
+/*	if(document.form1.pcat.value=="" && document.form1.sta[0].checked==false)
+	{
+		alert("Please Select Cover Page");
+		document.form1.sta[0].focus();
+		return false;		
+	}
+*/	else
+	{
+		var chk=0;
+		var k=document.form1.k.value;
+		for(i=1;i<k;i++)
+		{
+			var pimage="pimage"+i;
+			var sta="sta"+i;
+			var pi=document.getElementById(pimage).value;
+			var plen=pi.length;
+			var ppos=pi.indexOf(".");
+			var ext=pi.substr(ppos+1,plen);
+			var ext1=ext.toLowerCase();
+				if(document.getElementById(pimage).value!="")
+				{
+					if(ext1!='jpg' && ext1!='jpeg' && ext1!='gif' && ext1!='png')
+					{
+						alert("Only file types of jpg,jpeg,gif,png are allowed for Image");
+						document.getElementById(pimage).value="";
+						document.getElementById(pimage).focus();
+						return false;
+					}
+					chk=1;
+				}
+			}
+			if(chk==0)
+			{
+				alert("Browse Atleast One Image");
+				document.form1.pimage1.focus();
+				return false;		
+			}
+		document.form1.pi_subm.value=1;
+		return true;	
+	}	
+}
+function chng()
+{
+	document.form1.submit();
+}
+
+function chkbox(st)
+{
+	var n=document.form1.k.value;
+	if(document.getElementById("sta"+st).checked==true && document.getElementById("pimage"+st).value!="")
+	{
+		for(i=1;i<n;i++)
+		{
+			if(st!=i)
+			{
+				document.getElementById("sta"+i).checked=false;
+			}
+		}
+	}
+	else if(document.getElementById("sta"+st).checked==true && document.getElementById("pimage"+st).value=="")
+	{
+		alert("Browse File");
+		document.getElementById("sta"+st).checked=false;
+		document.getElementById("pimage"+st).focus();
+		return false;
+	}
+}
+</script>
+
+<?php } else { ?>
+	<script language="javascript">parent.location.href="index.php";</script>
+<?php } ?>
+
+
+
 </body>
 </html>
-<?php
-}
-else
-{
-?>
-	<script language="javascript">parent.location.href="index.php";</script>
-<?php
-}
-?>
