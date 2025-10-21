@@ -3,68 +3,12 @@ ob_start();
 session_start();
 header("Cache-control: private"); 
 include_once("include/includei.php");
-if(!empty($_SESSION['tobadmin']))
-{
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title></title>
-<style type="text/css">
-<!--
-.style14 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; }
-.style15 {font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 12px}
-input.normal {font-family: Arial, Helvetica, sans-serif;
-		font-size: 12px;
-		font-weight: bold;
-		color: #000000;}
-.style20 {color: #FF0000}
-.style21 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 15px;
-	color: #0000FF;
-	font-weight: bold;
-}
-.style4 {	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	font-weight: bold;
-}
-.style23 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #990000; }
--->
-</style>
-</head>
-<script>
-function moveto(st,st1)
-{
-	document.form1.action="albumdelete.php?movid="+st+"&act="+st1;
-	document.form1.submit();
-}
-</script>
-<script type="text/javascript">
-function modfy2(st,st1,st2,i)
-{
-	var val=document.getElementById("hfdel"+i).value;
-	if(confirm("Are You Sure To Delete This Album Detailes Completely?Album contains "+val+" Image(s)"))
-	{
-		location.href="albumdelete.php?pedit="+st+"&title="+st1+"&page_index="+st2;
+if(!empty($_SESSION['tobadmin'])) { ?>
 
-	}
-}
-function modfy1(st,st1,st2)
-{
-	if(confirm("Are You Sure To Modify This Album images"))
-	{
-		location.href="pimagemod.php?pedit="+st+"&title="+st1+"&page_index="+st2;
 
-	}
-}
-</script>
-<body>
 <?php
 $dat=date('Y-m-d');
-if(!empty($_GET['movid']))
-{	
+if(!empty($_GET['movid'])){	
 	$selrec1=executework("select * from  tob_album_title where id='".($_GET['movid'])."'");
 	$rowrec1=@mysqli_fetch_array($selrec1);
 	if($_GET['act']=='up')
@@ -81,11 +25,9 @@ if(!empty($_GET['movid']))
 	redirect("albumdelete.php?titid=".$rowrec1['id']."");
 }
 
-if(!empty($_GET['pedit']) && $_GET['pedit']=='delet')
-{
+if(!empty($_GET['pedit']) && $_GET['pedit']=='delet'){
 	$selche=executework("select * from tob_images where titleid=".($_GET['title'])." ");
-	while($rche=@mysqli_fetch_array($selche))
-	{
+	while($rche=@mysqli_fetch_array($selche)){
 		$dir = "../tbdata/photogallery/oimages/";
 		$dir1 = "../tbdata/photogallery/thimages/";
 		$filename = $rche['image'];
@@ -97,255 +39,223 @@ if(!empty($_GET['pedit']) && $_GET['pedit']=='delet')
 	redirect("albumdelete.php?succ=success");
 }
 ?>
-<?php
-	include_once("header.php");
-?>
-      <form id="form1" name="form1" method="post" action="">
-        <table width="80%" border="0" align="center">
-		<tr>
-		  <td colspan="3">&nbsp;</td>
-		  </tr>
-		<tr>
-		  <td colspan="3">&nbsp; <span class="style4">Albums List </span></td>
-		  </tr>
-		
-		<tr>
-		  <td colspan="3">&nbsp;</td>
-		  </tr>
-		<tr>
-            <td width="100%" colspan="3"><table width="90%" border="0" align="center">
-                <tr>
-                  <td><table width="100%" border="0">
-                      <tr>
-                        <td>
-	  <?php
-		$max_recs_per_page=30;
-		$select=executework("select * from  tob_album_title order by position");
-		$count=@mysqli_num_rows($select);
-      ?>
-                            <table width="90%" align="center" cellpadding="0" cellspacing="4">
-							<?php
-							if($count > 0)
-							{
-							?>
-							<tr>
-								<td>
-								<div align="center" class="style21"><span class="style23">Total Albums</span> <span class="style23">- <?php echo $count; ?>							    </span></div></td>
-							</tr>
-							<?php
-							}
-							?>
-	<?php
-		if(!empty($_GET['succ']) && $_GET['succ']==1)
-		{
-	?>
-                              <tr>
-                                <td colspan="3" class="style15">&nbsp;</td>
-                              <tr>
-                                <td colspan="3" class="style15"><div align="center" class="style20"><strong>New Album Added Successfully </strong></div></td>
-                              <?php 
-		}
-		else if(!empty($_GET['exist']) && $_GET['exist']==1)
-		{
-	?>
-                              <tr>
-                                <td colspan="3" class="style15"><div align="center"><span class="style20"><strong>Given Album Title Alredy Exist </strong></span></div></td>
-                              </tr>
-	<?php
-		}
-		else if(!empty($_GET['succ']) && $_GET['succ']=='success')
-		{
-     ?>                         <tr>
-                                <td colspan="3" class="style15"><div align="center" class="style20"><strong>Selected Album  Deleted Successfully </strong>
-                                  </div>
-                                  </div></td>
-                              </tr>
-        <?php
-		}
-		else if(!empty($_GET['succ']) && $_GET['succ']==4)
-		{
-        ?>		
-                              <tr>
-                                <td colspan="3" class="style15"><div align="center" class="style20"><strong>Selected Album Details Modify Successfully </strong>
-                                  </div>
-                                  </div></td>
-                              </tr>
-							  <?php
-		}
-		else if(!empty($_GET['titid']))
-		{
-        ?>		
-                              <tr>
-                                <td colspan="3" class="style15"><div align="center" class="style20"><strong>Album Adjusted Success Fully</strong>
-                                  </div>
-                                  </div></td>
-                              </tr>
-<?php
-		}
-if ($count > 0)
-{
-	if (empty($_GET['page_index']))
-	{
-		$page_index=1;
-	}	
-	else
-	{
-		$page_index=$_GET['page_index'];
-	}
-	$total_recs = $count;
-	$pages = $count / $max_recs_per_page; 
-	if ($pages < 1)
-	{ 
-		$pages = 1; 
-	}
-	if ($pages / (int) $pages <> 1)
-	{ 
-		$pages = (int) $pages + 1; 
-	} 
-	else
-	{ 
-		$pages = $pages; 
-	}
-	$page12=(int) $page_index;
-	
-	$pagenow1 = ($max_recs_per_page*($page12-1)); 
 
-	$select1= executework("select * from  tob_album_title order by position LIMIT $pagenow1, $max_recs_per_page");
-	$count1 = @mysqli_num_rows($select1);
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<?php include_once("head.php")?>
+	<title>Albums Delete | Tobacco Board</title>
+
+</head>
+
+
+<body>
 	
-	if($pages > 1)
-	{
-	?>
-                              <tr>
-                                <td colspan="3" align="right"><font size="2" face="Arial, Helvetica, sans-serif"><strong>Page&nbsp;
-                                        <?php
-	  for($im=1;$im<=$pages;$im++)
-	  {
-	  		if($page12 != $im)
-			{
-				?>
-                                        <a href="albumdelete.php?page_index=<?php echo "$im" ?>" class="hlink1"><?php echo "$im" ?></a>&nbsp;
-            <?php
-			}
-			else
-			{
-			?>
-                             <font color="red"><?php echo "$im" ?></font>&nbsp;
-    <?php
-			}
-		}
-	?>
-                                </strong></font></td>
-                              </tr>
-    <?php
-	}
-	?>
-                          </table></td>
-                      </tr>
-					  <?php
-					  if($count > 0)
-					  {
-					  ?>
-                      <tr>
-                        <td><table width="90%" border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#999999">
-                            <tr>
-                              <td width="40" bgcolor="#FFFFFF">
-                              <div align="center"><span class="style14">SL No </span></div>                              </td>
-                              <td width="118" bgcolor="#FFFFFF"><div align="center"><span class="style14">Album Title</span></div></td>
-                              <td bgcolor="#FFFFFF"><div align="center"><span class="style4">Album Cover Image </span></div></td>
-                              <td bgcolor="#FFFFFF"><div align="center" class="style14">View Album Images</div></td>
-                              <td width="151" bgcolor="#FFFFFF">&nbsp;</td>
-                            </tr>
-            <?php
-			$i=1;
-			while($row=@mysqli_fetch_array($select1))
-			{
-				$selimg=executework("select * from tob_images where titleid='".($row['id'])."' and cover=1");
-				$cntt=@mysqli_num_rows($selimg);
-				$rowt=@mysqli_fetch_array($selimg);
-				if($cntt>0)
-				$immg="<img src='../tbdata/photogallery/thimages/". $rowt['image']."' height=80 width=100 />";
-				else
-				$immg="";
+<section id="adminLayout">
+
+	<?php include "header.php" ?>
+
+	<?php include "sidebar.php"; ?>
+
+	<main id="adminMain" class="container-fluid">
+	
+		<div class="row">
+			<h2 class="admin-title col">Albums List </h2>
+
+			<div class="col">
+				<?php if(!empty($_GET['exist']) && $_GET['exist']==1){ ?>
+					<div class="alert alert-danger d-flex align-items-center py-1 px-2 m-0 ms-auto" role="alert">
+						<span class="flex-shrink-0 me-2 material-symbols-rounded">warning</span>
+						<span> Given Album Title Alredy Exist </span>
+					</div>
+				<?php } else if((!empty($_GET['succ']) && $_GET['succ']==1) || (!empty($_GET['succ']) && $_GET['succ']=='success') || (!empty($_GET['titid'])) || (!empty($_GET['succ']) && $_GET['succ']==4)){ ?>
+					<div class="alert alert-success d-flex align-items-center py-1 px-2 m-0 ms-auto" role="alert">
+						<span class="flex-shrink-0 me-2 material-symbols-rounded">check_circle</span>
+						<?php if(!empty($_GET['succ']) && $_GET['succ']==1){ ?>
+							<span> New Album Added Successfully</span>
+						<?php } else if(!empty($_GET['succ']) && $_GET['succ']=='success'){ ?>
+							<span> Selected Album  Deleted Successfully </span>
+						<?php } else if(!empty($_GET['succ']) && $_GET['succ']==4){ ?>
+							<span> Selected Album Details Modified Successfully </span>
+						<?php } else if(!empty($_GET['titid'])){ ?>
+							<span> Album Adjusted Successfully </span>
+						<?php } ?>
+					</div>
+				<?php } ?>
+			</div>
+		</div>
+
+
+
+
+    <form id="form1" name="form1" method="post" action="">
+		
+		<?php
+			$max_recs_per_page=30;
+			$select=executework("select * from  tob_album_title order by position");
+			$count=@mysqli_num_rows($select);
+		?>
+
+		
+		<div class="row">
+			<?php if($count > 0) { ?>
+				<h2 class="admin-title col">Total Albums - <?php echo $count; ?> </h2>
+			<?php } ?>
+			
+
+			<?php if ($count > 0){
+				if (empty($_GET['page_index'])){
+					$page_index=1;
+				}	
+				else {
+					$page_index=$_GET['page_index'];
+				}
+				$total_recs = $count;
+				$pages = $count / $max_recs_per_page; 
+				if ($pages < 1){ 
+					$pages = 1; 
+				}
+				if ($pages / (int) $pages <> 1){ 
+					$pages = (int) $pages + 1; 
+				} 
+				else { 
+					$pages = $pages; 
+				}
+				$page12=(int) $page_index;
 				
-				$selimg1=executework("select * from tob_images where titleid='".($row['id'])."'");
-				$cntt1=@mysqli_num_rows($selimg1);
-				$rowt1=@mysqli_fetch_array($selimg1);
-		   ?>
-                            <tr>
-                              <td bgcolor="#FFFFFF"><div align="center"><span class="style15" ><?php echo $i; ?></span></div></td>
-                              <td bgcolor="#FFFFFF"><div align="center"><span class="style15" > &nbsp; <?php echo $row['title'];?></span></div></td>
-                              <td width="120" bgcolor="#FFFFFF" class="style15"><div align="center"><span class="style7 style10"><?php echo $immg ?></span></div></td>
-                              <td width="115" bgcolor="#FFFFFF" class="style15"><div align="center"> <a href="viewpimage.php?page_index=<?php //echo_str($page_index); ?>&title=<?php echo $row['id']?>"> Album Images</a> </div></td>
-                              <td bgcolor="#FFFFFF"><div align="center">
-                                  <input type="button" name="Submit3" value="  Delete  " onclick="modfy2('delet','<?php echo $row['id']; ?>','<?php //echo_str($page_index); ?>','<?php echo $i ?>')"/>
-                                  <input name="hfdel<?php echo $i ?>" type="hidden" id="hfdel<?php echo $i ?>" value="<?php echo $cntt1 ?>"/>
-                              </div></td>
-                            </tr>
-                            
-        <?php
-				$i++;
-			}
-		}
-		?>
-		            </table></td>
-                      </tr>
-					  <?php
-					  }
-					  else
-					  {
-					  ?>
-					  <td><div align="center" class="style15 style20">No Albums Found</div></td>
-					  <?php
-					  }
-					  ?>
-                    </table>
-    <?php
-    if ($pages > 1)
-  	{
-  	?>
-                      <table width="90%" border="0" align="center" cellpadding="0" cellspacing="4">
-                        <tr>
-                          <td align="center" valign="top">
-		<?php   
-		if($page_index != 1)
-		{
-			$pre=$page_index-1;
-		?>
-                              <input name="button" type="button"  class="fbutton" onclick="location.href='imagelist.php?page_index=<?php echo "$pre" ?>'" value="Previous" />
-                            &nbsp;
-         <?php
-		}
-		if($page_index < $pages)
-   		{
-   			$next=$page_index+1;			
-		?>
-                            <input name="button" type="button"  class="fbutton" onclick="location.href='imagelist.php?page_index=<?php echo "$next" ?>'" value="  Next  " />
-        <?php			
-		}
-		?>              </td>
-                        </tr>
-                      </table>
-        <?php
-		}
-	    ?>      
-		        </td>
-                </tr>
-            </table></td>
-          </tr>		  
-        </table>
-      </form>
-<?php
-	include_once("footer.php");
-?>
+				$pagenow1 = ($max_recs_per_page*($page12-1)); 
+
+				$select1= executework("select * from  tob_album_title order by position LIMIT $pagenow1, $max_recs_per_page");
+				$count1 = @mysqli_num_rows($select1);
+				
+
+				if($pages > 1){ ?>
+				<ul class="pagination">
+					<?php for($im=1;$im<=$pages;$im++) {
+						if($page12 != $im){ ?>
+							<li class="page-item"><a class="page-link hlink1" href="albumdelete.php?page_index=<?php echo "$im" ?>"><?php echo "$im" ?></a></li>
+						<?php } else{ ?>
+							<li class="page-item active" aria-current="page"> <span class="page-link"><?php echo "$im" ?></span> </li>
+						<?php } } ?>
+					</ul>
+				<?php } ?>
+			</div>
+		</div>
+
+		
+		<?php if($count > 0) {  ?> 
+			
+		<div class="table-responsive">
+			<table class="table table-bordered ">
+				<thead class="text-center">
+					<tr>
+						<th>SL No </th>
+						<th>Album Title </th>
+						<th>Album Cover Image </th>
+						<th>View Album Images</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<?php
+					$i=1;
+					while($row=@mysqli_fetch_array($select1)) {
+						$selimg=executework("select * from tob_images where titleid='".($row['id'])."' and cover=1");
+						$cntt=@mysqli_num_rows($selimg);
+						$rowt=@mysqli_fetch_array($selimg);
+						if($cntt>0)
+						$immg="<img src='../tbdata/photogallery/thimages/". $rowt['image']."' height=80 width=100 />";
+						else
+						$immg="";
+						
+						$selimg1=executework("select * from tob_images where titleid='".($row['id'])."'");
+						$cntt1=@mysqli_num_rows($selimg1);
+						$rowt1=@mysqli_fetch_array($selimg1);
+					?>
+					
+					<tr>
+						
+						<td><?php echo $i; ?></td>
+						<td><?php echo $row['title'];?></td>
+						<td><?php echo $immg ?></td>
+						<td><a href="viewpimage.php?titid=<?php echo $row['id'] ?>"> Album Images</a></td>
+						<td class="text-center">
+							<button type="button" name="Submit3" onclick="modfy2('delet','<?php echo $row['id']; ?>','<?php //echo_str($page_index); ?>','<?php echo $i ?>')" class="btn icon-btn btn-danger">
+								<span class="material-symbols-rounded">delete</span>
+							</button>
+							<input name="hfdel<?php echo $i ?>" type="hidden" id="hfdel<?php echo $i ?>" value="<?php echo $cntt1 ?>"/>
+						</td>
+					</tr>  
+
+					<?php $i++; } } ?>
+
+					</tbody>
+				</table>
+			</div>
+
+		<?php } else  { ?>
+			<div class="text-center text-secondary">No Albums Found</div>
+		<?php } ?>
+
+
+		
+		<?php if ($pages > 1) { ?>
+			<div class="text-end">
+				<?php if($page_index != 1){
+					$pre=$page_index-1; ?>
+					<button name="button" type="button" class="btn btn-sm btn-primary fbutton" onclick="location.href='imagelist.php?page_index=<?php echo $pre ?>'" />Previous</button>
+				<?php
+				}
+				if($page_index < $pages) {
+				$next=$page_index+1; ?>
+					<button name="button" type="button" class="btn btn-sm btn-primary fbutton" onclick="location.href='imagelist.php?page_index=<?php echo $next ?>'" />Next  </button>
+				<?php } ?>
+			</div>
+        <?php } ?>
+
+    </form>
+	  
+</main>
+
+</section>
+
+
+<?php include_once("footer.php");?>
+
+
+
+
+<script>
+function moveto(st,st1){
+	document.form1.action="albumdelete.php?movid="+st+"&act="+st1;
+	document.form1.submit();
+}
+</script>
+<script type="text/javascript">
+function modfy2(st,st1,st2,i){
+	var val=document.getElementById("hfdel"+i).value;
+	if(confirm("Are You Sure To Delete This Album Detailes Completely?Album contains "+val+" Image(s)")){
+		location.href="albumdelete.php?pedit="+st+"&title="+st1+"&page_index="+st2;
+
+	}
+}
+function modfy1(st,st1,st2){
+	if(confirm("Are You Sure To Modify This Album images")){
+		location.href="pimagemod.php?pedit="+st+"&title="+st1+"&page_index="+st2;
+
+	}
+}
+</script>
+
+
+<?php } else { ?>
+	<script language="javascript">parent.location.href="index.php";</script>
+<?php } ?>
+
+
 </body>
 </html>
-<?php
-}
-else
-{
-?>
-<script language="javascript">parent.location.href="index.php";</script>
-<?php
-}	
-?>

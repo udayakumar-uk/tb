@@ -6,23 +6,8 @@ include_once("include/includei.php");
 if(!empty($_SESSION['tobadmin']))
 {
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Upload Slide | Welcome toTOBBACCO BOARD... Admin</title>
-<style type="text/css">
-<!--
-.style51 {font-size: 12px; font-family: Verdana, Arial, Helvetica, sans-serif;}
-.style88 {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 16px;
-	font-weight: bold;
-}
-.style89 {color: #FF0000}
--->
-</style>
-</head>
+
+
 <script type="text/javascript">
 function valid(form1)
 {
@@ -81,8 +66,8 @@ function chng()
 	document.form1.submit();
 }
 </script>
-<body>
-<?php include_once("header.php");?>
+
+
 <?php
 	if(!empty($_POST['subm_slide']))
 	{
@@ -148,129 +133,135 @@ function chng()
 			redirect("upload_slides.php?succ=1");
 	}
 ?>
-<form action="" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="return valid(this);">
-  <table width="80%" border="0" align="center">
-    <tr>
-      <td width="127">&nbsp;</td>
-      <td width="73">&nbsp;</td>
-      <td width="578">&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td height="40" colspan="3"><span class="style88">Update Slide Images </span></td>
-    </tr>
-	<?php
-		if(!empty($_GET['succ']))
-		{
-	?>
-    <tr>
-      <td height="40" colspan="3" style="padding-left:120px;">
-	  	<div align="left" class="style51 style89">Slide Images Updated Successfully </div>	  </td>
-    </tr>
-	<?php	
-		}
-		else
-		{
-	?>
-    <tr>
-      <td colspan="3">&nbsp;</td>
-    </tr>
-	<?php
-		}
-	?>
-    <tr>
-      <td height="30"><div align="right" class="style51"> Slide No </div></td>
-      <td height="30"><div align="center"><strong>:</strong></div></td>
-      <td height="30"><label>
-        <select name="stype" id="stype" onchange="chng();">
-          <option value="">Select Slide</option>
-          <option value="slide1">Slide 1</option>
-          <option value="slide2">Slide 2</option>
-          <option value="slide3">Slide 3</option>
-          <option value="slide4">Slide 4</option>
-          <option value="slide5">Slide 5</option>
-          <option value="slide6">Slide 6</option>
-        </select>
-        <strong>
-        <?php
-			if(!empty($_REQUEST['stype']))
-			{
-			?>
-        <script language="JavaScript" type="text/javascript">
-			 var stype='<?php echo $_REQUEST['stype'] ?>';
-			 var i;
-			for(i=0;i<document.form1.stype.options.length;i++)
-			{
-				if(document.form1.stype.options[i].value==stype)
-				{
-					document.form1.stype.options[i].selected=true;
-				}
-			}
-			  </script>
-        <?php
-			}
-			?>
-        </strong>      </label></td>
-    </tr>
-	<?php
-	if(!empty($_POST['stype']))
-	{
-		$select=executework("select * from tob_imageslide where slideno='". $_POST['stype'] ."'");
-		$srow=@mysqli_fetch_array($select);
-	}
-	?>
-    <tr>
-      <td height="30"><div align="right" class="style51">Image 1  </div></td>
-      <td height="30"><div align="center"><strong>:</strong></div></td>
-      <td height="30">
-	  	<?php if(!empty($srow['image1'])) {?><img src="slide_images/<?php echo $srow['image1'];?>" width="70" height="70" /><br /><?php }?>
-        <input name="image1" type="file" id="image1" />
-      </td>
-    </tr>
-	<?php
-	if(!empty($_POST['stype']) && ($_POST['stype']=='slide1' || $_POST['stype']=='slide2' || $_POST['stype']=='slide3'))
-	{
-	?>
-    <tr>
-      <td height="30"><div align="right" class="style51">Image 2  </div></td>
-      <td height="30"><div align="center"><strong>:</strong></div></td>
-      <td height="30">
-	  	<?php if(!empty($srow['image2'])) {?><img src="slide_images/<?php echo $srow['image2'];?>" width="70" height="70" /><br /><?php }?>
-        <input name="image2" type="file" id="image2" />
-      </td>
-    </tr>
-	<?php
-	}
-	?>
-    <tr>
-      <td height="30">&nbsp;</td>
-      <td height="30">&nbsp;</td>
-      <td height="30"><label>
-        <input type="submit" name="Submit" value="  Update  " />
-        <input name="subm_slide" type="hidden" id="subm_slide" />
-        <input name="type" type="hidden" id="type" value="new" />
-      </label></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-  </table>
-</form>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<?php include_once("head.php")?>
+	<title>Upload Slides | Tobacco Board</title>
+
+</head>
+
+
+<body>
+	
+<section id="adminLayout">
+
+	<?php include "header.php" ?>
+
+	<?php include "sidebar.php"; ?>
+
+	<main id="adminMain" class="container-fluid">
+
+		<div class="row">
+			<h2 class="admin-title col">Update Slide Images </h2>
+
+			<div class="col">
+				<?php if(!empty($_GET['succ'])) { ?>
+					<div class="alert alert-success d-flex align-items-center py-1 px-2 m-0 ms-auto" role="alert">
+						<span class="flex-shrink-0 me-2 material-symbols-rounded">check_circle</span>
+						<span> Slide Images Updated Successfully </span>
+					</div>
+				<?php } ?>
+			</div>
+		</div>
+
+
+		<form action="" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="return valid(this);">
+
+		
+			<div class="form-group">
+				<label for="stype" class="form-label">Slide No </label>
+				<select name="stype" id="stype" onchange="chng();" class="form-select w-auto">
+					<option value="" selected>Select Slide</option>
+					<option value="slide1">Slide 1</option>
+					<option value="slide2">Slide 2</option>
+					<option value="slide3">Slide 3</option>
+					<option value="slide4">Slide 4</option>
+					<option value="slide5">Slide 5</option>
+					<option value="slide6">Slide 6</option>
+				</select>
+
+				<?php if(!empty($_REQUEST['stype'])) { ?>
+					<script language="JavaScript" type="text/javascript">
+						var stype='<?php echo $_REQUEST['stype'] ?>';
+						var i;
+						for(i=0;i<document.form1.stype.options.length;i++) {
+							if(document.form1.stype.options[i].value==stype)
+							{
+								document.form1.stype.options[i].selected=true;
+							}
+						}
+					</script>
+				<?php } ?>
+			</div>
+
+
+			<?php if(!empty($_POST['stype']))	{
+				$select=executework("select * from tob_imageslide where slideno='". $_POST['stype'] ."'");
+				$srow=@mysqli_fetch_array($select);
+			} ?>
+
+			<div class="row">
+
+				<div class="col-md-4">
+					<div class="box-shadow p-3 bg-white">
+						<div class="form-group">
+							<p for="image1" class="text-secondary">Image 1 </p>
+							<?php if(!empty($srow['image1'])) {?>
+								<img src="slide_images/<?php echo $srow['image1'];?>" width="100" height="100" class="rounded-3" />
+							<?php }?>
+						</div>
+
+						<div class="input-group form-group mb-0">
+							<input name="image1" type="file" id="image1" class="form-control" />
+							<label class="input-group-text" for="image1">Upload File</label>
+						</div>
+					</div>
+				</div>
+
+			<?php if(!empty($_POST['stype']) && ($_POST['stype']=='slide1' || $_POST['stype']=='slide2' || $_POST['stype']=='slide3')) { ?>
+				
+				<div class="col-md-4">
+					<div class="box-shadow p-3 bg-white">
+						<div class="form-group">
+							<p for="image2" class="text-secondary">Image 2 </p>
+							<?php if(!empty($srow['image2'])) {?>
+								<img src="slide_images/<?php echo $srow['image2'];?>" width="100" height="100" class="rounded-3" />
+							<?php }?>
+						</div>
+
+						<div class="input-group form-group mb-0">
+							<input name="image2" type="file" id="image2" class="form-control" />
+							<label class="input-group-text" for="image2">Upload File</label>
+						</div>
+					</div>
+				</div>
+			<?php }	?>
+			
+			</div>
+
+
+			<div class="submit-button text-end">
+				<input name="subm_slide" type="hidden" id="subm_slide" />
+				<input name="type" type="hidden" id="type" value="new" />
+				<input type="submit" class="btn btn-primary" name="Submit" value="Update" />
+			</div>
+		
+		</form>
+	  
+	</main>
+
+</section>
+
 <?php include_once("footer.php");?>
+
+
+
+<?php } else { ?>
+	<script language="javascript">parent.location.href="index.php";</script>
+<?php } ?>
+
+
 </body>
 </html>
-<?php
-}
-else
-{
-?>
-	<script language="javascript">parent.location.href="index.php";</script>
-<?php
-}
-?>

@@ -191,6 +191,7 @@ if(!empty($_GET['pedit']) && $_GET['pedit']=='delet'){
 							<a href="#" onclick="moveto('<?php echo $row['id'] ?>','down');"><img src="tob2_imgs/downarrow.jpg" height="40" width="40" /></a>
 						<?php } ?>
 					</td>
+				</tr>
                             
         		<?php $i++; } } ?>
 				</tbody>

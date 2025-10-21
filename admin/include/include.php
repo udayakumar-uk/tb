@@ -1,13 +1,13 @@
 <?php
 function executework($srt)
 {
-	$db = mysql_connect("localhost", "root", "", "tobaccoboard");
+	$db = mysql_connect("localhost", "root", "",  "tb");
 	mysql_select_db("tobacco",$db);
 	return mysql_query($srt,$db);
 }
 function executeupdate($srt)
 {
-	$db = mysql_connect("localhost", "root", "", "tobaccoboard");
+	$db = mysql_connect("localhost", "root", "",  "tb");
 	mysql_select_db("tobacco",$db);
 	mysql_query($srt,$db);
 	return mysql_affected_rows();

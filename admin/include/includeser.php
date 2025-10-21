@@ -24,19 +24,19 @@ function executework1($srt)
 	mysql_select_db("tobaccob_tobacc0",$db);
 	return mysql_query($srt,$db);*/
 	
-	$db = mysqli_connect("localhost", "root", "", "tobaccoboard") or die(mysqli_error);
+	$db = mysqli_connect("localhost", "root", "",  "tb") or die(mysqli_error);
 	//print_r(mysqli_query($db,$srt));
 	return mysqli_query($db,$srt);
 }
 function executework($srt)
 {
-	$db = mysql_connect("localhost", "root", "", "tobaccoboard");
+	$db = mysql_connect("localhost", "root", "",  "tb");
 	mysql_select_db("tobacco",$db);
 	return mysql_query($srt,$db);
 }
 function executeupdate($srt)
 {
-	$db = mysql_connect("localhost", "root", "", "tobaccoboard");
+	$db = mysql_connect("localhost", "root", "",  "tb");
 	mysql_select_db("tobacco",$db);
 	mysql_query($srt,$db);
 	return mysql_affected_rows();

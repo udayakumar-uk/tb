@@ -11,11 +11,10 @@ else
 $page_id='';
 //if($page_id=='')
 //redirect("adminmain.php");
-if(!empty($_SESSION['tobadmin']))
-{
 
-	if(!empty($_POST['subm']))
-	{
+if(!empty($_SESSION['tobadmin'])){
+
+	if(!empty($_POST['subm'])){
 		$selmax=executework("select max(id) from tob_cms");
 		$rowm=@mysqli_fetch_array($selmax);
 		if($rowm[0]!="")
@@ -28,9 +27,8 @@ if(!empty($_SESSION['tobadmin']))
 		//$selpag=executework("select id from tob_page where title='".$_POST['title']."' and page='".$_POST['page']."'");
 		$cntp=@mysqli_num_rows($selpag);
 		
-		if($cntp>0)
-		{
-			$rowp=@mysqli_fetch_array($selpag);
+		if($cntp>0){
+		$rowp=@mysqli_fetch_array($selpag);
 		$selplx=executework("select tob_cms.* from tob_cms,tob_pages where tob_pages.id= tob_cms.pageid and tob_pages.id='".$page_id."'");
 		//$cntn=@mysqli_num_rows($selcn);
 			//$selplx=executework("select * from tob_cms where id=".$rowp['id']);
@@ -47,23 +45,143 @@ if(!empty($_SESSION['tobadmin']))
 			}
 			redirect("page_cms1.php?page_id=".$page_id);
 		}
-		else
-		{
-		}
 	}
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>CMS | Welcome To TOBBACO BOARD Admin</title>
 
-  <?php include_once("head.php")?>
-<link rel="stylesheet" type="text/css" href="../Scripts/home.css" />
-<link rel="stylesheet" type="text/css" href="../Scripts/doctextsizer.css" />
+
+
+<?php
+
+	function datepattrn($a){
+ 		$b = substr($a,5, 2);// month
+ 		$c = substr($a,7, 1);// '-'
+		$d= substr($a,8, 2);// day
+		$e = substr($a,4, 1);// '-'
+ 		$f = substr($a,0, 4);// year
+		$c="-";
+		$e="-";
+		$g=$d."/".$b."/".$f;
+		return $g;
+	}
+	function datepattrn1($a){
+ 		$b = substr($a,3, 2);// month
+ 		$c = substr($a,2, 1);// '-'
+		$d= substr($a,0, 2);// day
+		$e = substr($a,5, 1);// '-'
+ 		$f = substr($a,6, 4);// year
+		$c="-";
+		$e="-";
+		$g=$f."/".$b."/".$d;
+		return $g;
+	}
+
+	function numround($st,$n){
+		if($st!=""){
+			$n1=pow(10 ,$n);
+			$num=round($st*$n1)/($n1);
+		}
+		return $num;
+	}
+$selpage=executework("select * from tob_pages where id='".$page_id."'");
+$rowp=@mysqli_fetch_array($selpage);
+$selcn=executework("select * from tob_cms,tob_pages where tob_pages.id= tob_cms.pageid and tob_pages.id='".$page_id."'");
+$cntn=@mysqli_num_rows($selcn);
+if($cntn>0){
+	$rowcn=@mysqli_fetch_array($selcn);
+	$content=$rowcn['content'];
+	$hcontent=$rowcn['hcontent'];
+}
+else{
+	$content='';
+	$hcontent='';
+}
+
+$get=executework("select * from tob_pages where id='".$rowp['menu_id']."'");
+$row00=@mysqli_fetch_array($get);
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<?php include_once("head.php")?>
+	<title>CMS | Tobacco Board</title>
 </head>
-<!-- TinyMCE -->
-<script type="text/javascript" src="jscripts/tiny_mce/tiny_mce.js"></script>
+
+
+<body>
+	
+<section id="adminLayout">
+
+	<?php include "header.php" ?>
+
+	<?php include "sidebar.php"; ?>
+
+	<main id="adminMain" class="container-fluid">
+
+		<div class="row">
+			<h2 class="admin-title col-auto"><?php echo $row00['page']; ?> / <?php echo $rowp['page']; ?> </h2>
+
+			<div class="col">
+				<?php if(!empty($exst) && $exst==1){ ?>
+					<div class="alert alert-danger d-flex align-items-center py-1 px-2 m-0 ms-auto" role="alert">
+						<span class="flex-shrink-0 me-2 material-symbols-rounded">warning</span>
+						<span>Given Platform Already Exists</span>
+					</div>
+				<?php } else if((!empty($_GET['succ']) && $_GET['succ']==1) || (!empty($_GET['succ']) && $_GET['succ']==2) || (!empty($_GET['succ']) && $_GET['succ']==3) || (!empty($_GET['succ']) && $_GET['succ']==4)){ ?>
+					<div class="alert alert-success d-flex align-items-center py-1 px-2 m-0 ms-auto" role="alert">
+						<span class="flex-shrink-0 me-2 material-symbols-rounded">check_circle</span>
+						<?php if(!empty($_GET['succ']) && $_GET['succ']==1){ ?>
+							<span> New Platform Added Successfully</span>
+						<?php } else if(!empty($_GET['succ']) && $_GET['succ']==2){ ?>
+							<span> Platform Modified Successfully </span>
+						<?php } else if(!empty($_GET['succ']) && $_GET['succ']==3){ ?>
+							<span>Selected Export Details Modified Successfully</span>
+						<?php } else if(!empty($_GET['succ']) && $_GET['succ']==4){ ?>
+							<span>Selected Export Details Deleted Successfully</span>
+						<?php } ?>
+					</div>
+				<?php } ?>
+			</div>
+		</div>
+
+
+	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="return validate();">
+
+	<?php if(!empty($page_id)){	?>
+
+		
+		<div class="form-group">
+			<label for="content" class="form-label">Page Content</label>
+			<textarea name="content" cols="40" rows="5" class="form-control" placeholder="Leave a content" id="content"><?php echo $content; ?></textarea>
+		</div>
+		
+		<div class="form-group">
+			<label for="hcontent" class="form-label">Hindi Page Content</label>
+			<textarea name="hcontent" cols="40" rows="5" class="form-control" placeholder="Leave a hcontent" id="hcontent"><?php echo $hcontent; ?></textarea>
+		</div>
+
+		<div class="submit-button text-end">
+			<input name="subm" type="hidden" id="subm" />
+			<input name="page_id" type="hidden" id="page_id" value="<?php echo $page_id; ?>" />
+			<input type="submit" class="btn btn-primary" name="Submit" value="Submit" />
+    	</div>
+ 	<?php } ?>
+	
+</form>
+
+
+</main>
+
+</section>
+
+
+<?php include_once("footer.php");?>
+
+<?php include_once("tinymce.php");?>
+
+
+<!-- <script type="text/javascript" src="jscripts/tiny_mce/tiny_mce.js"></script>
 <script type="text/javascript">
 	tinyMCE.init({
 		// General options
@@ -109,229 +227,27 @@ if(!empty($_SESSION['tobadmin']))
 			staffid : "991234"
 		}
 	});
-</script>
-<!-- /TinyMCE -->
-<script language="javascript">
-function chk()
-{
-	document.form1.submit();
-}
+</script> -->
 
-function validate()
-{
-	var cont=document.form1.content.value;
-	/*if(document.form1.title.value=="")
-	{
-		alert("Please Select Menu Title");
-		document.form1.title.focus();
-		return false;
+
+<script>
+	function chk(){
+		document.form1.submit();
 	}
-	else if(document.form1.page.value=="")
-	{
-		alert("Please Select Page Name");
-		document.form1.page.focus();
-		return false;
-	}
-	else if(cont.length<=0)
-	{
-		alert("Please Enter Page Content");
-		document.form1.content.focus();
-		return false;
-	}
-	else
-	{*/
+
+	function validate(){
+		var cont=document.form1.content.value;
 		document.form1.subm.value=1;
 		return true;
-	//}
-}
+	}
 </script>
-<body>
 
 
-<section id="adminLayout">
-<?php include "header.php"?>
 
-<?php include "sidebar.php"; ?>
+<?php } else { ?>
+	<script language="javascript">parent.location.href="index.php";</script>
+<?php } ?>
 
-<main id="adminMain" >
 
-<?php
-
-	function datepattrn($a)
-	{
- 		$b = substr($a,5, 2);// month
- 		$c = substr($a,7, 1);// '-'
-		$d= substr($a,8, 2);// day
-		$e = substr($a,4, 1);// '-'
- 		$f = substr($a,0, 4);// year
-		$c="-";
-		$e="-";
-		$g=$d."/".$b."/".$f;
-		return $g;
-	}
-	function datepattrn1($a)
-	{
- 		$b = substr($a,3, 2);// month
- 		$c = substr($a,2, 1);// '-'
-		$d= substr($a,0, 2);// day
-		$e = substr($a,5, 1);// '-'
- 		$f = substr($a,6, 4);// year
-		$c="-";
-		$e="-";
-		$g=$f."/".$b."/".$d;
-		return $g;
-	}
-
-	function numround($st,$n)
-	{
-		if($st!="")
-		{
-			$n1=pow(10 ,$n);
-			$num=round($st*$n1)/($n1);
-		}
-		return $num;
-	}
-$selpage=executework("select * from tob_pages where id='".$page_id."'");
-$rowp=@mysqli_fetch_array($selpage);
-$selcn=executework("select * from tob_cms,tob_pages where tob_pages.id= tob_cms.pageid and tob_pages.id='".$page_id."'");
-$cntn=@mysqli_num_rows($selcn);
-if($cntn>0)
-{
-	$rowcn=@mysqli_fetch_array($selcn);
-	$content=$rowcn['content'];
-	$hcontent=$rowcn['hcontent'];
-}
-else
-{
-	$content='';
-	$hcontent='';
-}
-
-$get=executework("select * from tob_pages where id='".$rowp['menu_id']."'");
-$row00=@mysqli_fetch_array($get);
-?>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="return validate();">
-  <table width="90%" border="0" align="center">
-    <tr>
-      <td width="28%">&nbsp;</td>
-      <td width="5%">&nbsp;</td>
-      <td width="67%">&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="3"><span class="style1" style="font-size:18px"><?php echo $row00['page']; ?> / <?php echo $rowp['page']; ?> </span> </td>
-    </tr>
-    
-	<?php
-		if(!empty($exst) && $exst==1)
-		{
-	?>
-    <tr>
-      <td height="40" colspan="3" class="style7" style="padding-left:150px;">Given Platform Alredy Exist </td>
-    </tr>
-	<?php
-		}
-		else if(!empty($_GET['succ']) && $_GET['succ']==1)
-		{
-	?>
-    <tr>
-      <td height="40" colspan="3" style="padding-left:150px;"><span class="style7">New Platform Added Successfully</span> </td>
-    </tr>
-	<?php
-		}
-		else if(!empty($_GET['succ']) && $_GET['succ']==2)
-		{
-	?>
-    <tr>
-      <td height="40" colspan="3" style="padding-left:150px;"><span class="style7">Platform Modified  Successfully</span> </td>
-    </tr>
-	<?php
-		}
-		else if(!empty($_GET['succ']) && $_GET['succ']==3)
-		{
-	?>
-    <tr>
-      <td height="40" colspan="3" style="padding-left:150px;"><span class="style7">Selected Export Details Modified Successfully</span> </td>
-    </tr>
-	<?php
-		}
-		else if(!empty($_GET['succ']) && $_GET['succ']==4)
-		{
-	?>
-    <tr>
-      <td height="40" colspan="3" style="padding-left:150px;"><span class="style7">Selected Export Details Deleted Successfully</span> </td>
-    </tr>
-	<?php
-		}
-		else
-		{
-	?>
-    <tr>
-      <td height="40" colspan="3" style="padding-left:150px;"><span class="style7"></span> </td>
-    </tr>
-	<?php
-		}
-	?>
-    
-    
-	<?php
-	if(!empty($page_id))
-	{
-	?>
-    <tr>
-      <td height="30" valign="top" class="style4" style="padding-left:35px;">Page Content </td>
-      <td height="30" valign="top"><div align="center"><strong>:</strong></div></td>
-      <td height="30">&nbsp;</td>
-    </tr>
-    <tr>
-      <td height="30" colspan="3" valign="top" style="padding-left:35px;"><label>
-        <textarea name="content" cols="120" rows="30" id="content"><?php echo $content; ?></textarea>
-      </label></td>
-    </tr>
-    <tr>
-      <td height="30" valign="top" class="style4" style="padding-left:35px;">Hindi Page Content </td>
-      <td height="30" valign="top"><div align="center"><strong>:</strong></div></td>
-      <td height="30">&nbsp;</td>
-    </tr>
-    <tr>
-      <td height="30" colspan="3" valign="top" style="padding-left:35px;"><label>
-        <textarea name="hcontent" cols="120" rows="30" id="hcontent"><?php echo $hcontent; ?></textarea>
-      </label></td>
-    </tr>
-    
-    <tr>
-      <td height="50" colspan="3" class="style4" style="padding-left:35px;"><div align="center">
-        <label>
-        <input type="submit" name="Submit" value="Submit" />
-        </label>
-        <input name="subm" type="hidden" id="subm" />
-        <input name="page_id" type="hidden" id="page_id" value="<?php echo $page_id; ?>" />
-      </div></td>
-    </tr>
- 	<?php
-	}
-	?>
-   <tr>
-      <td height="50" colspan="3" class="style4">&nbsp;</td>
-    </tr>
-  </table>
-</form>
-
-</main>
-
-</section>
-
-<?php include_once("footer.php");?>
 </body>
 </html>
-<?php
-}
-else
-{
-?>
-	<script language="javascript">parent.location.href="index.php";</script>
-<?php
-}
-?>
-<script>
-//chng();
-</script>

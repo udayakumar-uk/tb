@@ -1,12 +1,12 @@
 <?php
 function executework($srt)
 {
-	$db = mysqli_connect("localhost", "root", "","tobaccoboard");
+	$db = mysqli_connect("localhost", "root", "", "tb");
 	return mysqli_query($db,$srt);
 }
 function executeworkins($srt)
 {
-	$db = mysqli_connect("localhost", "root", "","tobaccoboard");
+	$db = mysqli_connect("localhost", "root", "", "tb");
 	mysql_query($db,$srt);
 	return mysqli_insert_id($db);
 }

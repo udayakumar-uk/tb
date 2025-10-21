@@ -20,13 +20,13 @@ function csrf_token_check()
 }
 function executework($srt)
 {
-    $db = mysqli_connect("localhost", "root", "", "tobaccoboard");
+    $db = mysqli_connect("localhost", "root", "",  "tb");
     //mysql_select_db("tobaccob_tobacc0",$db);
     return mysqli_query($db,$srt);
 }
 function executework1($srt)
 {
-    $db = mysqli_connect("localhost", "root", "", "tobaccoboard");
+    $db = mysqli_connect("localhost", "root", "",  "tb");
     //mysql_select_db("tobaccob_tobacc0",$db);
     return mysqli_query($db,$srt);
 }
