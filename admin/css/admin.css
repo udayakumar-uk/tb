@@ -90,6 +90,7 @@ body{
     flex-grow: 1;
     margin-top: 65px;
     padding: 1rem;
+    width: calc(100vw - 280px);
 }
 
 

@@ -13,16 +13,13 @@ if(isset($_SESSION["tobadmin"]) && $_SESSION['tobadmin']=='admin')
 <title>Untitled Document</title>
 </head>
 <script>
-	function validate()
-	{
-		if(document.form1.designation.value=="")
-		{
+	function validate() {
+		if(document.form1.designation.value=="") {
 			alert("Enter Designation");
 			document.form1.designation.focus();
 			return false;
 		}
-		else
-		{
+		else {
 			return true;
 		}
 	}
@@ -121,7 +118,7 @@ $message='';
       </label></td>
     </tr>
   </table>
-   
+ï¿½  
 <table width="71%" border="1" align="center" cellpadding="2" cellspacing="0">
     <tr class="style8">
       <td><div align="center">S.No</div></td>

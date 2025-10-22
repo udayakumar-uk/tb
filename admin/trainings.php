@@ -3,147 +3,11 @@ ob_start();
 session_start();
 include('include/includei.php');
 include('header.php');
-if(!empty($_SESSION['tobadmin']))
-{
+if(!empty($_SESSION['tobadmin'])) {
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Tobacco Board,Guntur</title>
-<style type="text/css">
-<!--
-.style1 {color: #0000FF}
-.style2 {color: #FF0000}
-.style3 {
-	color: #000000;
-	font-weight: bold;
-}
-.style17 {font-family: Arial, Helvetica, sans-serif;font-size: 12px; }
-.style8 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; }
 
-a:link {
-	color: #000000;
-	text-decoration: none;
-}
-a:visited {
-	color: #000000;
-	text-decoration: none;
-}
-a.b:hover {
-	color: #990000;
-	text-decoration: none;
-}
-a.b:active {
-	color: #990000;
-	text-decoration: none;
-}
-.style20 {color: #0000FF}
-
--->
-</style>
-</head>
-    <script class="include" type="text/javascript"    src="../graph/jquery.min.js"></script>
-<script>
-/*function disprow()
-{
-	var checkboxes = document.getElementsByName('check_list[]');
-	var vals = "";
-	 for (var i=0, n=checkboxes.length;i<n;i++)
-	 {
-		  if (checkboxes[i].checked) 
-		  {
-			if(vals=="")
-			vals = checkboxes[i].value;
-			else	
-			vals +=","+checkboxes[i].value;
-		  }
-	}
-	vals=vals.trim();
-	var subarr=vals.split(",");
-	var main_array=['CA','CMA','CS','Others'];
-	var diff_array=arr_diff(main_array,subarr);
-	
-	for(var k=0;k<subarr.length;k++)
-	{	
-		if(subarr[k]!="")
-		{
-		document.getElementById(subarr[k]).style.display="";
-		}		
-	}	
-	for(var k=0;k<diff_array.length;k++)
-	{	
-		document.getElementById(diff_array[k]).style.display="none";		
-	}
-	
-}
-*/</script>
-<script>
-function validation()
-{
-	if(document.form1.name.value=="")
-	{
-		alert("Enter Name of the Training Programme");
-		document.form1.name.focus();
-		return false;
-	}
-	
-	if(document.form1.tno.value=="")
-	{
-		alert("Enter No of Trainings");
-		document.form1.tno.focus();
-		return false;
-	}
-	
-	if(document.form1.schedule.value=="")
-	{
-		alert("Enter Schedule of Training");
-		document.form1.schedule.focus();
-		return false;
-	}
-	
-	if(document.form1.mnth.value=="")
-	{
-		alert("Select Schedule Month");
-		document.form1.mnth.focus();
-		return false;
-	}
-	
-	if(document.form1.yr.value=="")
-	{
-		alert("Select Schedule Year");
-		document.form1.yr.focus();
-		return false;
-	}
-	
-	return true;
-}
-
-function modify_user(id)
-{
-	if(confirm("Are you sure to modify this information?"))
-	{
-		window.location="trainings.php?id="+id;
-		return false;
-	}
-	else
-	return false;
-}
-function delete_user(id)
-{
-	if(confirm("Are you sure to delete this user information?"))
-	{
-		window.location="trainings.php?did="+id;
-		return false;
-	}
-	else
-	return false;
-}
-</script>
-<body>
 <?php
-if(!empty($_POST['name']))
-{
+if(!empty($_POST['name'])) {
 
 	if(!empty($_GET['id']))
 	$qr=" and id<>".$_GET['id'];
@@ -153,8 +17,7 @@ if(!empty($_POST['name']))
 	print_r($_POST);
 	$select=executework("select * from tob_training where name='". urlencode($_POST['name'])."'".$qr);
 	$cnt=@mysqli_num_rows($select);
-	if($cnt>0)
-	{
+	if($cnt>0) {
 		redirect("trainings.php?exst=1");
 	}
 	else
@@ -174,8 +37,7 @@ if(!empty($_POST['name']))
 	}
 }
 $st='';
-if(isset($_GET['id']) && $_GET['id']!='')
-{
+if(isset($_GET['id']) && $_GET['id']!='') {
 	$selm=executework("select * from tob_training where id='".$_GET['id']."'");
 	$cntm=@mysqli_num_rows($selm);
 	if($cntm==0)
@@ -199,8 +61,7 @@ if(!empty($rowm['mnth']))
 else
 	$mn=date('n');
 
-if(isset($_GET['did']) && $_GET['did']!='')
-{
+if(isset($_GET['did']) && $_GET['did']!='') {
 	$seld=executework("select * from tob_training where id='".$_GET['did']."'");
 	$cntd=@mysqli_num_rows($seld);
 	if($cntd==0)
@@ -213,154 +74,241 @@ if(isset($_GET['did']) && $_GET['did']!='')
 }
 
 ?>
-<form id="form1" name="form1" method="post" action="" onsubmit="return validation();">
 
-  <table width="100%" height="347" border="0" cellpadding="0" cellspacing="0">
-    <tr>
-      <td colspan="3" class="style4">&nbsp;</td>
-    </tr>
-    <?php if(isset($_GET['succ']) && $_GET['succ']==1) { ?>
-    <tr>
-      <td colspan="3" class="style1"><div align="center" class="style9 style1">Training programme created successfully.</div></td>
-    </tr>
-    <?php } ?>
-    <?php if(isset($_GET['succ']) && $_GET['succ']==2) { ?>
-    <tr>
-      <td colspan="3" class="style1"><div align="center" class="style9 style1">Training Programme updated successfully.</div></td>
-    </tr>
-    <?php } ?>
-    <?php if(isset($_GET['del']) && $_GET['del']==1) { ?>
-    <tr>
-      <td colspan="3"class="style1"><div align="center" class="style9 style1">Training Programme deleted successfully.</div></td>
-    </tr>
-    <?php } ?>
-    <?php if(isset($_GET['exst']) && $_GET['exst']==1) { ?>
-    <tr>
-      <td colspan="3" class="style2"><div align="center" class="style7 style2">Training Programme exists with same name.</div></td>
-    </tr>
-    <?php } ?>
-    <?php if(isset($_GET['invalid']) && $_GET['invalid']==1) { ?>
-    <tr>
-      <td colspan="3" class="style2"><div align="center" class="style7 style2">Invalid Access</div></td>
-    </tr>
-    <?php } ?>    <tr>
-      <td width="41%" class="style8"><div align="right">Name of Training Programme</div></td>
-      <td width="5%" class="style8"><div align="center">:</div></td>
-      <td width="54%"><label>
-        <textarea name="name" cols="30" rows="3" id="name"><?php if(isset($rowm)){ echo urldecode($rowm['name']); } ?></textarea>
-      </label></td>
-    </tr>
-    <tr>
-      <td class="style8"><div align="right">No. of Trainings</div></td>
-      <td class="style8"><div align="center">:</div></td>
-      <td><label>
-        <input name="tno" type="text" id="tno" size="30" value="<?php if(isset($rowm)){ echo $rowm['tno']; } ?>"/>
-      </label></td>
-    </tr>
-    <tr>
-      <td class="style8"><div align="right">Schedule of Training</div></td>
-      <td class="style8"><div align="center">:</div></td>
-      <td><label>
-        <textarea name="schedule" cols="30" rows="3" id="schedule"><?php if(isset($rowm)){ echo urldecode($rowm['schedule']); } ?></textarea>
-      </label></td>
-    </tr>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<?php include_once("head.php")?>
+	<title>Trainings | Tobacco Board</title>
+<script class="include" type="text/javascript" src="../graph/jquery.min.js"></script>
+</head>
+<body>
+
+<section id="adminLayout">
+
+	<?php include "header.php" ?>
+
+	<?php include "sidebar.php"; ?>
 	
-    <tr>
-      <td class="style8"><div align="right">Schedule Month &amp; Year</div></td>
-      <td><div align="center">:</div></td>
-      <td><select name="mnth" id="mnth">
-        <option value="">Month</option>
-        <option value="1">January</option>
-        <option value="2">February</option>
-        <option value="3">March</option>
-        <option value="4">April</option>
-        <option value="5">May</option>
-        <option value="6">June</option>
-        <option value="7">July</option>
-        <option value="8">August</option>
-        <option value="9">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
-      </select> 
-           &amp; 
-           <select name="yr" id="yr">
-             <option value="">Year</option>
-             <?php
-			for($i=2015;$i<=(date('Y')+10); $i++)
-			{
-			?>
-             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-            <?php
-			}
-				?>
-        </select></td>
-      <script language="javascript">
-			$('#mnth').val('<?php echo $mn; ?>'); $('#yr').val('<?php echo $yr; ?>');</script>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td><label>
-        <input type="submit" name="Submit" value="Submit" />
-	<input type="hidden" name="userid" id="userid" value="<?php if(isset($_GET['id'])){  echo $_GET['id']; } ?>" />
-      </label></td>
-    </tr>
-  </table>
-  <?php
-   $selecty=executework("select * from tob_training");
-   $cnt=@mysqli_num_rows($selecty);
-   if($cnt >0)
-   {
-  ?>
-  &nbsp;
-  <table width="100%" height="61" border="1" cellpadding="1" cellspacing="1">
-    <tr class="style8">
-      <td width="8%"><div align="center"><strong>S.No</strong></div></td>
-      <td width="22%"><div align="center"><strong>Training Programme Name</strong></div></td>
-      <td width="21%"><div align="center"><strong>No Of Trainings</strong></div></td>
-      <td width="23%"><div align="center"><strong>Schedule</strong></div></td>
-      <td width="23%"><div align="center"><strong>Schedule <br />
-        Month &amp; Year</strong></div></td>
-      <td width="26%" class="style1"><div align="center" class="style3">Status</div></td>
-      <td width="26%" class="style1"><div align="center"></div></td>
-      <td width="26%" class="style1"><div align="center"></div></td>
-    </tr>
-	<?php
-	$i=1;
-	while($row=@mysqli_fetch_array($selecty))
-	{
-		if($row['disable']==1)
-		$stat='Disabled';
-		else
-		$stat='Active';
+	<main id="adminMain" class="container-fluid">
+
+	<h2 class="admin-title">Training </h2>
+
+
+	<div id="adminTab">
+	<nav>
+		<div class="nav nav-tabs align-items-center" id="nav-tab" role="tablist">
+			<button class="nav-link <?php if(empty($_GET['page_index'])){ ?> active <?php } ?>" id="post-tab" data-bs-toggle="tab" data-bs-target="#post-training" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Post Trainings</button>
+			<button class="nav-link <?php if(!empty($_GET['page_index']) && $_GET['page_index']!=""){ ?> active <?php } ?>" id="view-tab" data-bs-toggle="tab" data-bs-target="#view-training" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">View Trainings</button>
+			
+
+			<?php if(isset($_GET['exst']) && $_GET['exst']==1){ ?>
+				<div class="alert alert-danger d-flex align-items-center py-1 px-2 m-0 ms-auto" role="alert">
+					<span class="flex-shrink-0 me-2 material-symbols-rounded">warning</span>
+					<span> Training Programme exists with same name </span>
+				</div>
+			<?php } else if(isset($_GET['invalid']) && $_GET['invalid']==1){ ?>
+				<div class="alert alert-danger d-flex align-items-center py-1 px-2 m-0 ms-auto" role="alert">
+					<span class="flex-shrink-0 me-2 material-symbols-rounded">warning</span>
+					<span> Invalid Access </span>
+				</div>
+			<?php } else if((isset($_GET['succ']) && $_GET['succ']==1) || (isset($_GET['succ']) && $_GET['succ']==2) || (isset($_GET['del']) && $_GET['del']==1)){ ?>
+				<div class="alert alert-success d-flex align-items-center py-1 px-2 m-0 ms-auto" role="alert">
+					<span class="flex-shrink-0 me-2 material-symbols-rounded">check_circle</span>
+					<?php if(isset($_GET['succ']) && $_GET['succ']==1){ ?>
+						<span> Training programme created successfully </span>
+					<?php } else if(isset($_GET['succ']) && $_GET['succ']==2){ ?>
+						<span> Training Programme updated successfully </span>
+					<?php } else if(isset($_GET['del']) && $_GET['del']==1){ ?>
+						<span> Training Programme deleted successfully </span>
+					<?php } ?>
+				</div>
+			<?php } ?>
+		</nav>
+
+	<div class="tab-content" id="nav-tabContent">
+		<div class="tab-pane fade <?php if(empty($_GET['page_index'])){ ?> show active <?php } ?>" id="post-training" role="tabpanel" aria-labelledby="post-training-tab" tabindex="0">
+			
+		<form id="form1" name="form1" method="post" action="" onsubmit="return validation();">
+
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="name" class="form-label">Name of Training Programme</label>
+					<textarea name="name" cols="30" rows="3" class="form-control" placeholder="Leave a name" id="name"><?php if(isset($rowm)){ echo urldecode($rowm['name']); } ?></textarea>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="schedule" class="form-label">Name of Training Programme</label>
+					<textarea name="schedule" cols="30" rows="3" class="form-control" placeholder="Leave a schedule" id="schedule"><?php if(isset($rowm)){ echo urldecode($rowm['schedule']); } ?></textarea>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="schedule" class="form-label">No. of Trainings</label>
+					<input name="tno" type="text" id="tno" size="30" class="form-control" value="<?php if(isset($rowm)){ echo $rowm['tno']; } ?>" />
+				</div>
+
+				<div class="form-group col-md-6">
+					<label for="schedule" class="form-label">Schedule Month &amp; Year</label>
+					<div class="row">
+						<div class="col-md-6">
+							<select name="mnth" id="mnth" class="form-select">
+								<option value="">Month</option>
+								<option value="1">January</option>
+								<option value="2">February</option>
+								<option value="3">March</option>
+								<option value="4">April</option>
+								<option value="5">May</option>
+								<option value="6">June</option>
+								<option value="7">July</option>
+								<option value="8">August</option>
+								<option value="9">September</option>
+								<option value="10">October</option>
+								<option value="11">November</option>
+								<option value="12">December</option>
+							</select>  
+						</div>
+						<div class="col-md-6">
+							<select name="yr" id="yr" class="form-select">
+								<option value="">Year</option>
+								<?php
+								for($i=2015;$i<=(date('Y')+10); $i++) { ?>
+									<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+								<?php } ?>
+							</select>
+							<script language="javascript">
+								$('#mnth').val('<?php echo $mn; ?>'); $('#yr').val('<?php echo $yr; ?>');
+							</script>
+						</div>
+					</div>
+				</div>
+			</div>  
+ 
+			<div class="submit-button text-end">
+				<input type="submit" class="btn btn-primary" name="Submit" value="Submit" />
+				<input type="hidden" name="userid" id="userid" value="<?php if(isset($_GET['id'])){  echo $_GET['id']; } ?>" />
+			</div>  
+		</form>
+		</div>
+
+		<?php }  ?>
+
+
+	<div class="tab-pane fade <?php if(!empty($_GET['page_index']) && $_GET['page_index']!=""){ ?> show active <?php } ?>" id="view-training" role="tabpanel" aria-labelledby="view-training-tab" tabindex="1">
 		
-	?>
-    <tr class="style17">
-      <td><div align="center"><?php echo $i ?></div></td>
-      <td><div align="center"><?php echo urldecode($row['name']); ?></div></td>
-      <td><div align="center"><?php echo $row['tno'] ?></div></td>
-      <td><div align="center"><?php echo urldecode($row['schedule']) ?></div></td>
-      <td><div align="center"><?php echo date('M', mktime(0, 0, 0, $row['mnth'], 10))." - ".$row['yr']; ?></div></td>
-      <td class="style4"><div align="center"><?php echo $stat ?></div></td>
-      <td class="style4"><div align="center">
-          <input type="button" name="button<?php echo $row['id']; ?>" id="button<?php echo $row['id']; ?>" value="Modify" onclick="modify_user('<?php echo $row['id']; ?>');" />
-      </div></td>
-      <td class="style4"><div align="center">
-          <label>
-          <input type="button" name="button" id="button" value="Delete" onclick="delete_user('<?php echo $row['id']; ?>');" />
-          </label>
-      </div></td>
-    </tr>
 	<?php
-	$i++;
+	$selecty=executework("select * from tob_training");
+	$cnt=@mysqli_num_rows($selecty);
+	if($cnt >0) { ?>
+	
+	<div class="table-responsive">
+		<table class="table table-bordered ">
+			<thead class="text-center">
+				<tr>
+					<th>SL No </th>
+					<th>Training Programme Name </th>
+					<th>No Of Trainings</th>
+					<th>Schedule </th>
+					<th>Schedule Month &amp; Year</th>
+					<th>Status</th>
+					<th style="min-width: 100px">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php
+			$i=1;
+			while($row=@mysqli_fetch_array($selecty)) {
+				if(isset($row['disable']) && $row['disable']==1)
+				$stat='Disabled';
+				else
+				$stat='Active';
+			?>
+
+			<tr>
+				<td><?php echo $i ?></td>
+				<td><?php echo urldecode($row['name']); ?></td>
+				<td><?php echo $row['tno'] ?></td>
+				<td><?php echo urldecode($row['schedule']) ?></td>
+				<td><?php echo date('M', mktime(0, 0, 0, $row['mnth'], 10))." - ".$row['yr']; ?></td>
+				<td><?php echo $stat ?></td>
+				<td class="text-center">
+					<button name="button<?php echo $row['id']; ?>" id="button<?php echo $row['id']; ?>" value="Modify" onclick="modify_user('<?php echo $row['id']; ?>');" class="btn icon-btn btn-secondary" type="button">
+						<span class="material-symbols-rounded">edit</span>
+					</button>
+					<button type="button" name="button" id="button" value="Delete" onclick="delete_user('<?php echo $row['id']; ?>');" class="btn icon-btn btn-danger">
+						<span class="material-symbols-rounded">delete</span>
+					</button>
+				</td>
+			</tr>
+		<?php $i++; } } ?>
+		</tbody>
+	</table>
+</div>
+
+	</div>
+</div>
+
+</main>
+
+</section>
+
+<?php include_once("footer.php");?>
+
+
+
+
+
+
+<script>
+function validation() {
+	if(document.form1.name.value=="") {
+		alert("Enter Name of the Training Programme");
+		document.form1.name.focus();
+		return false;
 	}
-	?>
-  </table>
-  <?php
-  }
-  }
-  ?>
-</form>
+	
+	if(document.form1.tno.value=="") {
+		alert("Enter No of Trainings");
+		document.form1.tno.focus();
+		return false;
+	}
+	
+	if(document.form1.schedule.value=="") {
+		alert("Enter Schedule of Training");
+		document.form1.schedule.focus();
+		return false;
+	}
+	
+	if(document.form1.mnth.value=="") {
+		alert("Select Schedule Month");
+		document.form1.mnth.focus();
+		return false;
+	}
+	
+	if(document.form1.yr.value=="") {
+		alert("Select Schedule Year");
+		document.form1.yr.focus();
+		return false;
+	}
+	
+	return true;
+}
+
+function modify_user(id) {
+	if(confirm("Are you sure to modify this information?")) {
+		window.location="trainings.php?id="+id;
+		return false;
+	}
+	else
+	return false;
+}
+function delete_user(id) {
+	if(confirm("Are you sure to delete this user information?")) {
+		window.location="trainings.php?did="+id;
+		return false;
+	}
+	else
+	return false;
+}
+</script>
+
 </body>
 </html>

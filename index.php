@@ -132,6 +132,15 @@
 							</div>
 						</a>
 					</div>
+					<div class="col-md-4">
+						<a href="javascript:;" class="profile-card box-shadow h-100 flex-row text-start">
+							<img src="./img/profile/Srinivas.B.C.jpeg" class="card-img-top border flex-shrink-0" alt="Srinivas.B.C">
+							<div class="card-body">
+								<h4 class="card-title fs-6 text-dark">Srinivas.B.C</h4>
+								<small class="card-text text-goldenbrown lh-sm fw-600">DIRECTOR (Auctions)</small>
+							</div>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
