@@ -120,7 +120,7 @@ $row00=@mysqli_fetch_array($get);
 	<main id="adminMain" class="container-fluid">
 
 		<div class="row">
-			<h2 class="admin-title col-auto"><?php echo $row00['page']; ?> / <?php echo $rowp['page']; ?> </h2>
+			<h2 class="admin-title col-auto"><?php if ($row00 && $rowp) { echo $row00['page']; ?> / <?php echo $rowp['page']; ?> <?php } ?></h2>
 
 			<div class="col">
 				<?php if(!empty($exst) && $exst==1){ ?>

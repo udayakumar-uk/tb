@@ -3,8 +3,7 @@ ob_start();
 session_start();
 header("Cache-control: private"); 
 include_once("include/includei.php");
-if(!empty($_SESSION['tobadmin']))
-{
+if(!empty($_SESSION['tobadmin'])) {
 ?>
 
 <?php
@@ -167,7 +166,7 @@ $id='';
 			
 
 
-<form action="" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="return check(this);">
+	<form action="" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="return check(this);">
 	<?php
 		$tselect=executework("select * from tob_employee where id='".$id."'");
 		$tcnt=@mysqli_num_rows($tselect);
@@ -428,8 +427,7 @@ $id='';
 
 
 <script type="text/javascript">
-function check(form1)
-{
+function check(form1) {
 	var tfile=document.form1.tfile.value;
 	var tflen=tfile.length;
 	var dpos=tfile.indexOf(".");
@@ -473,27 +471,23 @@ function check(form1)
 		return true
 	}
 }
-function delet(st,st1)
-{
+function delet(st,st1) {
 	if(confirm("Are You sure to Delete Selected Details Completely")) {
 		location.href="employee_corner.php?id="+st+"&edit="+st1;
 	}
 }
 
-function del(st,st1)
-{
+function del(st,st1) {
 	if(confirm("Are You sure to Move Archive Selected Details")) {
 		location.href="employee_corner.php?id="+st+"&edit="+st1;
 	}
 }
-function modf(st,st1)
-{
+function modf(st,st1) {
 	if(confirm("Are You sure to Modify Selected Details")) {
 		location.href="employee_corner.php?id="+st+"&edit="+st1;
 	}
 }
-function back1()
-{
+function back1() {
 	location.href="employee_corner.php";
 }
 </script>
