@@ -3,7 +3,7 @@
 
 <script>
     tinymce.init({
-        selector: '#description, #hdescription, #content, #hcontent',
+        selector: '#description, #hdescription, #content, #hcontent, #horder_details',
         plugins: [
         // Core editing features
         'anchor', 'image', 'autolink', 'charmap', 'codesample', 'emoticons', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
