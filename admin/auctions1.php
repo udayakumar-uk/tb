@@ -3,51 +3,13 @@ ob_start();
 session_start();
 header("Cache-control: private"); 
 include_once("include/includei.php");
-if(!empty($_SESSION['tobadmin']))
-{
+if(!empty($_SESSION['tobadmin'])) {
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Auctions | Welcome To TOBBACO BOARD Admin</title>
-<style type="text/css">
-<!--
-.style1 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-}
-.style4 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; }
-.style7 {font-size: 14px; color: #FF0000; font-family: Arial, Helvetica, sans-serif;}
 
-a:link {
-	color: #000000;
-	text-decoration: none;
-}
-a:visited {
-	color: #000000;
-	text-decoration: none;
-}
-a.b:hover {
-	color: #990000;
-	text-decoration: none;
-}
-a.b:active {
-	color: #990000;
-	text-decoration: none;
-}
-
--->
-</style>
-</head>
-<script src="../jquery.ui-1.5.2/jquery-1.2.6.js" type="text/javascript"></script>
-<script src="../jquery.ui-1.5.2/ui/ui.datepicker.js" type="text/javascript"></script>
-<link href="../jquery.ui-1.5.2/themes/ui.datepicker.css" rel="stylesheet" type="text/css" />
+	
 <script type="text/javascript">
-function chk()
-{
+function chk() {
 	document.form1.submit();
 }
 
@@ -69,8 +31,7 @@ function gettoday()
 
 }
 
-function validate_date(valdate)
-{
+function validate_date(valdate) {
 
 	var day1, day2;
 
@@ -130,22 +91,18 @@ function validate_date(valdate)
 
 }
 
-function check(form1)
-{
-	if(document.form1.state.value=="")
-	{
+function check(form1) {
+	if(document.form1.state.value=="") {
 		alert("State Should Not Be Empty");
 		document.form1.state.focus();
 		return false;
 	}
-	else if(document.form1.pdate.value=="")
-	{
+	else if(document.form1.pdate.value=="") {
 		alert("Select Date");
 		document.form1.pdate.focus();
 		return false;
 	}
-	else if(validate_date(document.form1.pdate.value)==false)
-	{
+	else if(validate_date(document.form1.pdate.value)==false) {
 		alert("Future Dates Are Not Alloed");
 		document.form1.pdate.focus();
 		return false;
@@ -155,8 +112,7 @@ function check(form1)
 		var n=document.form1.n.value;
 		
 		var valid=true;
-		for(i=1;i<=n;i++)
-		{
+		for(i=1;i<=n;i++) {
 			if(num_check("apf"+i) && num_check("aqty"+i) && num_check("eqty"+i) && num_check("bales"+i) && num_check("ns"+i) && num_check("nb"+i) && num_check("rr"+i) && num_check("cr"+i) && num_check("hbid"+i) && num_check("lbid"+i) && num_check("buyers"+i) && num_check("qsold"+i) && num_check("aprice"+i) && num_check("cprice"+i))
 			{
 				valid=true;
@@ -165,14 +121,12 @@ function check(form1)
 			return false;
 		}
 
-		if(num_check("bq") && num_check("mq") && num_check("lq") && num_check("bp") && num_check("mp") && num_check("lp") && num_check("ba") && num_check("ma") && num_check("la"))
-		{
+		if(num_check("bq") && num_check("mq") && num_check("lq") && num_check("bp") && num_check("mp") && num_check("lp") && num_check("ba") && num_check("ma") && num_check("la")) {
 			valid=true;
 		} 
 		else
 		return false;
-		if(valid==true)
-		{
+		if(valid==true) {
 			document.form1.subm.value=1;
 			return true
 		}
@@ -181,16 +135,12 @@ function check(form1)
 	}
 }
 
-function field_chk(st)
-{
-	if(document.getElementById(st).value=="")
-	{
+function field_chk(st) {
+	if(document.getElementById(st).value=="") {
 	}
 }
-function num_check(st)
-{
-	if(document.getElementById(st).value!="" && isNaN(document.getElementById(st).value)==true)
-	{
+function num_check(st) {
+	if(document.getElementById(st).value!="" && isNaN(document.getElementById(st).value)==true) {
 		alert("Only numbers are allowed");
 		document.getElementById(st).value="";
 		document.getElementById(st).focus();
@@ -199,25 +149,21 @@ function num_check(st)
 	else
 	return true;
 }
-function tots(i)
-{
+function tots(i) {
 	var bal=document.getElementById("bales"+i).value;
 	var tots=document.getElementById("tot"+i).value;
-	if(num_check("bales"+i) && bal!="" && tots!="")
-	{
+	if(num_check("bales"+i) && bal!="" && tots!="") {
 		var tot=parseFloat(bal)-parseFloat(tots);
 		document.getElementById("bsold"+i).value=tot;
 	}
 }
-function totb(i)
-{
+function totb(i) {
 	var ns=document.getElementById("ns"+i).value;
 	var nb=document.getElementById("nb"+i).value;
 	var rr=document.getElementById("rr"+i).value;
 	var cr=document.getElementById("cr"+i).value;
 	
-	if((ns!="" || nb!="" || rr!="" || cr!="") && (num_check("ns"+i) && num_check("nb"+i) && num_check("rr"+i) && num_check("cr"+i)))
-	{
+	if((ns!="" || nb!="" || rr!="" || cr!="") && (num_check("ns"+i) && num_check("nb"+i) && num_check("rr"+i) && num_check("cr"+i))) {
 		if(ns=="")
 		ns=0;
 		if(nb=="")
@@ -232,10 +178,8 @@ function totb(i)
 	}
 }
 
-function delst(st,st1)
-{
-	if(confirm("Are you sure to delete this date data?"))
-	{
+function delst(st,st1) {
+	if(confirm("Are you sure to delete this date data?")) {
 		location.href="auctions1.php?del=1&stat="+st1+"&dat="+st;
 	}
 	else
@@ -244,8 +188,7 @@ function delst(st,st1)
 </script>
 <?php
 
-	function datepattrn($a)
-	{
+	function datepattrn($a) {
  		$b = substr($a,5, 2);// month
  		$c = substr($a,7, 1);// '-'
 		$d= substr($a,8, 2);// day
@@ -256,8 +199,7 @@ function delst(st,st1)
 		$g=$d."/".$b."/".$f;
 		return $g;
 	}
-	function datepattrn1($a)
-	{
+	function datepattrn1($a) {
  		$b = substr($a,3, 2);// month
  		$c = substr($a,2, 1);// '-'
 		$d= substr($a,0, 2);// day
@@ -269,18 +211,15 @@ function delst(st,st1)
 		return $g;
 	}
 
-	function numround($st,$n)
-	{
-		if($st!="")
-		{
+	function numround($st,$n) {
+		if($st!="") {
 			$n1=pow(10 ,$n);
 			$num=round($st*$n1)/($n1);
 		}
 		return $num;
 	}
 
-function set_num($st)
-{
+function set_num($st) {
 	$val="";
 	if($st=="")
 	$val=0;
@@ -298,13 +237,10 @@ else
 $stat='Karnataka';
 
 
-if(!empty($_POST['delet']))
-{
+if(!empty($_POST['delet'])) {
 	$ids="";
-	for($i=1;$i<=$_POST['n'];$i++)
-	{
-		if($_POST['delt'.$i]!="")
-		{
+	for($i=1;$i<=$_POST['n'];$i++) {
+		if($_POST['delt'.$i]!="") {
 			if($ids=="")
 			$ids=stripslashes($_POST['delt'.$i]);
 			else
@@ -315,8 +251,7 @@ if(!empty($_POST['delet']))
 	$seldata=executework("select * from tob_auction where tdate in ('".$ids."') and platf in(select id from tob_platform where state='".$stat."')");
 	$cnt=@mysqli_num_rows($seldata);
 	
-	if($cnt>0)
-	{
+	if($cnt>0) {
 		$deldata=executework("delete from tob_auction where tdate in ('".$ids."') and platf in(select id from tob_platform where state='".$stat."')");
 		
 	}
@@ -329,8 +264,7 @@ if(!empty($_POST['delet']))
 
 $selyr=executework("select max(year) from tob_auct where platf in(select id from tob_platform where state='".$stat."' and isactive=1)");
 $rowy=@mysqli_fetch_array($selyr);
-?>
-<body>
+?> 
 <?php
 if(!empty($_POST['dat']))
 $ndate1=$_POST['dat'];
@@ -339,53 +273,59 @@ $ndate1=$_GET['dat'];
 else 
 $ndate1=date('Y');
 ?>
-<?php include_once("header.php");?>
-<form action="auctions1.php" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="return check(this);">
-  <table width="79%" border="0" align="center">
-    <tr>
-      <td width="24%">&nbsp;</td>
-      <td width="5%">&nbsp;</td>
-      <td width="71%">&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="3"><span class="style1">Add Auctions </span> </td>
-    </tr>
-    
-	<?php
-		if(!empty($_GET['stat']) && $_GET['stat']==2)
-		{
-	?>
-    <tr>
-      <td height="40" colspan="3" style="padding-left:150px;"><span class="style7">Data Deleted Successfully </span></td>
-    </tr>
-	<?php
-		}
-		if(!empty($_GET['succ']))
-		{
-	?>
-    <tr>
-      <td height="40" colspan="3" style="padding-left:150px;"><span class="style7">Data Stored  Successfully</span> </td>
-    </tr>
-	<?php
-		}
-		else
-		{
-	?>
-    <tr>
-      <td height="40" colspan="3" style="padding-left:150px;"><span class="style7"></span> </td>
-    </tr>
-	<?php
-		}
-	?>
-    <tr>
-      <td height="30" style="padding-left:35px;"><span class="style4">State</span></td>
-      <td height="30"><div align="center">:</div></td>
-      <td height="30"><label></label>
-          <select name="state" id="state" onchange="chk();">
-            <option value="">Select</option>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<?php include_once("head.php")?>
+	<title>Auctions | Tobacco Board</title>
+	<script src="genfunctions.js" type="text/javascript"></script>
+	<script src="../jquery.ui-1.5.2/jquery-1.2.6.js" type="text/javascript"></script>
+	<script src="../jquery.ui-1.5.2/ui/ui.datepicker.js" type="text/javascript"></script>
+	<link href="../jquery.ui-1.5.2/themes/ui.datepicker.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<section id="adminLayout">
+
+	<?php include "header.php" ?>
+
+	<?php include "sidebar.php"; ?>
+	
+	<main id="adminMain" class="container-fluid">
+		
+
+	<div class="row">
+		<h2 class="admin-title col">Add Auctions</h2>
+
+		<div class="col-auto">
+			<?php if(!empty($_GET['stat']) && $_GET['stat']==2){ ?>
+				<div class="alert alert-success d-flex align-items-center py-1 px-2 m-0 ms-auto" role="alert">
+					<span class="flex-shrink-0 me-2 material-symbols-rounded">check_circle</span>
+					<span> Data Deleted Successfully</span>
+				</div>
+			<?php } ?>
+			<?php if(!empty($_GET['succ'])){ ?>
+				<div class="alert alert-success d-flex align-items-center py-1 px-2 m-0 ms-auto" role="alert">
+					<span class="flex-shrink-0 me-2 material-symbols-rounded">check_circle</span>
+					<span> Data Stored  Successfully</span>
+				</div>
+			<?php } ?>
+		</div>
+	</div>
+
+	<form action="auctions1.php" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="return check(this);">
+   	
+	<div class="form-group">
+		<label for="state" class="form-label">States</label>
+		<select name="state" id="state" onchange="chk()" class="form-select w-auto">
+			<option value="">Select</option>
             <option value="Andhra Pradesh">Andhra Pradesh</option>
             <option value="Karnataka" selected="selected">Karnataka</option>
-          </select>
+          </select> 
           <?php
 					if($stat!="")
 				{
@@ -403,134 +343,117 @@ $ndate1=date('Y');
 				</script>
           <?php
 					}
-				?>      </td>
-    </tr>
+				?>      
+		</div>
+
     
-	<?php
-	if(!empty($ndate1))
-	{
+	<?php if(!empty($ndate1)) {
 		$sel=executework("select  distinct tdate,state from tob_auction,tob_platform where tob_platform.id=tob_auction.platf and tob_platform.state='".($stat)."' order by tdate desc");
 		//echo "select  distinct tdate,state from tob_auction,tob_platform where tob_platform.id=tob_auction.platf and tob_platform.state='".($stat)."' order by tdate desc";
-		$cnts=@mysqli_num_rows($sel);
-	
-	}
-	?>
-    
-    <tr>
-      <td height="21" class="style4" style="padding-left:35px;">&nbsp;</td>
-      <td height="21">&nbsp;</td>
-      <td height="21">&nbsp;</td>
-    </tr>
+		$cnts=@mysqli_num_rows($sel); 
+	} ?>
+     
+
+
 	<?php
-	if(!empty($ndate1) && !empty($stat))
-	{
-	?>
-    <tr>
-      <td height="21" colspan="3" class="style4"><table width="500" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td><table width="106%" border="1" align="center" cellpadding="0" cellspacing="0">
-            <tr>
-              <td height="31"><a href="auctions.php?vd=<?php echo $stat; ?>"><strong>New Entry </strong></a></td>
-              <td width="41%"><div align="center"><strong><a href="#" onclick="checka();">Check All</a> / <a href="#" onclick="unchecka();">Uncheck All</a> </strong></div></td>
-            </tr>
-            <tr>
-              <td width="65%" height="31"><div align="left"><strong>&nbsp; <?php echo $stat; ?></strong></div></td>
-              <td width="35%"><div align="center"><input type="button" name="Button" value="Delete"  onclick="delt_bulk();" />
-               </div></td>
-            </tr>
+	if(!empty($ndate1) && !empty($stat)) { ?>
+
+			
+	<div class="table-responsive">
+		<table class="table table-bordered ">
+			<thead>
+				<tr>
+					<th><a href="#" onclick="checka();">Check All</a> / <a href="#" onclick="unchecka();">Uncheck All</a></th>
+					<th><a href="auctions.php?vd=<?php echo $stat; ?>"><strong>New Entry </strong></a></th>
+				</tr>
+				<tr>
+					<th><input type="button" class="btn btn-sm btn-danger" name="Button" value="Delete" onclick="delt_bulk();" /></th>
+					<th><?php echo $stat; ?></th>
+				</tr>
+			</thead>
+			<tbody>
+		
+	 
             <?php
-		if($cnts>0)
-		{
-	?>
+				if($cnts>0) { ?>
+					<?php
+					$i=1;
+					while($re=mysqli_fetch_array($sel))
+					{
+				?>
+				<tr>
+					<td>
+						<div class="form-check">
+							<input class="form-check-input" name="delt<?php echo $i ?>" type="checkbox" id="delt<?php echo $i ?>" value="<?php echo $re['tdate']?>" />
+							<label class="form-check-label" for="delt<?php echo $i ?>"> </label>
+						</div>
+					</td>
+					<td> <a href="auctions.php?vid=<?php echo $re['tdate']?>&amp;vd=<?php echo $re['state']?>" ><?php echo datepattrn($re['tdate'])?> </a></td>
+				</tr>
             <?php
-			$i=1;
-			while($re=mysqli_fetch_array($sel))
-			{
-		?>
-            <tr>
-              <td height="29"><div align="left"> &nbsp; &nbsp;<a href="auctions.php?vid=<?php echo $re['tdate']?>&amp;vd=<?php echo $re['state']?>" ><?php echo datepattrn($re['tdate'])?> </a></div></td>
-              <td height="29"><div align="center">
-                <input name="delt<?php echo $i ?>" type="checkbox" id="delt<?php echo $i ?>" value="<?php echo $re['tdate']?>" />
-               </div></td>
-            </tr>
-            <?php
-			$i++;
-			 }
-		 }
-	}
-	?>
-            <tr>
-              <td height="29">&nbsp;</td>
-              <td height="29"><div align="center">
-                <p>
-                  <input type="button" name="Button2" value="Delete"  onclick="delt_bulk();" />
-                </p>
-                </div></td>
-            </tr>
-            <tr>
-              <td height="29">&nbsp;</td>
-              <td height="29"><div align="center"><strong><a href="#" onclick="checka();">Check All</a> / <a href="#" onclick="unchecka();">Uncheck All</a></strong></div></td>
-            </tr>
-  </table>
- <input name="n" type="hidden" id="n" value="<?php echo $i-1 ?>" />
- <input type="hidden" name="delet" id="delet" />					  </td>
-  </tr>
-  </table>  </td>
-  </tr>
-  </table>
+			$i++; } } } ?>
+
+			</tbody>
+			<tfoot>
+				<tr>
+					<th><a href="#" onclick="checka();">Check All</a> / <a href="#" onclick="unchecka();">Uncheck All</a></th>
+					<th><a href="auctions.php?vd=<?php echo $stat; ?>"><strong>New Entry </strong></a></th>
+				</tr>
+				<tr>
+					<th><?php echo $stat; ?></th>
+					<th><input type="button" class="btn btn-sm btn-danger" name="Button" value="Delete" onclick="delt_bulk();" /></th>
+				</tr>
+			</tfoot>
+  		</table>
+
+
+		<input name="n" type="hidden" id="n" value="<?php echo $i-1 ?>" />
+		<input type="hidden" name="delet" id="delet" />
+		
+	</div>
+		
 </form>
+
+</main>
+
+</section>
+
 <?php include_once("footer.php");?>
-</body>
-</html>
-<?php
-}
-else
-{
-?>
-	<script language="javascript">parent.location.href="index.php";</script>
-<?php
-}
-?>
+
 <script>
 pdate='<?php if(!empty($dates1)) echo $dates1 ?>';
-if(pdate!="")
-{
+if(pdate!="") {
 	var pdates=new Array();
 	pdates=pdate.split(',');
-	for(k=0;k<pdates.length;k++)
-	{
+	for(k=0;k<pdates.length;k++) {
 		jQuery('#'+pdates[k]).datepicker();
 		jQuery('#'+pdates[k]).readOnly=true;
 	}
 }
+
 jQuery('#pdate').datepicker();
 jQuery('#pdate').readOnly=true;
 
 
 
-function delt(st)
-{
+function delt(st) {
 	if(confirm("Are You Sure To Delete This Data?"))
 	location.href="auctions1.php?delt="+st;
 	else
 	return false;
 }
 
-function delt_bulk()
-{
-	if(confirm("Are You Sure To Delete Selected Data"))
-	{
+function delt_bulk() {
+	if(confirm("Are You Sure To Delete Selected Data")) {
 		var n=document.form1.n.value;
 		var s=0;
-		for(i=1;i<=n;i++)
-		{
+		for(i=1;i<=n;i++) {
 			if(document.getElementById("delt"+i).checked==true)
 			{
 				s=1;
 			}
 		}
-		if(s==0)
-		{
+		if(s==0) {
 			alert("Select records to delete");
 			return false;
 		}
@@ -544,14 +467,21 @@ function delt_bulk()
 	return false;
 }
 
-function checka()
-{
+function checka() {
 	$('input:checkbox[id^="delt"]').attr('checked',true);
 }
-function unchecka()
-{
+function unchecka() {
 	$('input:checkbox[id^="delt"]').each(function () {
 		this.checked=false;
 	});
 }
 </script>
+
+
+<?php } else { ?>
+	<script language="javascript">parent.location.href="index.php";</script>
+<?php } ?>
+
+
+</body>
+</html>

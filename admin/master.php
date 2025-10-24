@@ -23,9 +23,9 @@ if(!empty($_SESSION['tobadmin'])) {
 	<main id="adminMain" class="container-fluid">
 
 	<div class="row">
-		<h2 class="admin-title col-auto">Location</h2>
+		<h2 class="admin-title col">Location</h2>
 
-		<div class="col">
+		<div class="col-auto">
 			<?php if(!empty($_GET['succ']) && $_GET['succ']==2){ ?>
 				<div class="alert alert-danger d-flex align-items-center py-1 px-2 m-0 ms-auto" role="alert">
 					<span class="flex-shrink-0 me-2 material-symbols-rounded">warning</span>

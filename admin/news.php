@@ -211,7 +211,7 @@ $id='';
 				$home="checked='checked'";
 				else
 				$home="";
-		?>
+			?>
 		
 	<div class="row">
 		
