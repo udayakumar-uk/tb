@@ -1,0 +1,28 @@
+
+[data-bs-theme="dark"] {
+	--lightBeige: var(--bs-black);
+}
+[data-bs-theme="dark"] header .btn {
+	--bs-btn-color: #ff0;
+}
+[data-bs-theme="dark"] a:not(.btn) {
+	color: #ff0;
+}
+
+[data-bs-theme="dark"] :is(.profile-card, .reg-card, .statics-section .card-body, .copyright-section){
+	background-color: #1d1f21;
+}
+[data-bs-theme="dark"] :is(.profile-card:hover, .reg-card:hover, .statics-section .card-body:hover, .dropdown-item:focus, .dropdown-item:hover){
+	background-color: var(--bs-black);
+}
+
+[data-bs-theme="dark"] .navbar{
+	--bs-navbar-active-color: #fff;
+}
+[data-bs-theme="dark"] :is(.dropdown-item:focus, .dropdown-item:hover) {
+    --bs-dropdown-link-hover-color: #fff;
+}
+[data-bs-theme="dark"] .slider-section marquee{
+    background-color: var(--bs-black);
+    border-top: 1px solid;
+}

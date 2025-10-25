@@ -42,7 +42,7 @@ $max=$rowb['max_sl'];
                     <img src="./tbdata/members/<?php echo $row_brd['image']; ?>" class="card-img-top border flex-shrink-0" alt="Boardmembers" /> <?php } else {?>
                     <img src="./tbdata/members/boardmembers_thumb.gif" class="card-img-top border flex-shrink-0" alt="Boardmembers" /><?php }?>
                     <div class="card-body flex-grow-0">
-                      <h4 class="card-title fs-6 text-dark"><?php echo $row_brd['name']; ?></h4>
+                      <h4 class="card-title fs-6 text-dark-emphasis"><?php echo $row_brd['name']; ?></h4>
                       <p class="card-text text-goldenbrown my-2 lh-sm fw-600"><?php echo $row_brd['designation']; ?></p>
                       <small class="card-text text-secondary d-block lh-sm"><?php echo $row_brd['addr']; ?></small>
                     </div>

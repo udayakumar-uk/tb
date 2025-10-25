@@ -9,7 +9,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
 	<title>Tobacco Board</title>
 	
@@ -118,7 +118,7 @@
 						<a href="./profile/Yashwanth_Profile.pdf" target="_blank" class="profile-card box-shadow h-100 flex-row text-start">
 							<img src="./img/profile/Shri_Yashwanth_Kumar_Chidipothu.jpeg" class="card-img-top border flex-shrink-0" alt="Shri Yashwanth Kumar Chidipothu">
 							<div class="card-body">
-								<h4 class="card-title fs-6 text-dark">Shri Yashwanth Kumar Chidipothu</h4>
+								<h4 class="card-title fs-6 ">Shri Yashwanth Kumar Chidipothu</h4>
 								<small class="card-text text-goldenbrown lh-sm fw-600">CHAIRMAN</small>
 							</div>
 						</a>
@@ -127,7 +127,7 @@
 						<a href="javascript:;" class="profile-card box-shadow h-100 flex-row text-start">
 							<img src="./img/profile/Ms_Vishwasree_B_IAS.jpeg" class="card-img-top border flex-shrink-0" alt="Ms. Vishwasree B, IAS">
 							<div class="card-body">
-								<h4 class="card-title fs-6 text-dark">Ms.Vishwasree B, IAS</h4>
+								<h4 class="card-title fs-6 ">Ms.Vishwasree B, IAS</h4>
 								<small class="card-text text-goldenbrown lh-sm fw-600">EXECUTIVE DIRECTOR</small>
 							</div>
 						</a>
@@ -136,7 +136,7 @@
 						<a href="javascript:;" class="profile-card box-shadow h-100 flex-row text-start">
 							<img src="./img/profile/Srinivas.B.C.jpeg" class="card-img-top border flex-shrink-0" alt="Srinivas.B.C">
 							<div class="card-body">
-								<h4 class="card-title fs-6 text-dark">Srinivas.B.C</h4>
+								<h4 class="card-title fs-6 ">Srinivas.B.C</h4>
 								<small class="card-text text-goldenbrown lh-sm fw-600">DIRECTOR (Auctions)</small>
 							</div>
 						</a>
@@ -469,7 +469,7 @@
 													<?php echo $rown['description']; ?>
 												</a>
 											<?php } else { ?>
-												<a href="javascript:;" class="line-clamp line-clamp-3" class="text-dark">
+												<a href="javascript:;" class="line-clamp line-clamp-3" class="">
 													<?php echo $rown['description']; ?>
 												</a>
 											<?php } ?>
@@ -559,7 +559,7 @@
 					<a href="http://tobaccoboard.in" target="_blank" class="reg-card reg-card-1 d-flex align-items-center gap-3 p-3 box-shadow">
 						<span class="reg-icon material-symbols-rounded">captive_portal</span>
 						<div class="reg-text lh-sm">
-							<strong class="d-block text-dark">Online Traders</strong>
+							<strong class="d-block text-dark-emphasis">Online Traders</strong>
 							<small class="text-secondary">Registration & Return</small>
 						</div>
 					</a>
@@ -568,7 +568,7 @@
 					<a href="https://www.tobaccoboard-eoffice.com/tb-grower/" target="_blank" class="reg-card reg-card-2 d-flex align-items-center gap-3 p-3 box-shadow">
 						<span class="reg-icon material-symbols-rounded">eco</span>
 						<div class="reg-text lh-sm">
-							<strong class="d-block text-dark">FCV Tobacco</strong>
+							<strong class="d-block text-dark-emphasis">FCV Tobacco</strong>
 							<small class="text-secondary">Grown online Registration & Return</small>
 						</div>
 					</a>
@@ -577,7 +577,7 @@
 					<div class="reg-card reg-card-3 no-link d-flex align-items-center gap-3 p-3 box-shadow">
 						<span class="reg-icon material-symbols-rounded">warning</span>
 						<div class="reg-text lh-sm">
-							<strong class="d-block text-dark">Emergency Security Alert</strong>
+							<strong class="d-block text-dark-emphasis">Emergency Security Alert</strong>
 							<a href="./tbdata/pdf/Critical_Advisory_in_view_of_G20_Summit.pdf" target="_blank">&#8226;<small class="lh-1 mt-0">Attachment 1</small></a>
 							<a href="./tbdata/pdf/Advisory_CIAD_2023_S3.pdf" target="_blank">&#8226;<small class="lh-1 mt-0">Attachment 2</small></a>
 							<a href="./tbdata/pdf/NR_239_GR_500.jpg" target="_blank">&#8226;<small class="lh-1 mt-0">Attachment 3</small></a>
@@ -588,7 +588,7 @@
 					<div class="reg-card reg-card-4 d-flex align-items-center gap-3 p-3 box-shadow">
 						<span class="reg-icon material-symbols-rounded">beenhere</span>
 						<div class="reg-text lh-sm">
-							<strong class="d-block text-dark">Stay Safe Online</strong>
+							<strong class="d-block text-dark-emphasis">Stay Safe Online</strong>
 							<a href="https://www.mygov.in/staysafeonline" target="_blank">&#8226;<small class="lh-1 mt-0">Awareness topics</small></a>
 							<a href="https://staysafeonline.in/awareness-material" target="_blank">&#8226;<small class="lh-1 mt-0">Awareness material</small></a>
 						</div>
@@ -598,7 +598,7 @@
 					<a href="https://www.cvc.gov.in/?q=guidelines/tender-guidelines" target="_blank" class="reg-card reg-card-5 d-flex align-items-center gap-3 p-3 box-shadow">
 						<span class="reg-icon material-symbols-rounded">book</span>
 						<div class="reg-text lh-sm">
-							<strong class="d-block text-dark">CVC guidelines for Tender process</strong>
+							<strong class="d-block text-dark-emphasis">CVC guidelines for Tender process</strong>
 						</div>
 					</a>
 				</div>
@@ -606,7 +606,7 @@
 					<a href="javascript:;" data-bs-toggle="modal" data-bs-target="#videoPopup" class="reg-card reg-card-6 d-flex align-items-center gap-3 p-3 box-shadow">
 						<span class="reg-icon material-symbols-rounded">video_library</span>
 						<div class="reg-text lh-sm">
-							<strong class="d-block text-dark">Tobacco Board PIDPI</strong>
+							<strong class="d-block text-dark-emphasis">Tobacco Board PIDPI</strong>
 						</div>
 					</a>
 				</div>

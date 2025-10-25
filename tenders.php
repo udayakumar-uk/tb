@@ -20,9 +20,6 @@ include "include/include.php";
 <!--------------Content--------------->
 <div id="main-content">
   <div id="content" class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-		 
 	<?php
 	$max_recs_per_page=30;
 	if(!empty($_GET['ar']) && $_GET['ar']==1)
@@ -86,12 +83,14 @@ include "include/include.php";
         <h4 class="title">Tenders</h4>
       <?php } ?>
 
-	<table width="100%" border="1" align="center" cellpadding="7" cellspacing="1" bgcolor="#EDEDED">
-		<tr>
-			<td width="23%" height="30" bgcolor="#EDEDED"><div align="left"><strong>Tender Notice No </strong></div></td>
-			<td width="33%" bgcolor="#EDEDED"><div align="left"><strong>Description of Tender </strong></div></td>
-			<td width="20%" bgcolor="#EDEDED"><div align="left"><strong>Status</strong></div></td>
-		</tr>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Tender Notice No</th>
+				<th>Description of Tender</th>
+				<th>Statu</th>
+			</tr>
+		</thead>
 		<?php $i=1;$b=1;
 		while($rows=@mysqli_fetch_array($select1)) {
 			if($rows['mfile']!="") {
@@ -103,15 +102,11 @@ include "include/include.php";
 			
 			$fcheck=explode(".",$rows['mfile']);
 
-			if($i%2)
-			$bgcolor="#FFFFFF";
-			else
-			$bgcolor="#F4F4F4";
 		?>
 
 		<tr valign="top">
-			<td width="23%" height="25" align="left" bgcolor="<?php echo $bgcolor ?>" style="padding-right:15px;"><?php echo $rows['tenderno'] ?></td>
-			<td width="33%" align="left" bgcolor="<?php echo $bgcolor ?>" style="padding-right:15px;">
+			<td><?php echo $rows['tenderno'] ?></td>
+			<td>
 				<div align="left">
 					<?php
 					if($rows['isactive']=='0')
@@ -132,13 +127,13 @@ include "include/include.php";
 				</div>
 			</td>
 
-			<td width="20%" align="left" bgcolor="<?php echo $bgcolor ?>" style="padding-right:15px;"><?php echo $rows['tstatus']?></td>
-			<!-- <td width="24%" align="left" bgcolor="<?php echo $bgcolor?>" style="padding-right:15px;"><?php echo $rows['award']?></td> -->
+			<td width="20%" ><?php echo $rows['tstatus']?></td>
+			<!-- <td width="24%" align="left" ><?php echo $rows['award']?></td> -->
 		</tr>
 
 		<tr valign="top">
-			<td height="25" align="left" bgcolor="<?php echo $bgcolor?>" style="padding-right:15px;">&nbsp;</td>
-			<td align="left" bgcolor="<?php echo $bgcolor?>" style="padding-right:15px;">
+			<td>&nbsp;</td>
+			<td >
 				<?php if($rows['tfile']!="") {
 					$link1="admin/tenderfiles/$rows[tfile]";
 					$link="reg.php?pg=".$rows['tfile']."&id=".$rows['id'];
@@ -147,11 +142,6 @@ include "include/include.php";
 				$link="#";
 				
 				$fcheck=explode(".",$rows['tfile']);
-
-				if($i%2)
-				$bgcolor="#FFFFFF";
-				else
-				$bgcolor="#F4F4F4";
 
 				if($rows['isactive']=='0') {
 				if(isset($rows['tfile']) && $rows['tfile']!="") {  ?>
@@ -185,11 +175,6 @@ include "include/include.php";
 				
 				$fcheck=explode(".",$rows['tfile']);
 
-				if($i%2)
-				$bgcolor="#FFFFFF";
-				else
-				$bgcolor="#F4F4F4";
-
 				if($rows['isactive']=='0') {
 				if(isset($rows['sfile']) && $rows['sfile']!="") { ?>
 				
@@ -206,7 +191,7 @@ include "include/include.php";
 				      
 				<?php } else { echo $rows['subtitle2']; } } ?>
 					
-			<td align="left" bgcolor="<?php echo $bgcolor ?>" style="padding-right:15px;">&nbsp;</td>
+			<td>&nbsp;</td>
 		</tr>
 
             <?php $i++; } ?>
@@ -217,8 +202,6 @@ include "include/include.php";
 				<div class="py-5 text-secondary">Required Information Not Available</div>
 			<?php } ?>
 	
-			</div>
-		</div>
 	</div>
 </div>
 

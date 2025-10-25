@@ -32,8 +32,20 @@ $(document).on('ready', function() {
 
 			$('body, html').css({'fontSize': `${fontSize ? fontSize : '14'}px`});
 			setFontSizeToLocationStrage(fontSize);
+
 		}
 
+		const getThemeMode = localStorage.getItem('theme');
+		localStorage.setItem('theme', (getThemeMode ?? 'light'));
+		$('html').attr('data-bs-theme', (getThemeMode ?? 'light'));
+
+		$('#theme').on('change', function() {
+			const isDark = $(this).is(':checked');
+			$('html').attr('data-bs-theme', isDark ? 'dark' : 'light');
+			localStorage.setItem('theme', (isDark ? 'dark' : 'light'));
+			
+		});
+		
 
 });
 

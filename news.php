@@ -22,8 +22,6 @@ include "include/include.php"; ?>
 
 <div id="main-content">
   <div id="content" class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8 col-md-10">
         
   <?php
 		$max_recs_per_page=30;
@@ -115,8 +113,6 @@ include "include/include.php"; ?>
               <div class="py-5 text-secondary">Required Information Not Available</div>
           <?php } ?>
   
-              </div>
-          </div>
       </div>
   </div>
 

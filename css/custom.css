@@ -1,5 +1,6 @@
-:root{
-	--bodyBg: #FFFDF8;
+
+:root, [data-bs-theme="light"] {
+	/* --bs-body-bg: #FFFDF8; */
 	--darkOliveGreen: #465B3C;
 	--charcoalGreen: #384632;
 	--goldenBrown: #CC8A2B;
@@ -9,13 +10,16 @@
 	--text: #424242;
 	--transition: all ease-in-out 0.3s;
 	--rounded: 10px;
+
 }
+
+
 
 .fw-900, .interblack { font-weight: 900; }
 .fw-800, .interextrabold { font-weight: 800; }
 .fw-700, .interbold { font-weight: 700; }
 .fw-600, .intersemibold { font-weight: 600; }
-.fw-500{ font-weight: 500; }
+.fw-500 { font-weight: 500; }
 .fw-400, .interregular { font-weight: 400; }
 .fw-300, .interlight { font-weight: 300; }
 .fw-200, .interthin { font-weight: 200; }
@@ -29,8 +33,8 @@ html, body {
 	scroll-behavior: smooth;
 	margin: 0;
 	padding: 0;
-	color: var(--text);
-	background-color: var(--bodyBg);
+	color: var(--bs-body-color);
+	background-color: var(--bs-body-bg);
 }
 
 a {
@@ -85,8 +89,8 @@ ul {
 }
 
 table, .table{
-    --bs-table-bg: var(--bs-white);
-	border-color: var(--bs-gray-400);
+    /* --bs-table-bg: var(--bs-white);
+	border-color: var(--bs-gray-400); */
 }
 
 /* Ensure lists inside the main content keep their default/browser styles */
@@ -270,7 +274,7 @@ input.form-control:focus, select.form-select:focus{
 	font-size: 1.4rem;
 	display: inline-block;
 	margin-bottom: 1.4rem;
-	color: var(--title);
+	/* color: var(--title); */
 }
 .title:not(.no-dash)::after, .sub-title:not(.no-dash):after{
 	position: absolute;
@@ -314,7 +318,7 @@ input.form-control:focus, select.form-select:focus{
 /* Header */
 
 .header-topbar{
-	background-color: var(--bs-gray-200);
+	background-color: var(--bs-secondary-bg);
 	z-index: 1021;
     position: relative;
 }
@@ -413,7 +417,7 @@ input.form-control:focus, select.form-select:focus{
 	text-align: center;
 }
 
-.profile-card:hover{
+.profile-card:hover, .reg-card:hover{
 	background-color: var(--lightBeige);
 }
 
@@ -573,7 +577,7 @@ input.form-control:focus, select.form-select:focus{
 .reg-card{
 	position: relative;
 	height: 100%;
-	background-color: var(--bs-white);
+	background-color: var(--bs-body-bg);
 }
 .reg-card strong{
 	line-height: 1.2;
@@ -657,7 +661,7 @@ footer{
 	display: inline-block;
 	padding: 7px;
 	border-radius: 8px;
-	background-color: var(--bs-white);
+	background-color: var(--bs-body-bg);
 	transition: background-color 0.3s;
 	line-height: 1;
 }
@@ -724,7 +728,7 @@ footer{
 	}
 	header .dropdown-item{
 		--bs-dropdown-item-padding-y: .5rem;
-		--bs-dropdown-link-color: var(--text);
+		/* --bs-dropdown-link-color: var(--text); */
 	}
 
 }

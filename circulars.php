@@ -21,8 +21,6 @@ include "include/include.php";
 
 <div id="main-content">
   <div id="content" class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
 
     <?php
     if(!empty($_GET['stype']))
@@ -109,9 +107,7 @@ include "include/include.php";
         <div class="py-5 text-secondary">Required Information Not Available</div>
     <?php } ?>
 				
-        
-          </div>
-			</div>
+    
 		</div>
 	</div>
 </section>

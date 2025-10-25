@@ -75,7 +75,7 @@ function remove_firstp($string)
 										<a class="dropdown-item dropdown-toggle" href="javascript:;">Others</a>
 										<ul class="dropdown-menu">
 											<li><a class="dropdown-item" href="news.php">News & Events</a></li>
-											<li><a class="dropdown-item text-danger	" href="photogallery.php">Photogallery</a></li>
+											<!-- <li><a class="dropdown-item text-danger	" href="photogallery.php">Photogallery</a></li> -->
 											<li><a class="dropdown-item" href="publications.php">Publications</a></li>
 											<li><a class="dropdown-item" href="rta.php">RTI Act</a></li>
 											<li><a class="dropdown-item" href="tenders.php">Tenders</a></li>
