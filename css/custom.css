@@ -183,6 +183,9 @@ p{
 select.form-select, input.form-control:not([type=file]){
     height: 45px;
 }
+.form-control[type=file]{
+	line-height: 2.2;
+}
 input.form-control:focus, select.form-select:focus{
 	border-color: var(--charcoalGreen);
     box-shadow: 0 0 0 .25rem rgb(56 70 50 / 14%);

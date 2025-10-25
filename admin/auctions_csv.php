@@ -3,8 +3,7 @@ ob_start();
 session_start();
 header("Cache-control: private"); 
 include_once("include/includei.php");
-if(!empty($_SESSION['tobadmin']))
-{
+if(!empty($_SESSION['tobadmin'])) {
 	$qry='';
 	$yr=date('Y');
 	
@@ -14,8 +13,7 @@ if(!empty($_SESSION['tobadmin']))
 	$yrs=$yr;
 ?>
 <?php 
-if(!empty($_GET['dwnld']) && $_GET['dwnld']==1)
-{
+if(!empty($_GET['dwnld']) && $_GET['dwnld']==1) {
 	 $file = "auction_csv.csv";
 	 $filename=str_replace(' ','',$file);
 
@@ -39,53 +37,22 @@ if(!empty($_GET['dwnld']) && $_GET['dwnld']==1)
 }
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Auctions | Welcome To TOBBACO BOARD Admin</title>
-<style type="text/css">
-<!--
-.style1 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-}
-.style4 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; }
-.style7 {font-size: 14px; color: #FF0000; font-family: Arial, Helvetica, sans-serif;}
-
-a:link {
-	color: #000000;
-	text-decoration: none;
-}
-a:visited {
-	color: #000000;
-	text-decoration: none;
-}
-a.b:hover {
-	color: #990000;
-	text-decoration: none;
-}
-a.b:active {
-	color: #990000;
-	text-decoration: none;
-}
-.style8 {font-size: 11px}
-
--->
-</style>
-</head>
-<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script> 
-<script src="../jquery.ui-1.5.2/ui/ui.datepicker.js" type="text/javascript"></script>
-<link href="../jquery.ui-1.5.2/themes/ui.datepicker.css" rel="stylesheet" type="text/css" />
+  	<?php include_once("head.php")?>
+	<title>Auctions | Tobacco Board</title>
+	<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script> 
+	<script src="../jquery.ui-1.5.2/ui/ui.datepicker.js" type="text/javascript"></script>
+	<link href="../jquery.ui-1.5.2/themes/ui.datepicker.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
-function chk()
-{
+function chk() {
 	document.form1.submit();
 }
 
-function gettoday()
-{
+function gettoday() {
 
 	var today=new Date();
 
@@ -101,8 +68,7 @@ function gettoday()
 
 }
 
-function validate_date(valdate)
-{
+function validate_date(valdate) {
 
 	var day1, day2;
 
@@ -162,22 +128,18 @@ function validate_date(valdate)
 
 }
 
-function check(form1)
-{
-	if(document.form1.state.value=="")
-	{
+function check(form1) {
+	if(document.form1.state.value=="") {
 		alert("State Should Not Be Empty");
 		document.form1.state.focus();
 		return false;
 	}
-	else if(document.form1.pdate.value=="")
-	{
+	else if(document.form1.pdate.value=="") {
 		alert("Select Date");
 		document.form1.pdate.focus();
 		return false;
 	}
-	else if(validate_date(document.form1.pdate.value)==false)
-	{
+	else if(validate_date(document.form1.pdate.value)==false) {
 		alert("Future Dates Are Not Alloed");
 		document.form1.pdate.focus();
 		return false;
@@ -213,16 +175,12 @@ function check(form1)
 	}
 }
 
-function field_chk(st)
-{
-	if(document.getElementById(st).value=="")
-	{
+function field_chk(st) {
+	if(document.getElementById(st).value=="") {
 	}
 }
-function num_check(st)
-{
-	if(document.getElementById(st).value!="" && isNaN(document.getElementById(st).value)==true)
-	{
+function num_check(st) {
+	if(document.getElementById(st).value!="" && isNaN(document.getElementById(st).value)==true) {
 		alert("Only numbers are allowed");
 		document.getElementById(st).value="";
 		document.getElementById(st).focus();
@@ -231,26 +189,22 @@ function num_check(st)
 	else
 	return true;
 }
-function tots(i)
-{
+function tots(i) {
 	var bal=document.getElementById("bales"+i).value;
 	var tots=document.getElementById("tot"+i).value;
 	//alert(tots);
-	if(num_check("bales"+i) && bal!="" && tots!="")
-	{
+	if(num_check("bales"+i) && bal!="" && tots!="") {
 		var tot=parseFloat(bal)-parseFloat(tots);
 		document.getElementById("bsold"+i).value=tot;
 	}
 }
-function totb(i)
-{
+function totb(i) {
 	var ns=document.getElementById("ns"+i).value;
 	var nb=document.getElementById("nb"+i).value;
 	var rr=document.getElementById("rr"+i).value;
 	var cr=document.getElementById("cr"+i).value;
 	
-	if((ns!="" || nb!="" || rr!="" || cr!="") && (num_check("ns"+i) && num_check("nb"+i) && num_check("rr"+i) && num_check("cr"+i)))
-	{
+	if((ns!="" || nb!="" || rr!="" || cr!="") && (num_check("ns"+i) && num_check("nb"+i) && num_check("rr"+i) && num_check("cr"+i))) {
 		if(ns=="")
 		ns=0;
 		if(nb=="")
@@ -265,15 +219,13 @@ function totb(i)
 	}
 }
 
-function caltot(st,st1)
-{
+function caltot(st,st1) {
 	var h=document.form1.h.value;
 	var j=1;
 	var a,b;
 	var tot=0;
 	var val;
-	for(i=1;i<=h;i++)
-	{
+	for(i=1;i<=h;i++) {
 		a=document.getElementById("stn"+i).value;
 		b=document.getElementById("fn"+i).value;
 		var stot=0;
@@ -297,10 +249,19 @@ function caltot(st,st1)
 }
 
 </script>
-<?php
+</head>
 
-	function datepattrn($a)
-	{
+<body>
+
+<section id="adminLayout">
+
+	<?php include "header.php" ?>
+
+	<?php include "sidebar.php"; ?>
+	
+	<main id="adminMain" class="container-fluid">
+		
+<?php function datepattrn($a) {
  		$b = substr($a,5, 2);// month
  		$c = substr($a,7, 1);// '-'
 		$d= substr($a,8, 2);// day
@@ -311,8 +272,7 @@ function caltot(st,st1)
 		$g=$d."/".$b."/".$f;
 		return $g;
 	}
-	function datepattrn1($a)
-	{
+	function datepattrn1($a) {
  		$b = substr($a,3, 2);// month
  		$c = substr($a,2, 1);// '-'
 		$d= substr($a,0, 2);// day
@@ -324,8 +284,7 @@ function caltot(st,st1)
 		return $g;
 	}
 
-	function numround($st,$n)
-	{
+	function numround($st,$n) {
 		if($st!="")
 		{
 			$n1=pow(10 ,$n);
@@ -334,36 +293,32 @@ function caltot(st,st1)
 		return $num;
 	}
 
-function set_num($st)
-{
-	$val="";
-	if($st=="")
-	$val=0;
+	function set_num($st) {
+		$val="";
+		if($st=="")
+		$val=0;
+		else
+		$val=$st;
+		return $val;
+	}
+	if(!empty($_GET['vid']))
+	$pdat=(datepattrn($_GET['vid']));
+	else if(!empty($_POST['pdate']))
+	$pdat=($_POST['pdate']);
 	else
-	$val=$st;
-	return $val;
-}
-if(!empty($_GET['vid']))
-$pdat=(datepattrn($_GET['vid']));
-else if(!empty($_POST['pdate']))
-$pdat=($_POST['pdate']);
-else
-$pdat=date('d/m/Y');
+	$pdat=date('d/m/Y');
 
-if(!empty($_POST['state']))
-$stat=($_POST['state']);
-else if(!empty($_GET['vd']))
-$stat=($_GET['vd']);
-else
-$stat='Andhra Pradesh';
-
-
+	if(!empty($_POST['state']))
+	$stat=($_POST['state']);
+	else if(!empty($_GET['vd']))
+	$stat=($_GET['vd']);
+	else
+	$stat='Andhra Pradesh';
 ?>
-<body>
+
 <?php
 
-if( (!empty($_POST['submit'])) && ($_POST['submit']=='Submit'))
-{
+if( (!empty($_POST['submit'])) && ($_POST['submit']=='Submit')) {
 	print_r($_POST);
 		if(($_FILES['file']['name'])!="")
 		{
@@ -438,65 +393,46 @@ if( (!empty($_POST['submit'])) && ($_POST['submit']=='Submit'))
 				}
 			redirect("auctions_csv.php?bsuc=1");
 		}
+}?>
 
 
-}
 
+	<div class="row">
+		<h2 class="admin-title col">Add Auctions</h2>
+	
+		<div class="col-auto">
+			<a href="auctions_csv.php?dwnld=1" class="btn btn-secondary">Download Sample File</a>
+		</div>
+		<?php if(!empty($_GET['succ']) && $_GET['succ']==1){ ?>
+			<div class="col-auto">
+				<div class="alert alert-success d-flex align-items-center py-1 px-2 m-0 ms-auto" role="alert">
+					<span class="flex-shrink-0 me-2 material-symbols-rounded">check_circle</span>
+					<span> Data Stored  Successfully</span>
+				</div>
+			</div>
+		<?php } ?>
+	</div>
+
+
+
+	<form action="auctions_csv.php" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="return check(this);">
 
 	
-?>
-<?php include_once("header.php");?>
-<form action="auctions_csv.php" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="return check(this);">
 
-  <table width="100%" border="0" align="center">
-   <tr>
-      <td height="40" colspan="3" style="padding-left:35%;"><span class="style7">
-  <a href="auctions_csv.php?dwnld=1" style="color:#000066">Click Here to download Sample File</a>
-	</td>
-    <tr>
-   
-    <tr>
-      <td colspan="3"><span class="style1">Add Auctions </span> </td>
-    </tr>
-    
-	<?php
-		if(!empty($_GET['succ']) && $_GET['succ']==1)
-		{
-	?>
-    <tr>
-      <td height="40" colspan="3" style="padding-left:150px;"><span class="style7">Data Stored  Successfully</span> </td>
-    </tr>
-	<?php
-		}
-		else
-		{
-	?>
-    <tr>
-      <td height="40" colspan="3" style="padding-left:150px;"><span class="style7"></span> </td>
-    </tr>
-	<?php
-		}
-	?>
-    
-	
-
-    <tr>
-      <td height="30" style="padding-left:35px;"><span class="style4">State</span></td>
-      <td height="30"><div align="center"><strong>:</strong></div></td>
-      <td height="30"><label>
-        <select name="state" id="state">
-          <option value="">Select</option>
-          <option value="Andhra Pradesh" selected="selected">Andhra Pradesh</option>
-          <option value="Karnataka">Karnataka</option>
-        </select>
-        </label>
-          <?php
-					if(!empty($stat))
-					{
-					?>
-          <script type="text/javascript">
-					 var ct='<?php echo($stat); ?>';
-					 var j;
+	<div class="row">
+		
+		<div class="form-group col-lg-3 col-md-4">
+			<label for="state" class="form-label">State</label>
+			<select name="state" id="state" class="form-select">
+				<option value="">Select</option>
+				<option value="Andhra Pradesh" selected="selected">Andhra Pradesh</option>
+				<option value="Karnataka">Karnataka</option>
+			</select>
+          	<?php
+				if(!empty($stat)) { ?>
+				<script type="text/javascript">
+					var ct='<?php echo($stat); ?>';
+					var j;
 					for(j=0;j<document.form1.state.options.length;j++)
 					{
 						if(document.form1.state.options[j].value==ct)
@@ -504,30 +440,20 @@ if( (!empty($_POST['submit'])) && ($_POST['submit']=='Submit'))
 							document.form1.state.options[j].selected=true;
 						}
 					}
-					</script>
-          <?php
-					}
-				?>      </td>
-    </tr>
-    <tr>
-      <td height="30" valign="top" class="style4" style="padding-left:35px;"><div align="left">Auction Year</div></td>
-      <td height="30" valign="top"><div align="center"><strong>:</strong></div></td>
-      <td class="style8"><label>
-<select name="year" id="year" onchange="chk();">
-  <?php
-		 for($i=2009;$i<=$yr;$i++)
-		 {
-		 ?>
-  <option value="<?php echo $i ?>"><?php echo $i ?></option>
-  <?php
-		 }
-		 ?>
-</select>
-<?php
-					if(!empty($yrs))
-					{
-					?>
-        <script type="text/javascript">
+				</script>
+			<?php } ?>      
+		</div>
+		<div class="form-group col-lg-3 col-md-4">
+			<label for="year" class="form-label">Auction Year</label>
+			<select name="year" id="year" onchange="chk();" class="form-select">
+				<?php
+					for($i=2009;$i<=$yr;$i++) { ?>
+					<option value="<?php echo $i ?>"><?php echo $i ?></option>
+				<?php } ?>
+			</select>
+			<?php
+			if(!empty($yrs)) { ?>
+        		<script type="text/javascript">
 					 var ctp='<?php echo $yrs ?>';
 					 var j;
 					for(j=0;j<document.form1.year.options.length;j++)
@@ -537,53 +463,42 @@ if( (!empty($_POST['submit'])) && ($_POST['submit']=='Submit'))
 							document.form1.year.options[j].selected=true;
 						}
 					}
-					</script>
-        <?php
-					}
+				</script>
+        <?php }
 			
-	if(!empty($_POST['plats']) && !empty($_POST['year']))
-	{		
-		$selauct=executework("select * from tob_auct where platf=".($_POST['plats'])." and year=".($_POST['year']));
-		$cnta=@mysqli_num_rows($selauct);
-		$rowa=@mysqli_fetch_array($selauct);
-	}
-				  ?>
-      </label></td>
-    </tr>
-    <tr>
-      <td height="30" style="padding-left:35px;"><span class="style4">Upload CSV</span></td>
-      <td height="30"><div align="center"><strong>:</strong></div></td>
-      <td height="30"><label>
-      <input name="file" type="file" id="file" />
-      </label> 
-        &nbsp; <label>
-      <!--<input type="button" name="Button" value="Go!!  " onclick="chk();"/>-->
-	  <input type="submit" name="submit" id="submit" value="Submit" />
-      </label></td>
-    </tr>
+			if(!empty($_POST['plats']) && !empty($_POST['year'])) {		
+				$selauct=executework("select * from tob_auct where platf=".($_POST['plats'])." and year=".($_POST['year']));
+				$cnta=@mysqli_num_rows($selauct);
+				$rowa=@mysqli_fetch_array($selauct);
+			}  ?>   
+		</div>
+		<div class="form-group col-lg-6 col-md-4">
+			<label for="file" class="form-label">Upload CSV</label>
+			<div class="input-group form-group">
+				<input name="file" type="file" id="file" class="form-control">
+				<label class="input-group-text" for="file">Upload CSV</label>
+			</div>
+		</div>
+	</div>
+		
+	<div class="submit-button text-end">
+		<input type="submit" class="btn btn-primary" name="Submit" value="Submit" />
+	</div>
+			
 	
-  </table>
 </form>
-<?php include_once("footer.php");?>
-</body>
-</html>
-<?php
-}
-else
-{
-?>
-	<script language="javascript">parent.location.href="index.php";</script>
-<?php
-}
-?>
+
+</main>
+
+</section>
+
+
 <script>
 pdate='<?php if(!empty($dates1)) echo $dates1 ?>';
-/*if(pdate!="")
-{
+/*if(pdate!="") {
 	var pdates=new Array();
 	pdates=pdate.split(',');
-	for(k=0;k<pdates.length;k++)
-	{
+	for(k=0;k<pdates.length;k++) {
 		$('#'+pdates[k]).datepicker();
 		$('#'+pdates[k]).readOnly=true;
 	}
@@ -605,3 +520,13 @@ caltot('bsold','bsd');
 $('#pdate').datepicker();
 $('#pdate').readOnly=true;
 </script>
+
+<?php include_once("footer.php");?>
+
+<?php } else { ?>
+	<script language="javascript">parent.location.href="index.php";</script>
+<?php } ?>
+
+
+</body>
+</html>
