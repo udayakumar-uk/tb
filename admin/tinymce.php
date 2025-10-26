@@ -1,5 +1,6 @@
 
-<script src="https://cdn.tiny.cloud/1/ub2r3tiv25n69bfq8lq94cgcuh538461d76xjih1bqa1671x/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/tinymce@6.8.3/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
+
 
 <script>
     tinymce.init({
@@ -16,62 +17,69 @@
 
         plugins: [
         // Core editing features
-        'anchor', 'image', 'autolink', 'charmap', 'codesample', 'emoticons', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
-        // Your account includes a free trial of TinyMCE premium features
-        // Try the most popular premium features until Sep 28, 2025:
-        'checklist', 'mediaembed', 'casechange', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'advtemplate', 'ai', 'uploadcare', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown','importword', 'exportword', 'exportpdf'
+        'anchor', 'image', 'autolink', 'fullscreen', 'charmap', 'codesample', 'emoticons', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+            
+        // 'checklist', 'mediaembed', 'casechange', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'advtemplate', 'ai', 'uploadcare', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown','importword', 'exportword', 'exportpdf'
         ],
-        toolbar: 'undo redo | blocks fontfamily fontsize | forecolor backcolor | bold italic underline strikethrough link | image table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography uploadcare | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-        mergetags_list: [
-            { value: 'First.Name', title: 'First Name' },
-            { value: 'Email', title: 'Email' },
-        ],
+        toolbar: 'undo redo | blocks fontfamily fontsize | forecolor backcolor | bold italic underline strikethrough link | image table | mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography uploadcare | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat fullscreen',
+        
         branding: false,
-        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
-        uploadcare_public_key: '37c1cfcfa4e9a140206c',
     });
 
 </script>
 
 
-<script>
-tinymce.init({
-  selector: '#description, #hdescription, #content, #hcontent, #horder_details',
 
-  // Import Google Fonts directly into the editor's content
-  content_style: `
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-    body { font-family: Inter, sans-serif; }
-  `,
 
-  // Define available fonts (include your Google Fonts)
-  font_family_formats:  "Inter=Inter, sans-serif; Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Arial Black=arial black,avant garde; Book Antiqua=book antiqua,palatino; Comic Sans MS=comic sans ms,sans-serif; Courier New=courier new,courier; Georgia=georgia,palatino; Helvetica=helvetica; Impact=impact,chicago; Symbol=symbol; Tahoma=tahoma,arial,helvetica,sans-serif; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva; Webdings=webdings; Wingdings=wingdings,zapf dingbats",
 
-  plugins: [
-    'anchor', 'image', 'autolink', 'charmap', 'codesample', 'emoticons',
-    'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks',
-    'wordcount', 'checklist', 'casechange', 'formatpainter', 'pageembed',
-    'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste',
-    'advtable', 'advcode', 'advtemplate', 'uploadcare', 'mentions',
-    'tableofcontents', 'footnotes', 'mergetags', 'autocorrect',
-    'typography', 'inlinecss', 'markdown', 'importword', 'exportword', 'exportpdf'
-  ],
 
-  toolbar:
-    'undo redo | blocks fontfamily fontsize | forecolor backcolor | bold italic underline strikethrough link | ' +
-    'image table mergetags | spellcheckdialog a11ycheck typography uploadcare | align lineheight | ' +
-    'checklist numlist bullist indent outdent | emoticons charmap | removeformat',
 
-  menubar: false,
-  branding: false,
+<!-- <script src="jscripts/tiny_mce/tiny_mce.js"></script> -->
 
-  // Optional: comments/mentions setup
-  tinycomments_mode: 'embedded',
-  tinycomments_author: 'Author name',
+<!-- <script type="text/javascript">
 
-  // Optional: Uploadcare
-  uploadcare_public_key: '37c1cfcfa4e9a140206c'
-});
-</script>
+	tinyMCE.init({
+		// General options
+		mode : "textareas",
+		theme : "advanced",
+		plugins : "autolink,lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,wordcount,advlist,autosave,visualblocks",
+
+		// Theme options
+//		theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
+		theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
+		theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+		theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+		theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak,restoredraft,visualblocks",
+		theme_advanced_toolbar_location : "top",
+		theme_advanced_toolbar_align : "left",
+		theme_advanced_statusbar_location : "bottom",
+		theme_advanced_resizing : true,
+
+		// Example content CSS (should be your site CSS)
+		content_css : "css/content.css",
+		// Drop lists for link/image/media/template dialogs
+		template_external_list_url : "lists/template_list.js",
+		external_link_list_url : "lists/link_list.js",
+		external_image_list_url : "lists/image_list.js",
+		media_external_list_url : "lists/media_list.js",
+
+		// Style formats
+		style_formats : [
+			{title : 'Bold text', inline : 'b'},
+			{title : 'Red text', inline : 'span', styles : {color : '#ff0000'}},
+			{title : 'Red header', block : 'h1', styles : {color : '#ff0000'}},
+			{title : 'Example 1', inline : 'span', classes : 'example1'},
+			{title : 'Example 2', inline : 'span', classes : 'example2'},
+			{title : 'Table styles'},
+			{title : 'Table row 1', selector : 'tr', classes : 'tablerow1'},
+			{title : 'New Style', inline : 'span', classes : 'style4'}
+		],
+ 
+		// Replace values for the template plugin
+		template_replace_values : {
+			username : "Some User",
+			staffid : "991234"
+		}
+	});
+</script> -->
+
