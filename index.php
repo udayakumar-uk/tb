@@ -313,7 +313,7 @@
 				<div class="col-md-4 my-3">
 					<div class="card box-shadow">
 						<div class="card-body">
-							<span class="card-icon material-symbols-rounded d-block">bar_chart</span>
+							<span class="card-icon material-symbols-rounded notranslate d-block">bar_chart</span>
 							<h5 class="card-title no-dash interbold mt-2 mb-3">STATISTICS</h5>
 
 							<ul class="card-list">
@@ -341,7 +341,7 @@
 											<?php } ?> 
 										</span>
 										<!-- <img src="new.png" width="25" height="auto" /> -->
-										<span class="material-symbols-rounded">arrow_forward</span>
+										<span class="material-symbols-rounded notranslate">arrow_forward</span>
 									</a>
 								</li>
 
@@ -353,7 +353,7 @@
 				<div class="col-md-4 my-3">
 					<div class="card box-shadow">
 						<div class="card-body">
-							<span class="card-icon material-symbols-rounded d-block">pie_chart</span>
+							<span class="card-icon material-symbols-rounded notranslate d-block">pie_chart</span>
 							<h5 class="card-title no-dash interbold mt-2 mb-3">CIRCULARS</h5>
 
 
@@ -381,7 +381,7 @@
 												</span>
 											<?php } ?> 
 											</span> 
-											<span class="material-symbols-rounded">arrow_forward</span>
+											<span class="material-symbols-rounded notranslate">arrow_forward</span>
 										</a>
 									</li>
 								
@@ -393,7 +393,7 @@
 				<div class="col-md-4 my-3">
 					<div class="card box-shadow">
 						<div class="card-body">
-							<span class="card-icon material-symbols-rounded d-block">monitoring</span>
+							<span class="card-icon material-symbols-rounded notranslate d-block">monitoring</span>
 							<h5 class="card-title no-dash interbold mt-2 mb-3">PUBLICATIONS</h5>
 							<ul class="card-list">
 								<?php 
@@ -411,11 +411,11 @@
 										<li>
 											<a href="./tbdata/pdf/<?php echo $rown['hdescription']; ?>" target="<?php  if($link!="#"){?>_blank<?php  }?>" class="d-flex justify-content-between align-items-center">
 												<span><?php echo $rown['description']; ?></span>
-												<span class="material-symbols-rounded">arrow_forward</span>
+												<span class="material-symbols-rounded notranslate">arrow_forward</span>
 											</a>
 										</li>
 									<?php } ?>
-								<li><a href="publications.php" class="btn btn-primary box-shadow box-shadow-lg mt-3 d-block">View More <span class="material-symbols-rounded align-middle">arrow_forward</span></a></li>
+								<li><a href="publications.php" class="btn btn-primary box-shadow box-shadow-lg mt-3 d-block">View More <span class="material-symbols-rounded notranslate align-middle">arrow_forward</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -503,7 +503,7 @@
 				?>
 			</div>
 			<div class="container text-center">
-				<a href="tenders.php" class="btn btn-secondary box-shadow box-shadow-lg mt-4">See All Tenders <span class="material-symbols-rounded align-middle">arrow_forward</span></a>
+				<a href="tenders.php" class="btn btn-secondary box-shadow box-shadow-lg mt-4">See All Tenders <span class="material-symbols-rounded notranslate align-middle">arrow_forward</span></a>
 			</div>
 
 		</div>
@@ -547,7 +547,7 @@
 				</div>
 			</section>
 			
-			<a href="javascript:;" class="btn btn-primary box-shadow box-shadow-lg mt-4">See More <span class="material-symbols-rounded align-middle">arrow_forward</span></a>
+			<a href="javascript:;" class="btn btn-primary box-shadow box-shadow-lg mt-4">See More <span class="material-symbols-rounded notranslate align-middle">arrow_forward</span></a>
 		</div>
 	</section>
 
@@ -557,7 +557,7 @@
 			<div class="row justify-content-center">
 				<div class="col-md-4 col-lg-3 pb-3">
 					<a href="http://tobaccoboard.in" target="_blank" class="reg-card reg-card-1 d-flex align-items-center gap-3 p-3 box-shadow">
-						<span class="reg-icon material-symbols-rounded">captive_portal</span>
+						<span class="reg-icon material-symbols-rounded notranslate">captive_portal</span>
 						<div class="reg-text lh-sm">
 							<strong class="d-block text-dark-emphasis">Online Traders</strong>
 							<small class="text-secondary">Registration & Return</small>
@@ -566,7 +566,7 @@
 				</div>
 				<div class="col-md-4 col-lg-3 pb-3">
 					<a href="https://www.tobaccoboard-eoffice.com/tb-grower/" target="_blank" class="reg-card reg-card-2 d-flex align-items-center gap-3 p-3 box-shadow">
-						<span class="reg-icon material-symbols-rounded">eco</span>
+						<span class="reg-icon material-symbols-rounded notranslate">eco</span>
 						<div class="reg-text lh-sm">
 							<strong class="d-block text-dark-emphasis">FCV Tobacco</strong>
 							<small class="text-secondary">Grown online Registration & Return</small>
@@ -575,7 +575,7 @@
 				</div>
 				<div class="col-md-4 col-lg-3 pb-3">
 					<div class="reg-card reg-card-3 no-link d-flex align-items-center gap-3 p-3 box-shadow">
-						<span class="reg-icon material-symbols-rounded">warning</span>
+						<span class="reg-icon material-symbols-rounded notranslate">warning</span>
 						<div class="reg-text lh-sm">
 							<strong class="d-block text-dark-emphasis">Emergency Security Alert</strong>
 							<a href="./tbdata/pdf/Critical_Advisory_in_view_of_G20_Summit.pdf" target="_blank">&#8226;<small class="lh-1 mt-0">Attachment 1</small></a>
@@ -586,7 +586,7 @@
 				</div>
 				<div class="col-md-4 col-lg-3 pb-3">
 					<div class="reg-card reg-card-4 d-flex align-items-center gap-3 p-3 box-shadow">
-						<span class="reg-icon material-symbols-rounded">beenhere</span>
+						<span class="reg-icon material-symbols-rounded notranslate">beenhere</span>
 						<div class="reg-text lh-sm">
 							<strong class="d-block text-dark-emphasis">Stay Safe Online</strong>
 							<a href="https://www.mygov.in/staysafeonline" target="_blank">&#8226;<small class="lh-1 mt-0">Awareness topics</small></a>
@@ -596,7 +596,7 @@
 				</div>
 				<div class="col-md-4 col-lg-3 pb-3">
 					<a href="https://www.cvc.gov.in/?q=guidelines/tender-guidelines" target="_blank" class="reg-card reg-card-5 d-flex align-items-center gap-3 p-3 box-shadow">
-						<span class="reg-icon material-symbols-rounded">book</span>
+						<span class="reg-icon material-symbols-rounded notranslate">book</span>
 						<div class="reg-text lh-sm">
 							<strong class="d-block text-dark-emphasis">CVC guidelines for Tender process</strong>
 						</div>
@@ -604,7 +604,7 @@
 				</div>
 				<div class="col-md-4 col-lg-3 pb-3">
 					<a href="javascript:;" data-bs-toggle="modal" data-bs-target="#videoPopup" class="reg-card reg-card-6 d-flex align-items-center gap-3 p-3 box-shadow">
-						<span class="reg-icon material-symbols-rounded">video_library</span>
+						<span class="reg-icon material-symbols-rounded notranslate">video_library</span>
 						<div class="reg-text lh-sm">
 							<strong class="d-block text-dark-emphasis">Tobacco Board PIDPI</strong>
 						</div>

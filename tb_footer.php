@@ -82,6 +82,22 @@
 
 
 
+
+<script type="text/javascript">
+
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en', 
+    includedLanguages: 'en,hi,te,kn', 
+    // layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: 'true',
+  }, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 <script src="./js/jquery-2.2.0.min.js"></script>
 <script src="./js/bootstrap.bundle.min.js"></script>
 <script src="./js/custom.js"></script>

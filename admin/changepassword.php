@@ -6,23 +6,19 @@ include_once("include/includei.php");
 if(!empty($_SESSION['tobadmin']))
 {
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Change Password | Welcome toTOBBACCO BOARD... Admin</title>
-<style type="text/css">
-<!--
-.style51 {font-size: 12px; font-family: Verdana, Arial, Helvetica, sans-serif;}
-.style27 {font-size: 12px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #FF0000; }
-.style88 {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 16px;
-	font-weight: bold;
-}
--->
-</style>
-</head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Change Password | Welcome To TOBACCO BOARD</title>
+	<?php include_once('head.php'); ?>
+
 <script type="text/javascript">
 function valid(form1)
 {
@@ -68,114 +64,79 @@ function valid(form1)
 	}
 
 </script>
+</head>
+
 <body>
+
 <?php
 	if (!empty($_POST['oldpass']))
 	{
 		$sql=executework("select password from tob_admin where admin='".$_SESSION['tobadmin']."' and password='" .$_POST['oldpass'] . "'");
 		$count=@mysqli_num_rows($sql);
-		if($count > 0)
-		{
+		if($count > 0) {
 			$sq11=executework("update tob_admin set password='".$_POST['newpass'] ."' where admin='".$_SESSION['tobadmin']."'");
 			$succ=1;
 		}
-		else
-		{
+		else {
 			$exist=1;
 		}
 	}	
-
 ?>
-<?php include_once("header.php");?>
-<form id="form1" name="form1" method="post" action="" onsubmit="return valid(this);">
-  <table width="80%" border="0" align="center">
-    <tr>
-      <td colspan="3">&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="3">&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="3"><span class="style88">Change Password</span> </td>
-    </tr>
-    
-    
-	<?php
-		if(!empty($succ))
-		{
-	?>
-    <tr>
-      <td colspan="3">&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="3"><div align="center" class="style27">The Password Changed Successfully&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div></td>
-    </tr>
-    <?php
-		}
-		else if(!empty($exist))
-		{
-	?>
-    <tr>
-      <td colspan="3">&nbsp;</td>
-    </tr>
-    <tr>
-      <td colspan="3"><div align="center" class="style27">The Old Password is Wrong&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div></td>
-    </tr>
-	<?php
-		}
-	?>
-    <tr>
-      <td width="287">&nbsp;</td>
-      <td width="60">&nbsp;</td>
-      <td width="419">&nbsp;</td>
-    </tr>
-    <tr>
-      <td><div align="right" class="style51">Old Password </div></td>
-      <td><div align="center"><strong>:</strong></div></td>
-      <td><label>
-        <input name="oldpass" type="password" id="oldpass" />
-      </label></td>
-    </tr>
-    <tr>
-      <td><div align="right" class="style51">New Password </div></td>
-      <td><div align="center"><strong>:</strong></div></td>
-      <td><label>
-        <input name="newpass" type="password" id="newpass" />
-      </label></td>
-    </tr>
-    <tr>
-      <td><div align="right" class="style51">Confirm Password </div></td>
-      <td><div align="center"><strong>:</strong></div></td>
-      <td><label>
-        <input name="conpass" type="password" id="conpass" />
-      </label></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td colspan="2"><label>
-      <input type="submit" name="Submit" value="Submit" />
-      </label></td>
-    </tr>
-    <tr>
-      <td height="50">&nbsp;</td>
-      <td colspan="2">&nbsp;</td>
-    </tr>
-  </table>
-</form>
+
+
+<div id="adminLogin" class="container-fluid">
+	<div class="row justify-content-center align-items-center">
+		<div class="col-md-5 d-none d-md-block vh-100 py-3">
+			<div class="login-img position-relative h-100">
+				<img src="../img/login/password-change.jpg" alt="Login image" class="img-fluid rounded-4 h-100 w-100" style="object-fit: cover">
+				<a class="d-inline-block position-absolute bottom-0 end-0 py-2 px-3 text-white" href="https://ssl.comodo.com" target="_blank" id="comodoTL">Comodo SSL</a>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-7">
+			<div class="form-section">
+				<h1>Change Password</h1>
+
+				<?php if (!empty($exist)) { ?>
+					<div class="alert alert-danger d-flex align-items-center" role="alert">
+						<span class="material-symbols-outlined pe-2">cloud_alert</span>
+						<span >The Old Password is Wrong</span>
+					</div>
+				<?php } ?>
+				<?php if (!empty($succ)) { ?>
+					<div class="alert alert-danger d-flex align-items-center" role="alert">
+						<span class="material-symbols-outlined pe-2">success</span>
+						<span >The Password Changed Successfully</span>
+					</div>
+				<?php } ?>
+
+				<form id="form1" name="form1" method="post" action="" onsubmit="return valid(this);">
+					<div class="mb-3">
+						<label for="newpass" class="form-label">Old Password</label>
+						<input type="password" class="form-control" id="newpass" name="newpass" required>
+					</div>
+					<div class="mb-3">
+						<label for="password" class="form-label">New Password</label>
+						<input type="password" class="form-control" id="password" name="password" required>
+					</div>
+					<div class="mb-3">
+						<label for="conpass" class="form-label">Confirm Password</label>
+						<input type="password" class="form-control" id="conpass" name="conpass" required>
+					</div>
+
+					<div class="d-grid">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
 <?php include_once("footer.php");?>
+
+<?php } else { ?>
+	<script language="javascript">parent.location.href="index.php";</script>
+<?php } ?>
+
 </body>
 </html>
-<?php
-}
-else
-{
-?>
-	<script language="javascript">parent.location.href="index.php";</script>
-<?php
-}
-?>
