@@ -4,7 +4,7 @@
 			<span class="me-auto">भारत सरकार | Government of India</span>
 			
 			<a href="#main-content" class="text-decoration-none">Skip to main content</a>
-			<a href="#" class="text-decoration-none px-3">Screen Reader Access</a>
+			<a href="javascript:;" class="text-decoration-none px-3" id="screenReader">🔈 Enable Screen Reader</a>
 			<div class="d-flex align-items-center">
 				<button class="btn btn-sm fw-bold lh-sm fs-6" id="decFont" title="Decrease font" aria-label="Decrease font"><span class="material-symbols-rounded notranslate">text_decrease</span></button>
 				<button class="btn btn-sm fw-bold lh-sm fs-6" id="resetFont" title="Default font" aria-label="Default font"><span class="material-symbols-rounded notranslate">font_download</span></button>

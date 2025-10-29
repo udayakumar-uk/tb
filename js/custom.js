@@ -1,50 +1,122 @@
 
 $(document).on('ready', function() {
 		
-		resetFont();
-		
-		$('#incFont').on('click', function(){
-			const fontSize = getFontSizeFromLocationStrage();
-			if(+fontSize > 15){
-				return false;
-			}
-			const incFont = +fontSize + 1;
-			$('body, html').css({'fontSize': incFont+'px'});
-			setFontSizeToLocationStrage(incFont);
-		})
+	// Screen Reader Text-To-Speach
+	
+    let screenReaderEnabled = false;
 
-		$('#decFont').on('click', function(){
-			const fontSize = getFontSizeFromLocationStrage();
-			if(+fontSize < 13){
-				return false;
-			}
-			const decFont = +fontSize - 1;
-			$('body, html').css({'fontSize': decFont+'px'});
-			setFontSizeToLocationStrage(decFont);
-		})
+    // ✅ Speak function
+    function speak(text) {
+      if (!text || text.trim().length === 0) return;
 
-		$('#resetFont').on('click', function(){
-			resetFont(14);
-		});
+      if (!('speechSynthesis' in window)) {
+        alert('Sorry, your browser does not support text-to-speech.');
+        return;
+      }
 
-		function resetFont(size){
-			const fontSize = size ? size : getFontSizeFromLocationStrage();
+      window.speechSynthesis.cancel(); // stop ongoing speech
 
-			$('body, html').css({'fontSize': `${fontSize ? fontSize : '14'}px`});
-			setFontSizeToLocationStrage(fontSize);
+      const utter = new SpeechSynthesisUtterance(text.trim());
+      utter.lang = 'en-US';
+      utter.rate = 1;
+      utter.volume = 1;
+      utter.pitch = 1;
 
+      window.speechSynthesis.speak(utter);
+    }
+
+    // ✅ Toggle button
+    const toggleBtn = document.getElementById('screenReader');
+
+    toggleBtn.addEventListener('click', () => {
+
+		screenReaderEnabled = !screenReaderEnabled;
+
+		if (screenReaderEnabled) {
+			toggleBtn.textContent = '🔇 Disable Screen Reader';
+		} else {
+			toggleBtn.textContent = '🔈 Enable Screen Reader';
+			window.speechSynthesis.cancel();
 		}
+    });
 
-		const getThemeMode = localStorage.getItem('theme');
-		localStorage.setItem('theme', (getThemeMode ?? 'light'));
-		$('html').attr('data-bs-theme', (getThemeMode ?? 'light'));
+    // ✅ Hover event for individual elements
+    document.body.addEventListener('mouseover', (event) => {
+		if (!screenReaderEnabled) return;
 
-		$('#theme').on('change', function() {
-			const isDark = $(this).is(':checked');
-			$('html').attr('data-bs-theme', isDark ? 'dark' : 'light');
-			localStorage.setItem('theme', (isDark ? 'dark' : 'light'));
-			
-		});
+		const target = event.target;
+		// Ignore large containers like <body>, <html>, or empty elements
+		if (["input", "img", "svg", "path", "span.notranslate"].includes(target.tagName)) {return};
+
+		if ($(event.target).closest(".notranslate").length) {
+			return; // stop reading for .notranslate elements
+		}
+		
+
+		const text = target.innerText?.trim() ?? target.getAttribute('aria-label') ?? '';
+
+		// Speak if the element contains text
+		if (text.length > 0) {
+		speak(text);
+		}
+	
+    });
+
+    document.body.addEventListener('mouseout', () => {
+		if (screenReaderEnabled && window.speechSynthesis.speaking) {
+			window.speechSynthesis.cancel();
+		}
+    });
+
+
+
+
+
+	// Increase and Decrease the fontsize
+
+	resetFont();
+	
+	$('#incFont').on('click', function(){
+		const fontSize = getFontSizeFromLocationStrage();
+		if(+fontSize > 15){
+			return false;
+		}
+		const incFont = +fontSize + 1;
+		$('body, html').css({'fontSize': incFont+'px'});
+		setFontSizeToLocationStrage(incFont);
+	})
+
+	$('#decFont').on('click', function(){
+		const fontSize = getFontSizeFromLocationStrage();
+		if(+fontSize < 13){
+			return false;
+		}
+		const decFont = +fontSize - 1;
+		$('body, html').css({'fontSize': decFont+'px'});
+		setFontSizeToLocationStrage(decFont);
+	})
+
+	$('#resetFont').on('click', function(){
+		resetFont(14);
+	});
+
+	function resetFont(size){
+		const fontSize = size ? size : getFontSizeFromLocationStrage();
+
+		$('body, html').css({'fontSize': `${fontSize ? fontSize : '14'}px`});
+		setFontSizeToLocationStrage(fontSize);
+
+	}
+
+	const getThemeMode = localStorage.getItem('theme');
+	localStorage.setItem('theme', (getThemeMode ?? 'light'));
+	$('html').attr('data-bs-theme', (getThemeMode ?? 'light'));
+
+	$('#theme').on('change', function() {
+		const isDark = $(this).is(':checked');
+		$('html').attr('data-bs-theme', isDark ? 'dark' : 'light');
+		localStorage.setItem('theme', (isDark ? 'dark' : 'light'));
+	});
 		
 
 });

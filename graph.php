@@ -5,7 +5,6 @@
 <script type="text/javascript" src="graph/syntaxhighlighter/scripts/shBrushJScript.min.js"></script>
 <script type="text/javascript" src="graph/syntaxhighlighter/scripts/shBrushXml.min.js"></script>
 <!-- Additional plugins go here -->
-<script class="include" type="text/javascript" src="graph/jquery.jqplot.min.js"></script>
 <script class="include" type="text/javascript" src="graph/plugins11/jqplot.barRenderer.min.js"></script>
 <script class="include" type="text/javascript" src="graph/plugins11/jqplot.pieRenderer.min.js"></script>
 <script class="include" type="text/javascript" src="graph/plugins11/jqplot.categoryAxisRenderer.min.js"></script>
