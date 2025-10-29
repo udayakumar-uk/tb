@@ -97,34 +97,35 @@ function valid(form1)
 				<h1>Change Password</h1>
 
 				<?php if (!empty($exist)) { ?>
-					<div class="alert alert-danger d-flex align-items-center" role="alert">
+					<div class="alert alert-danger d-flex align-items-center ms-auto" role="alert">
 						<span class="material-symbols-outlined pe-2">cloud_alert</span>
 						<span >The Old Password is Wrong</span>
 					</div>
 				<?php } ?>
 				<?php if (!empty($succ)) { ?>
-					<div class="alert alert-danger d-flex align-items-center" role="alert">
+					<div class="alert alert-danger d-flex align-items-center ms-auto" role="alert">
 						<span class="material-symbols-outlined pe-2">success</span>
 						<span >The Password Changed Successfully</span>
 					</div>
 				<?php } ?>
 
 				<form id="form1" name="form1" method="post" action="" onsubmit="return valid(this);">
-					<div class="mb-3">
+					<div class="form-group">
 						<label for="newpass" class="form-label">Old Password</label>
 						<input type="password" class="form-control" id="newpass" name="newpass" required>
 					</div>
-					<div class="mb-3">
+					<div class="form-group">
 						<label for="password" class="form-label">New Password</label>
 						<input type="password" class="form-control" id="password" name="password" required>
 					</div>
-					<div class="mb-3">
+					<div class="form-group">
 						<label for="conpass" class="form-label">Confirm Password</label>
 						<input type="password" class="form-control" id="conpass" name="conpass" required>
 					</div>
 
-					<div class="d-grid">
-						<button type="submit" class="btn btn-primary">Submit</button>
+					<div class="d-flex gap-3">
+						<a href="./adminmain.php" class="btn btn-secondary w-100"><span class="material-symbols-rounded">arrow_back</span>&nbsp;Go Back</a>
+						<button type="submit" class="btn btn-primary w-100">Submit</button>
 					</div>
 				</form>
 			</div>

@@ -78,7 +78,6 @@ for($k=1;$k<=2;$k++) {
 	<?php include "head.php"; ?>
 
   <link class="include" rel="stylesheet" type="text/css" href="graph/jquery.jqplot.min.css" />
-  <!-- <link rel="stylesheet" type="text/css" href="graph/examples.min.css" /> -->
   <link type="text/css" rel="stylesheet" href="graph/syntaxhighlighter/styles/shCoreDefault.min.css" />
   <link type="text/css" rel="stylesheet" href="graph/syntaxhighlighter/styles/shThemejqPlot.min.css" />
 

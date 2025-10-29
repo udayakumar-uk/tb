@@ -41,21 +41,21 @@
 			<div class="col-md-6 col-lg-2 mb-4">
 				<h3 class="sub-title">Quick Links</h3>
 				<ul type="none">
-					<li><a href="./pages/copyrights.php">Copyrights Policy</a></li>
-					<li><a href="./pages/terms.php">Terms & Conditions</a></li>
-					<li><a href="./pages/privacypolicy.php">Privacy Policy</a></li>
-					<li><a href="./pages/hyper.php">Hyperlink Policy</a></li>
-					<li><a href="./pages/help.php">Help</a></li>
+					<li><a href="./copyrights.php">Copyrights Policy</a></li>
+					<li><a href="./terms.php">Terms & Conditions</a></li>
+					<li><a href="./privacypolicy.php">Privacy Policy</a></li>
+					<li><a href="./hyper.php">Hyperlink Policy</a></li>
+					<li><a href="./help.php">Help</a></li>
 				</ul>
 			</div>
 			<div class="col-md-6 col-lg-2 mb-4">
 				<h3 class="sub-title">Quick Links</h3>
 				<ul type="none">
-					<li><a href="./pages/sitemap.php">Sitemap </a></li>
-					<li><a href="./pages/brokenlink.php">Broken Links </a></li>
+					<li><a href="./sitemap.php">Sitemap </a></li>
+					<li><a href="./brokenlink.php">Broken Links </a></li>
 					<!-- <li><a href="#">Screen Reader Access</a></li> -->
-					<li><a href="./pages/faq.php">FAQ's</a></li>
-					<li><a href="./pages/feedback.php">Feedback</a></li>
+					<li><a href="./faq.php">FAQ's</a></li>
+					<li><a href="./feedback.php">Feedback</a></li>
 				</ul>
 			</div>
 			<div class="col-md-6 col-lg-4 mb-4">

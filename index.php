@@ -635,39 +635,7 @@
 
 <!--------------Footer--------------->
 <?php  include "tb_footer.php"; ?>
-
-<script src="./slick/slick.js"></script>
-
-<script>
-
-$(document).on('ready', function() {
-
-	$(".gallery-wrapper").slick({
-		arrows: false,
-		infinite: true,
-		// centerMode: true,
-		slidesToShow: 4,
-		slidesToScroll: 1,
-		autoplay: true,
-		autoplaySpeed: 4000,
-		responsive: [
-			{
-				breakpoint: 992,
-				settings: {
-					slidesToShow: 3,
-				}
-			},
-			{
-				breakpoint: 576,
-				settings: {
-					slidesToShow: 2,
-				}
-			}
-		]
-	});
-});
-
-</script>
+<?php include "graph.php"; ?>
 
 </body>
 </html>
