@@ -433,7 +433,7 @@ input.form-control:focus, select.form-select:focus{
 /* priceTable-section */
 
 .priceTable-section{
-	background-color: var(--charcoalGreen);
+	background-color: var(--lightBeige);
 }
 
 .priceTable-section .table th, .priceTable-section .table td{

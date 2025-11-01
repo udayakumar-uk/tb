@@ -18,6 +18,14 @@
 	<link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
 
 	<?php include "head.php"; ?>
+	<link class="include" rel="stylesheet" type="text/css" href="jqplot1/jquery.jqplot.min.css" />
+
+	<style>
+		.jqplot-data-label {
+			color: var(--bs-white) !important;
+			font-weight: bold;
+		}
+	</style>
 
 </head>
 <body>
@@ -152,155 +160,56 @@
 			<div class="row">
 				<div class="col-lg-6">
 
-					<div class="title-height">
-						<h3 class="sub-title text-white">FCV TOBACCO AUCTION PRICES</h3>
-					</div>
-					<div class="table-responsive">
-						<table class="table table-bordered bg-white overflow-hidden rounded-4">
-							<thead>
-								<tr>
-									<th scope="col">State</th>
-									<th scope="col">Year</th>
-									<th scope="col" style="min-width: 100px;">Date</th>
-									<th scope="col">Days</th>
-									<th scope="col">Qty(M.Kgs)</th>
-									<th scope="col">Avg.Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								
-								<?php
-									$statess=array('Andhra Pradesh','Karnataka');
-									$states1=array('AP','KARNATAKA');
-									$catgs[0]=array('NBS','NLS','SBS','SLS');
-									$catgs[1]=array('Mysore','Periyapatna');
-									$catgs1[0]=array('NBS','NLS','SBS','SLS');
-									$catgs1[1]=array('Mysore','P.patna');
-								?>
+          			<div id="actionPrice" style="width: 100%; height: 400px"></div>
 
-								<?php 
-									for($i=0;$i<2;$i++){
-									$selauct=executework("select * from tob_auctsetting where state='".$statess[$i]."' and status='1'");
-									$rowc=@mysqli_fetch_array($selauct);
-								?>
-				
-								<tr>
-									<th scope="row" rowspan="2"><?php echo strtoupper($statess[$i]); ?></th>
-									<td><?php echo $rowc['year']."(Final)"; ?></td>
-									<td><?php echo date('d-m-Y',strtotime($rowc['sdate'])); ?></td>
-									<td><?php echo $rowc['days']; ?></td>
-									<td><?php echo $rowc['qty']; ?></td>
-									<td><?php echo $rowc['avg']; ?></td>
-								</tr>
+					<?php
+						$statess=array('Andhra Pradesh','Karnataka');
+						$actionPrice = array();
+					?>
 
-								<?php
-									$sel3=executework("select * from tob_auction,tob_platform where tob_auction.platf=tob_platform.id and tob_platform.state='".$statess[$i]."' and date(tdate)<='".date('Y-m-d')."' and tob_platform.isactive=1 order by tob_auction.tdate desc limit 1");
-									$row=@mysqli_fetch_array($sel3);
-									$adate=$row['tdate'];
-									$yr=$row['year'];
-									$selycnt=executework("select distinct count(distinct tdate) as cnt from tob_platform,tob_auction where tob_platform.id=tob_auction.platf and tob_platform.state='".$statess[$i]."' and date(tdate)<='".date('Y-m-d')."' and tob_auction.year=".$yr." order by cnt desc limit 1");
-									$rowycnt=@mysqli_fetch_array($selycnt);
-									if(!empty($rowycnt['cnt']))
-									$days=$rowycnt['cnt'];
-								
-									$qrv=" and year ='".$yr."'";
-									$selsm=executework("select sum(bsold) as bsold,sum(qsold) as qsold,sum(tvalue) as tval,sum(aprice) as apric from tob_auction where platf in(select id from tob_platform where state='".$statess[$i]."')".$qrv);
-									$rows=@mysqli_fetch_array($selsm);
-									$avg=$rows['tval']/$rows['qsold'];
-									if($rows['qsold']>0)
-									{
-										$yrr=$yr;
-								?>
-								<tr>
-									<td><a href="auctions.php?state=<?php echo $statess[$i]; ?>" class="text-primary"><?php echo $yrr; ?></a></td>
-									<td><a href="auctions.php?state=<?php echo $statess[$i]; ?>" class="text-primary"><?php echo date('d-m-Y',strtotime($adate)); ?></a></td>
-									<td><a href="auctions.php?state=<?php echo $statess[$i]; ?>" class="text-primary"><?php echo $days; ?></a></td>
-									<td><a href="auctions.php?state=<?php echo $statess[$i]; ?>" class="text-primary"><?php echo round($rows['qsold']/1000000,2); ?></a></td>
-									<td><a href="auctions.php?state=<?php echo $statess[$i]; ?>" class="text-primary"><?php echo round($avg,2); ?></a></td>
-								</tr> 
-
-								<?php } ?>
-							<?php } ?>
-
-							</tbody>
-						</table>
-					</div>
+					<?php 
+						for($i=0;$i<2;$i++){
+						$selauct=executework("select * from tob_auctsetting where state='".$statess[$i]."' and status='1'");
+						$rowc=@mysqli_fetch_array($selauct);
+						$actionPrice[] = array(strtoupper($statess[$i]) . ' ' . $rowc['year'] . "(Final)",  ($rowc['qty']/1));
+						
+						$sel3=executework("select * from tob_auction,tob_platform where tob_auction.platf=tob_platform.id and tob_platform.state='".$statess[$i]."' and date(tdate)<='".date('Y-m-d')."' and tob_platform.isactive=1 order by tob_auction.tdate desc limit 1");
+						$row=@mysqli_fetch_array($sel3);
+						$adate=$row['tdate'];
+						$yr=$row['year'];
+						$selycnt=executework("select distinct count(distinct tdate) as cnt from tob_platform,tob_auction where tob_platform.id=tob_auction.platf and tob_platform.state='".$statess[$i]."' and date(tdate)<='".date('Y-m-d')."' and tob_auction.year=".$yr." order by cnt desc limit 1");
+						$rowycnt=@mysqli_fetch_array($selycnt);
+						if(!empty($rowycnt['cnt']))
+						$days=$rowycnt['cnt'];
+					
+						$qrv=" and year ='".$yr."'";
+						$selsm=executework("select sum(bsold) as bsold,sum(qsold) as qsold,sum(tvalue) as tval,sum(aprice) as apric from tob_auction where platf in(select id from tob_platform where state='".$statess[$i]."')".$qrv);
+						$rows=@mysqli_fetch_array($selsm);
+						$avg=$rows['tval']/$rows['qsold'];
+						if($rows['qsold']>0) {
+						$yrr=$yr;
+						$actionPrice[] = array(strtoupper($statess[$i]) . ' ' . $yrr,  round($rows['qsold']/1000000,2));
+					?>
+					<?php } ?>
+				<?php } ?>
 				</div>
 				
 				<div class="col-lg-6">
+					
+          			<div id="expertPermance" style="width: 100%; height: 400px"></div>
+
 					<?php
 						$variety=array('FCV','Non FCV', 'Refuse Tobacco', 'Tobacco Products', 'Un Manufactured Tobacco');
 						$sel=executework("select * from tob_homexport");
 						$data=array();
-						while($row=@mysqli_fetch_array($sel))
-						{
-							$vart=$row['variety'];
-							$data[$vart]=$row;
+						$currMonth = array();
+						$cumMonth = array();
+						
+						while($row=@mysqli_fetch_array($sel)) {
+							$currMonth[] = [$row['variety'], ($row['cvald']/1)];
+							$cumMonth[] = [$row['variety'], ($row['mvald']/1)];
 						}
-						
-						$selid=executework("select * from tob_gsettings where graph='Action Graph'");
-						$cnt=@mysqli_num_rows($selid);
-						$row=@mysqli_fetch_array($selid);
-						
-						$fmn=$row['export_fmonth'];
-						$fyr=$row['export_fyear'];
-						$tmn=$row['export_tmonth'];
-						$tyr=$row['export_tyear'];
-
-						$fcv=array('FCV','Non FCV','Refuse Tobacco','Tobacco Products','Unmanufactured Tobacco');
-						$fcv1=array('FCV','Non FCV','Refuse Tobacco','Tobacco Products','Un manufactured Tobacco');
-						$seldl=executework("select * from tob_dollar where id=1");
-						$rowdl=@mysqli_fetch_array($seldl);
-						$usd=$rowdl['dollar'];
-						$selcm=executework("select month,year from tob_export order by year desc,month desc limit 1");
-						$rowcm=@mysqli_fetch_array($selcm);
 					?>
-					<div class="d-flex justify-content-between">
-						<div class="title-height">
-							<h3 class="sub-title text-white">EXPORT PERFORMANCE</h3>
-						</div>
-						<div class="text-white text-end" style="font-size: 14px; line-height: 1.4;">
-							<strong class="fs-5">Current Month - <?php echo strtoupper(date('M y',strtotime($tyr."-".$tmn."-01"))); ?></strong>
-							<br>
-							<small>Cumulative - <?php echo date('M y',strtotime($fyr."-".$fmn."-01"))." - ".date('M y',strtotime($tyr."-".$tmn."-01")); ?></small>
-						</div>
-					</div>
-					<div class="table-responsive">
-						
-						<table class="table table-bordered bg-white overflow-hidden rounded-4 no-cellspace">
-							<thead>
-								<tr>
-									<th>Variety</th>
-									<th class="text-end">Qty(M.Tons)</th>
-									<th class="text-end">Value(Rs Cr.)</th>
-									<th class="text-end">Value(M.USD)</th>
-								</tr>
-								<?php 
-								for($i=0;$i<5;$i++) {
-									$vart=$variety[$i];
-								?>
-								<tr>
-									<th><?php echo $vart; ?></th>
-									<td class="text-end">
-										<p class="text-primary lh-1 fw-600 m-0 intersemibold"><?php echo round($data[$vart]['cqty']); ?></p>
-										<small class="text-secondary d-inline-block"><?php echo round($data[$vart]['mqty']); ?></small>
-									</td>
-									<td class="text-end">
-										<p class="text-primary lh-1 fw-600 m-0 intersemibold"><?php echo round($data[$vart]['cvalr']); ?></p>
-										<small class="text-secondary d-inline-block"><?php echo round($data[$vart]['mvalr']); ?></small>
-									</td>
-									<td class="text-end">
-										<p class="text-primary lh-1 fw-600 m-0 intersemibold"><?php echo round($data[$vart]['cvald']); ?></p>
-										<small class="text-secondary d-inline-block"><?php echo round($data[$vart]['mvald']); ?></small>
-									</td>
-								</tr>
-								<?php } ?>
-							</thead>
-							<tbody>
-								
-							</tbody>
-						</table>
-					</div>
 
 				</div>
 			</div>
@@ -635,6 +544,7 @@
 
 <!--------------Footer--------------->
 <?php  include "tb_footer.php"; ?>
+<?php include "graph.php"; ?>
 
 <script src="./slick/slick.js"></script>
 
@@ -665,6 +575,103 @@ $(document).on('ready', function() {
 			}
 		]
 	});
+
+
+
+	const data = <?php echo json_encode($actionPrice); ?>;
+	const links = ['auctions.php?state=Andhra Pradesh','auctions.php?state=Andhra Pradesh', 'auctions.php?state=Karnataka','auctions.php?state=Karnataka'];
+
+	var currMonth = <?php echo json_encode($currMonth); ?>;
+	var cumMonth = <?php echo json_encode($cumMonth); ?>;
+
+
+	var plot1 = jQuery.jqplot ('actionPrice', [data],  { 
+  		title: {
+			text: 'FCV Tobacco Aution Prices',
+			textColor: '#333',
+			fontFamily: 'Inter',
+			fontSize: '16px',
+		},
+		grid: {
+			drawBorder: false, 
+			drawGridlines: false,
+			background: 'transparent',
+			shadow:false
+		},
+		seriesDefaults: {
+		// Make this a pie chart.
+		renderer: jQuery.jqplot.PieRenderer, 
+		rendererOptions: {
+			showDataLabels: true,
+			shadow: false,
+		},
+		
+		},
+		seriesColors: ["#F4B600", "#CC8A2B", "#465B3C", "#384632"],
+		legend: { 
+			show:true, 
+			location: 'e',
+			placement: 'insideGrid',
+			fontFamily: 'Inter',
+			fontSize: '14px'
+		}
+	}
+	);
+
+	// ✅ Click event listener for pie slices
+	$('#actionPrice').bind('jqplotDataClick', function (ev, seriesIndex, pointIndex, data) {
+		const targetUrl = links[pointIndex]; // get link based on slice index
+		if (targetUrl) {
+		window.location.href = targetUrl; // redirect to page
+		}
+	});
+
+
+
+	
+	var plot2 = jQuery.jqplot ('expertPermance', [cumMonth, currMonth], {
+		title: {
+			text: 'Export Performance',
+			textColor: '#333',
+			fontFamily: 'Inter',
+			fontSize: '18px',
+		},
+		grid: {
+			drawBorder: false, 
+			drawGridlines: false,
+			background: 'transparent',
+			shadow:false,
+		},
+		seriesDefaults: {
+		// make this a donut chart.
+		renderer:$.jqplot.DonutRenderer,
+		rendererOptions:{
+			// Donut's can be cut into slices like pies.
+			sliceMargin: 1,
+			shadow: false,
+			startAngle: -90,
+			showDataLabels: true,
+		},
+		},
+		
+		seriesColors: ["#F4B600", "#CC8A2B", "#dc3545", "#384632", "#465B3C"],
+		legend: { 
+			show:true, 
+			location: 'e',
+			placement: 'insideGrid',
+			fontFamily: 'Inter',
+			fontSize: '14px',
+			textColor: '#333'
+		}
+	});
+
+	// ✅ Click event listener for pie slices
+	$('#expertPermance').bind('jqplotDataClick', function (ev, seriesIndex, pointIndex, data) {
+		window.location.href = 'export_per.php';
+	});
+
+
+
 });
 
 </script>
