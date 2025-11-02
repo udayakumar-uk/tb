@@ -227,3 +227,20 @@ function remove_firstp($string)
 		</div>
 	</nav>
 </header>
+
+<div class="modal fade" id="alertModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content shadow-lg border-0 rounded-3">
+			<div class="modal-header">
+				<h5 class="modal-title" id="alertModalLabel"><span class="material-symbols-rounded notranslate">warning</span> Important Alert</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p class="mb-0">Welcome! This alert is shown only once during your current session.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

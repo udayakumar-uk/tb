@@ -25,6 +25,19 @@
 			color: var(--bs-white) !important;
 			font-weight: bold;
 		}
+		#expertPermance, #actionPrice{
+			width: 100%;
+			height: 450px;
+		}
+
+		
+		@media (max-width: 767px) {
+			#expertPermance, #actionPrice{
+				width: 100%;
+				height: 500px;
+			}
+
+		}
 	</style>
 
 </head>
@@ -160,7 +173,7 @@
 			<div class="row">
 				<div class="col-lg-6">
 
-          			<div id="actionPrice" style="width: 100%; height: 400px"></div>
+          			<div id="actionPrice"></div>
 
 					<?php
 						$statess=array('Andhra Pradesh','Karnataka');
@@ -196,7 +209,7 @@
 				
 				<div class="col-lg-6">
 					
-          			<div id="expertPermance" style="width: 100%; height: 400px"></div>
+          			<div id="expertPermance"></div>
 
 					<?php
 						$variety=array('FCV','Non FCV', 'Refuse Tobacco', 'Tobacco Products', 'Un Manufactured Tobacco');
@@ -369,7 +382,7 @@
 							$fcheck=explode(".",$rown['tfile']);
 							// Card design
 							?>
-							<div class="col-md-6 col-lg-3">
+							<div class="col-md-6 col-lg-3 mb-3">
 								<div class="card h-100 box-shadow shadow-none">
 									<div class="card-body d-flex flex-column justify-content-between">
 										<div class="card-title mb-2">
@@ -456,7 +469,7 @@
 				</div>
 			</section>
 			
-			<a href="javascript:;" class="btn btn-primary box-shadow box-shadow-lg mt-4">See More <span class="material-symbols-rounded notranslate align-middle">arrow_forward</span></a>
+			<a href="javascript:;" class="btn btn-primary box-shadow box-shadow-lg mt-4" aria-label="See More">See More <span class="material-symbols-rounded notranslate align-middle">arrow_forward</span></a>
 		</div>
 	</section>
 
@@ -584,6 +597,8 @@ $(document).on('ready', function() {
 	var currMonth = <?php echo json_encode($currMonth); ?>;
 	var cumMonth = <?php echo json_encode($cumMonth); ?>;
 
+	var winWidth = window.innerWidth;
+
 
 	var plot1 = jQuery.jqplot ('actionPrice', [data],  { 
   		title: {
@@ -610,10 +625,16 @@ $(document).on('ready', function() {
 		seriesColors: ["#F4B600", "#CC8A2B", "#465B3C", "#384632"],
 		legend: { 
 			show:true, 
-			location: 'e',
+			location: (winWidth < 768) ? 's' : 'e',
 			placement: 'insideGrid',
 			fontFamily: 'Inter',
-			fontSize: '14px'
+			fontSize: '14px',
+			textColor: '#333',
+			...(winWidth < 768 && {
+				rendererOptions: {
+					numberRows: 2
+				}
+			})
 		}
 	}
 	);
@@ -657,11 +678,16 @@ $(document).on('ready', function() {
 		seriesColors: ["#F4B600", "#CC8A2B", "#dc3545", "#384632", "#465B3C"],
 		legend: { 
 			show:true, 
-			location: 'e',
+			location: (winWidth < 768) ? 's' : 'e',
 			placement: 'insideGrid',
 			fontFamily: 'Inter',
 			fontSize: '14px',
-			textColor: '#333'
+			textColor: '#333',
+			...(winWidth < 768 && {
+				rendererOptions: {
+					numberRows: 3
+				}
+			})
 		}
 	});
 

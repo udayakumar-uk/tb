@@ -263,10 +263,12 @@ input.form-control:focus, select.form-select:focus{
 .page-link:focus{
 	box-shadow: none;
 }
+.material-symbols-rounded{
+	vertical-align: middle;
+}
 
 .btn .material-symbols-rounded{
 	font-size: 20px;
-	vertical-align: middle;
 }
 
 .title, .sub-title{

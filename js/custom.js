@@ -4,6 +4,7 @@ $(document).on('ready', function() {
 	// Screen Reader Text-To-Speach
 	
     let screenReaderEnabled = false;
+	window.speechSynthesis.cancel();
 
     // ✅ Speak function
     function speak(text) {
@@ -46,18 +47,15 @@ $(document).on('ready', function() {
 
 		const target = event.target;
 		// Ignore large containers like <body>, <html>, or empty elements
-		if (["input", "img", "svg", "path", "span.notranslate"].includes(target.tagName)) {return};
-
-		if ($(event.target).closest(".notranslate").length) {
-			return; // stop reading for .notranslate elements
-		}
+		if (["input", "img", "svg", "path", "section", "main", "aside", "html", "body", "footer", "header"].includes(target.tagName.toLowerCase())) {return};
+		if (["notranslate"].includes(target.classList)) {return};
 		
 
-		const text = target.innerText?.trim() ?? target.getAttribute('aria-label') ?? '';
+		const text = target.getAttribute('aria-label') ?? target.innerText?.trim() ?? '';
 
 		// Speak if the element contains text
 		if (text.length > 0) {
-		speak(text);
+			speak(text);
 		}
 	
     });
@@ -164,6 +162,24 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
+});
+
+
+// Waring Modal
+// Show modal only once per session
+document.addEventListener('DOMContentLoaded', function() {
+	const modalShown = sessionStorage.getItem('alertModalShown');
+
+	if (!modalShown) {
+	const alertModal = new bootstrap.Modal(document.getElementById('alertModal'));
+	setTimeout( function(){
+
+		alertModal.show();
+	}, 5000);
+
+	// Store flag so it won't show again in this session
+	sessionStorage.setItem('alertModalShown', 'true');
+	}
 });
 
 
