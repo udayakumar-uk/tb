@@ -12,15 +12,76 @@
 <html lang="en" data-bs-theme="light">
 <head>
 	<title>Tobacco Board</title>
-	
-	<!-- slider -->
-	<link rel="stylesheet" type="text/css" href="./slick/slick.css">
-	<link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
 
 	<?php include "head.php"; ?>
+	
 	<link class="include" rel="stylesheet" type="text/css" href="jqplot1/jquery.jqplot.min.css" />
 
-	<style>
+	<link rel="stylesheet" href="./fancyapps/carousel.css"> 
+	<link rel="stylesheet" href="./fancyapps/arrows.css"> 
+	<link rel="stylesheet" href="./fancyapps/dots.css">
+
+    <style>
+
+		#photoGallery {
+			--f-carousel-gap: 10px;
+			--f-carousel-slide-width: 20%;
+			--f-carousel-slide-padding: 5px;
+			--f-carousel-slide-bg: var(--lightBeige);
+			--f-carousel-slide-height: 200px;
+		}
+		#photoGallery .f-carousel__slide{
+			border-radius: 8px;
+		}
+			
+		#photoGallery .f-carousel__slide img {
+			max-width: 100%;
+			max-height: 100%; 
+			object-fit: cover;
+			width: 100%; 
+			height: 100%;
+			border-radius: 5px; 
+		}
+
+		#bannerCarousel {
+			--f-carousel-gap: 10px;
+			--f-carousel-slide-width: 100%;
+			--f-carousel-slide-padding: 0;
+			--f-carousel-slide-bg: #eee;
+			
+			--f-carousel-dots-top: auto;
+    		--f-carousel-dots-bottom: 65px;
+
+			--f-arrow-pos: 10px;
+			--f-arrow-bg: rgba(255, 255, 255, 0.75);
+			--f-arrow-hover-bg: rgba(255, 255, 255, 1);
+			--f-arrow-color: #333;
+			--f-arrow-width: 40px;
+			--f-arrow-height: 40px;
+			--f-arrow-svg-width: 20px;
+			--f-arrow-svg-height: 20px;
+			--f-arrow-svg-stroke-width: 2px;
+			--f-arrow-border-radius: 50%;
+
+			height: 500px;
+			max-height: calc(100vh - 40px);
+		}
+
+
+		#bannerCarousel .f-carousel__slide {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#bannerCarousel .f-carousel__slide img {
+			max-width: 100%;
+			max-height: 100%; 
+			object-fit: cover;
+			width: 100%; 
+			height: 100%; 
+		} 
+		
 		.jqplot-data-label {
 			color: var(--bs-white) !important;
 			font-weight: bold;
@@ -38,7 +99,7 @@
 			}
 
 		}
-	</style>
+</style>
 
 </head>
 <body>
@@ -73,37 +134,40 @@
 		<marquee class="d-block py-2 bg-goldenbrown text-white" scrollamount="5" direction="left" onMouseOver="this.stop();" onMouseOut="this.start();">
 			<?php echo $lnews ?>
 		</marquee>
-
-		<div id="homeBanner" class="carousel slide" data-bs-ride="false">
-			<div class="carousel-indicators">
-				<button type="button" data-bs-target="#homeBanner" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-				<button type="button" data-bs-target="#homeBanner" data-bs-slide-to="1" aria-label="Slide 2"></button>
-				<button type="button" data-bs-target="#homeBanner" data-bs-slide-to="2" aria-label="Slide 3"></button>
-				<button type="button" data-bs-target="#homeBanner" data-bs-slide-to="3" aria-label="Slide 4"></button>
+		
+		<div class="f-carousel" id="bannerCarousel">
+			<div class="f-carousel__slide">
+				<img data-lazy-src="./img/banner/banner-1.jpg" class="image-fluid" alt="Banner Image" />
 			</div>
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img src="./img/slider/slider-1.jpg" class="d-block w-100" alt="Tobacco Board Image">
-				</div>
-				<div class="carousel-item">
-					<img src="./img/slider/slider-4.jpg" class="d-block w-100" alt="Tobacco Board Image">
-				</div>
-				<div class="carousel-item">
-					<img src="./img/slider/slider-2.jpg" class="d-block w-100" alt="Tobacco Board Image">
-				</div>
-				<div class="carousel-item">
-					<img src="./img/slider/slider-3.jpg" class="d-block w-100" alt="Tobacco Board Image">
-				</div>
+			<div class="f-carousel__slide">
+				<img data-lazy-src="./img/banner/banner-2.jpg" class="image-fluid" alt="Banner Image" />
 			</div>
-			<button class="carousel-control-prev" type="button" data-bs-target="#homeBanner" data-bs-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></strong>
-				<span class="visually-hidden">Previous</strong>
-			</button>
-			<button class="carousel-control-next" type="button" data-bs-target="#homeBanner" data-bs-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></strong>
-				<span class="visually-hidden">Next</strong>
-			</button>
+			<div class="f-carousel__slide">
+				<img data-lazy-src="./img/banner/banner-3.jpg" class="image-fluid" alt="Banner Image" />
+			</div>
+			<div class="f-carousel__slide">
+				<img data-lazy-src="./img/banner/banner-4.jpg" class="image-fluid" alt="Banner Image" />
+			</div>
+			<div class="f-carousel__slide">
+				<img data-lazy-src="./img/banner/banner-5.jpg" class="image-fluid" alt="Banner Image" />
+			</div>
+			<div class="f-carousel__slide">
+				<img data-lazy-src="./img/banner/banner-6.jpg" class="image-fluid" alt="Banner Image" />
+			</div>
+			<div class="f-carousel__slide">
+				<img data-lazy-src="./img/banner/banner-7.jpg" class="image-fluid" alt="Banner Image" />
+			</div>
+			<div class="f-carousel__slide">
+				<img data-lazy-src="./img/banner/banner-8.jpg" class="image-fluid" alt="Banner Image" />
+			</div>
+			<div class="f-carousel__slide">
+				<img data-lazy-src="./img/banner/banner-9.jpg" class="image-fluid" alt="Banner Image" />
+			</div>
+			<div class="f-carousel__slide">
+				<img data-lazy-src="./img/banner/banner-10.jpeg" class="image-fluid" alt="Banner Image" />
+			</div>
 		</div>
+
 	</section>
 
 	
@@ -135,7 +199,7 @@
 					<p>Tobacco is one of the important commercial crops grown in India. It provides employment directly and indirectly to<strong class="text-coalgreen"> 45.7</strong> million people and <strong class="text-coalgreen">Rs.12,005.89 crore </strong>in terms of foreign exchange to the National exchequer during 2023-24. India has a prominent place in the production of tobacco in the world. During <strong class="text-coalgreen">2022</strong>, India stands as<strong class="text-coalgreen"> 2nd largest country </strong>in Production <strong class="text-coalgreen">(FAO Stat data, 2022)</strong>, <strong class="text-coalgreen">2nd Largest Exporter</strong> (in quantity terms) and <strong class="text-coalgreen">5th Largest Exporter </strong>of unmanufactured tobacco (in value terms) in the world <strong class="text-coalgreen">(ITC Trademap data 2022)</strong>. India produces different styles of Flue Cured Virginia tobacco, which vary in their physical and chemical characteristics.</p>
 				</div>
 				<div class="profile-wrapper row justify-content-center py-3">
-					<div class="col-md-4 my-3">
+					<div class="col-lg-4 col-md-6 my-2">
 						<a href="./profile/Yashwanth_Profile.pdf" target="_blank" class="profile-card box-shadow h-100 flex-row text-start">
 							<img src="./img/profile/Shri_Yashwanth_Kumar_Chidipothu.jpeg" class="card-img-top border flex-shrink-0" alt="Shri Yashwanth Kumar Chidipothu">
 							<div class="card-body">
@@ -144,7 +208,7 @@
 							</div>
 						</a>
 					</div>
-					<div class="col-md-4 my-3">
+					<div class="col-lg-4 col-md-6 my-2">
 						<a href="./profile/Vishwasree_Boga.pdf" target="_blank" class="profile-card box-shadow h-100 flex-row text-start">
 							<img src="./img/profile/Ms_Vishwasree_B_IAS.jpeg" class="card-img-top border flex-shrink-0" alt="Ms. Vishwasree B, IAS">
 							<div class="card-body">
@@ -153,7 +217,7 @@
 							</div>
 						</a>
 					</div>
-					<div class="col-md-4 my-3">
+					<div class="col-lg-4 col-md-6 my-2">
 						<a href="javascript:;" class="profile-card box-shadow h-100 flex-row text-start">
 							<img src="./img/profile/Srinivas.B.C.jpeg" class="card-img-top border flex-shrink-0" alt="Srinivas.B.C">
 							<div class="card-body">
@@ -433,43 +497,23 @@
 
 	
 	<section class="gallery-section py-4 mb-4 mb-md-5">
-		<div class="container text-center">
-			<h2 class="title">Gallery</h2>
+		<div class="text-center">
+			<h2 class="title mb-5">Gallery</h2>
 			
-			<section class="gallery-wrapper slider my-4">
-				<div class="slider-wrapper">
-					<img src="./tbdata/photogallery/oimages/20.jpg" alt="Gallery Image" class="rounded-3">
-				</div>
-				<div class="slider-wrapper">
-					<img src="./tbdata/photogallery/oimages/21.jpg" alt="Gallery Image" class="rounded-3">
-				</div>
-				<div class="slider-wrapper">
-					<img src="./tbdata/photogallery/oimages/23.jpg" alt="Gallery Image" class="rounded-3">
-				</div>
-				<div class="slider-wrapper">
-					<img src="./tbdata/photogallery/oimages/24.jpg" alt="Gallery Image" class="rounded-3">
-				</div>
-				<div class="slider-wrapper">
-					<img src="./tbdata/photogallery/oimages/25.jpg" alt="Gallery Image" class="rounded-3">
-				</div>
-				<div class="slider-wrapper">
-					<img src="./tbdata/photogallery/oimages/26.jpg" alt="Gallery Image" class="rounded-3">
-				</div>
-				<div class="slider-wrapper">
-					<img src="./tbdata/photogallery/oimages/27.jpg" alt="Gallery Image" class="rounded-3">
-				</div>
-				<div class="slider-wrapper">
-					<img src="./tbdata/photogallery/oimages/29.jpg" alt="Gallery Image" class="rounded-3">
-				</div>
-				<div class="slider-wrapper">
-					<img src="./tbdata/photogallery/oimages/30.jpg" alt="Gallery Image" class="rounded-3">
-				</div>
-				<div class="slider-wrapper">
-					<img src="./tbdata/photogallery/oimages/32.jpeg" alt="Gallery Image" class="rounded-3">
-				</div>
-			</section>
+			<div class="f-carousel py-4" id="photoGallery">
+				<div class="f-carousel__slide"><img src="./img/gallery/gallery-2.jpg" class="image-fluid" alt="Gallery Image" /></div>
+				<div class="f-carousel__slide"><img src="./img/gallery/gallery-3.jpg" class="image-fluid" alt="Gallery Image" /></div>
+				<div class="f-carousel__slide"><img src="./img/gallery/gallery-4.jpg" class="image-fluid" alt="Gallery Image" /></div>
+				<div class="f-carousel__slide"><img src="./img/gallery/gallery-5.jpg" class="image-fluid" alt="Gallery Image" /></div>
+				<div class="f-carousel__slide"><img src="./img/gallery/gallery-6.jpg" class="image-fluid" alt="Gallery Image" /></div>
+				<div class="f-carousel__slide"><img src="./img/gallery/gallery-7.jpg" class="image-fluid" alt="Gallery Image" /></div>
+				<div class="f-carousel__slide"><img src="./img/gallery/gallery-8.jpg" class="image-fluid" alt="Gallery Image" /></div>
+				<div class="f-carousel__slide"><img src="./img/gallery/gallery-9.jpg" class="image-fluid" alt="Gallery Image" /></div>
+				<div class="f-carousel__slide"><img src="./img/gallery/gallery-10.jpg" class="image-fluid" alt="Gallery Image" /></div>
+				<div class="f-carousel__slide"><img src="./img/gallery/gallery-11.jpg" class="image-fluid" alt="Gallery Image" /></div>
+			</div>
 			
-			<a href="javascript:;" class="btn btn-primary box-shadow box-shadow-lg mt-4" aria-label="See More">See More <span class="material-symbols-rounded notranslate align-middle">arrow_forward</span></a>
+			<a href="./photogallery.php" class="btn btn-primary box-shadow box-shadow-lg mt-4" aria-label="See More">See More <span class="material-symbols-rounded notranslate align-middle">arrow_forward</span></a>
 		</div>
 	</section>
 
@@ -559,37 +603,23 @@
 <?php  include "tb_footer.php"; ?>
 <?php include "graph.php"; ?>
 
-<script src="./slick/slick.js"></script>
+<script src="./fancyapps/carousel.umd.js"></script>
+<script src="./fancyapps/carousel.autoscroll.umd.js"></script>
+<script src="./fancyapps/carousel.arrows.umd.js"></script>
+<script src="./fancyapps/carousel.dots.umd.js"></script>
+<script src="./fancyapps/carousel.lazyload.umd.js"></script>
 
 <script>
 
 $(document).on('ready', function() {
 
-	$(".gallery-wrapper").slick({
-		arrows: false,
-		infinite: true,
-		// centerMode: true,
-		slidesToShow: 4,
-		slidesToScroll: 1,
-		autoplay: true,
-		autoplaySpeed: 4000,
-		responsive: [
-			{
-				breakpoint: 992,
-				settings: {
-					slidesToShow: 3,
-				}
-			},
-			{
-				breakpoint: 576,
-				settings: {
-					slidesToShow: 2,
-				}
-			}
-		]
-	});
-
-
+	Carousel(document.getElementById("bannerCarousel"), { }, { Arrows, Dots, Lazyload }).init();
+	Carousel(document.getElementById("photoGallery"), {
+		Autoscroll: {
+			speed : 4,
+			speedOnHover: 2
+		} 
+	}, { Autoscroll }).init();
 
 	const data = <?php echo json_encode($actionPrice); ?>;
 	const links = ['auctions.php?state=Andhra Pradesh','auctions.php?state=Andhra Pradesh', 'auctions.php?state=Karnataka','auctions.php?state=Karnataka'];

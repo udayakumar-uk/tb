@@ -60,6 +60,15 @@ ul li a:hover{
     color: var(--goldenBrown);
 }
 
+#main-content ul li a{
+	display: inline;
+}
+
+#main-content ul li a:hover{
+    color: var(--goldenBrown);
+	text-decoration: underline;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Inter', sans-serif;
   /* margin: 0; */
@@ -333,7 +342,7 @@ input.form-control:focus, select.form-select:focus{
 
 /* Main */
 .slider-section .carousel-item {
-	height: 500px;
+	height: 700px;
 }
 .slider-section .carousel-item > img{
 	height: 100%;
@@ -383,7 +392,7 @@ input.form-control:focus, select.form-select:focus{
 .vismis-section{
 	margin-top: -6rem;
 	position: relative;
-	z-index: 1;
+	z-index: 9;
 }
 .vismis-wrapper{
 	--radius: 15px;
