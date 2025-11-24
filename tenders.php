@@ -88,7 +88,7 @@ include "include/include.php";
 			<tr>
 				<th>Tender Notice No</th>
 				<th>Description of Tender</th>
-				<th>Statu</th>
+				<th>Status</th>
 			</tr>
 		</thead>
 		<?php $i=1;$b=1;

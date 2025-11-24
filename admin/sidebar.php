@@ -57,6 +57,9 @@ if(isset($_SESSION['tobadmin']) && !empty($_SESSION['tobadmin'])){
 				<li class="btn-group dropend">
 					<a role="button" class="nav-link flex-grow-1 dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="<?php echo $link; ?>"><?php echo $row['page']; ?></a>
 					<ul class="dropdown-menu">
+					<?php if($link !== '#') { ?>
+						<li> <a class="nav-link" href="<?php echo $link; ?>"><?php echo $row['page']; ?></a></li>
+					<?php } ?>
 					<?php while($row2=@mysqli_fetch_array($sel3)) {
 						
 						$sel4=executework("select * from tob_pages where menu_id='".$row2['id']."' and isactive=1 order by morder");
@@ -75,6 +78,10 @@ if(isset($_SESSION['tobadmin']) && !empty($_SESSION['tobadmin'])){
 							<a role="button" class="nav-link flex-grow-1 dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="<?php echo $link; ?>"><?php echo $row2['page']; ?></a>
 						
 							<ul class="dropdown-menu">
+							<?php if($link !== '#') { ?>
+								<li> <a class="nav-link" href="<?php echo $link; ?>"><?php echo $row2['page']; ?></a></li>
+							<?php } ?>
+
 							<?php while($row3=@mysqli_fetch_array($sel4)) {
 								if($row3['cms']==1  )
 								$link="page_cms1.php?page_id=".$row3['id'];

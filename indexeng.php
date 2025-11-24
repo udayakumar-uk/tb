@@ -97,6 +97,14 @@
 				width: 100%;
 				height: 500px;
 			}
+			#photoGallery {
+				--f-carousel-gap: 1rem;
+				--f-carousel-slide-width: 40%;
+			}
+			.footer-section .userful-link li a{
+				height: 70px;
+				max-width: 120px;
+			}
 
 		}
 </style>
@@ -462,12 +470,12 @@
 										</div>
 
 										<?php if($rown['subtitle1']!='') { ?>
-											<a href="javascript:;" <?php if($links1!='#' && $links1!='') { ?>onClick="show_pop('<?php echo $links1; ?>');" <?php } ?> class="mt-2 lh-sm badge bg-goldenbrown text-white px-2 py-1 text-uppercase line-clamp line-clamp-2">
+											<a href="javascript:;" <?php if($links1!='#' && $links1!='') { ?>onClick="show_pop('<?php echo $links1; ?>');" <?php } ?> class="mt-2 lh-sm badge bg-goldenbrown text-white p-2 text-uppercase line-clamp line-clamp-2">
 												<?php echo $rown['subtitle1']; ?>
 											</a>
 										<?php } ?>
 										<?php if($rown['subtitle2']!='') { ?>
-											<a href="javascript:;" <?php if($links2!='#' && $links2!='') { ?>onClick="show_pop('<?php echo $links2 ?>')" <?php } ?> class="mt-2 lh-sm badge bg-goldenbrown text-white px-2 py-1 text-uppercase line-clamp line-clamp-2">
+											<a href="javascript:;" <?php if($links2!='#' && $links2!='') { ?>onClick="show_pop('<?php echo $links2 ?>')" <?php } ?> class="mt-2 lh-sm badge bg-goldenbrown text-white p-2 text-uppercase line-clamp line-clamp-2">
 												<?php echo $rown['subtitle2']; ?>
 											</a>
 										<?php } ?>

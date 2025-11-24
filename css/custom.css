@@ -262,6 +262,7 @@ input.form-control:focus, select.form-select:focus{
 
 .pagination{
 	box-shadow: none !important;
+	align-items: center;
     --bs-pagination-color: var(--darkOliveGreen);
     --bs-pagination-hover-color: var(--darkOliveGreen);
     --bs-pagination-focus-color: var(--darkOliveGreen);
@@ -741,13 +742,17 @@ body > .skiptranslate,.goog-logo-link,.gskiptranslate,.goog-te-gadget span,.goog
 	header .nav-link{
 		/* --bs-nav-link-font-size: 1.1rem; */
 		--bs-nav-link-padding-y: 0.8rem;
+		--bs-nav-link-font-size: 1.1rem;
+		font-weight: 500;
 		display: flex;
         align-items: center;
         justify-content: space-between;
 	}
 	header .navbar-nav .dropdown-menu{
+		--bs-dropdown-font-size: 1.1rem;
 		border: 0;
 		margin: 0;
+		font-weight: 400;
 		/* padding-left: 1rem; */
 		border-radius: 0;
 		transition: var(--transition);
@@ -764,6 +769,7 @@ body > .skiptranslate,.goog-logo-link,.gskiptranslate,.goog-te-gadget span,.goog
 	}
 	header .dropdown-item{
 		--bs-dropdown-item-padding-y: .5rem;
+		font-weight: 500;
 		/* --bs-dropdown-link-color: var(--text); */
 	}
 

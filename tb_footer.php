@@ -2,7 +2,7 @@
 <footer class="footer-section pt-5">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6 col-lg-4 mb-4">
+			<div class="col-md-4 col-lg-4 mb-4">
 				<a href="/" class="bg-white rounded-lg rounded-3 p-2"><img width="250" src="./img/logo.png" alt="Footer Logo" /></a>
 				<a href="https://commerce.gov.in/" target="_blank" class="bg-white rounded-lg rounded-3 p-2 my-3"><img width="250" src="./img/logo-1.png" alt="Footer Logo" /></a>
 				<div class="foot-social d-flex gap-2">
@@ -38,7 +38,7 @@
 					</a> -->
 				</div>
 			</div>
-			<div class="col-md-6 col-lg-2 mb-4">
+			<div class="col-md-4 col-lg-2 mb-4">
 				<h3 class="sub-title">Quick Links</h3>
 				<ul type="none">
 					<li><a href="./copyrights.php">Copyrights Policy</a></li>
@@ -48,7 +48,7 @@
 					<li><a href="./help.php">Help</a></li>
 				</ul>
 			</div>
-			<div class="col-md-6 col-lg-2 mb-4">
+			<div class="col-md-4 col-lg-2 mb-4">
 				<h3 class="sub-title">Quick Links</h3>
 				<ul type="none">
 					<li><a href="./sitemap.php">Sitemap </a></li>
@@ -58,7 +58,7 @@
 					<li><a href="./feedback.php">Feedback</a></li>
 				</ul>
 			</div>
-			<div class="col-md-6 col-lg-4 mb-4">
+			<div class="col-md-12 col-lg-4 mb-4">
 				<h3 class="sub-title">Useful Links</h3>
 				<ul type="none" class="userful-link no-arrow row row-cols-3">
 					<li class="col p-1"><a href="https://www.india.gov.in/" target="_blank"><img src="./img/logos/logo-1.png" alt="india.gov.in"> </a></li>
